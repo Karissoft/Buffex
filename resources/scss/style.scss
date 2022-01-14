@@ -1,0 +1,59 @@
+html {
+    scroll-behavior: smooth;
+    transition: 0.4s;
+}
+.carousel__prev,
+.carousel__next {
+    background-color: #f5f2fe !important;
+    color:#333 !important;
+    border-color: #cec2de !important;
+    border:1px solid;
+}
+.carousel__pagination {
+
+    justify-content: end !important;
+
+}
+.carousel__pagination-button {
+
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50rem !important;
+}
+.my-gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+.gallery-thumbnail {
+    a {
+        img {
+            transition: 0.4s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+.scrolltop {
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 5%;
+    right: 15px;
+    background: black;
+    padding: 10px 8px;
+    opacity: 0.4;
+    color: white;
+    font-size: 0.77rem;
+    border-radius: 5px;
+    &:hover {
+        opacity: 1;
+    }
+}
+.banner-arrow {
+    position: absolute;
+    bottom: 1px;
+    margin-left: -1rem;
+    left: 50%;
+    z-index: 5;
+}
