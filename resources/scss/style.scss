@@ -2,6 +2,12 @@ html {
     scroll-behavior: smooth;
     transition: 0.4s;
 }
+p,li,span,div{
+    color: #7a797e;
+}
+h1,h2,h3,h4,h5,h6{
+    color:#29252b;
+}
 .carousel__prev,
 .carousel__next {
     background-color: #f5f2fe !important;

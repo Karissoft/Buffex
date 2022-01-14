@@ -23005,7 +23005,7 @@ var _hoisted_2 = {
 
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-    "class": "text-center text-2xl md:text-4xl font-bold py-4 md:py-8"
+    "class": "text-center text-2xl md:text-4xl font-bold pt-4 md:pt-8"
   }, " Our Product Offering ", -1
   /* HOISTED */
   );
@@ -23036,7 +23036,11 @@ var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "mb-5 p-10"
-  }, " Experience freedom with access to secure wallets, merchant payment services, instant payouts as a Buffex Private Consumer or Business Owner ", -1
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Experience freedom with access to secure wallets, merchant payment services, instant payouts as a "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "text-purple-500"
+  }, "Buffex Private Consumer"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "text-purple-500"
+  }, " Business Owner")], -1
   /* HOISTED */
   );
 });

@@ -1,7 +1,7 @@
 <template >
   <section id="product" class="p-3 md:p-14 pt-24 pb-20">
     <div class="container mx-auto">
-      <h1 class="text-center text-2xl md:text-4xl font-bold py-4 md:py-8">
+      <h1 class="text-center text-2xl md:text-4xl font-bold pt-4 md:pt-8">
         Our Product Offering
       </h1>
       <carousel :items-to-show="1">
@@ -14,8 +14,8 @@
                 </div>
                 <p class="mb-5 p-10">
                   Experience freedom with access to secure wallets, merchant
-                  payment services, instant payouts as a Buffex Private Consumer
-                  or Business Owner
+                  payment services, instant payouts as a <span class="text-purple-500">Buffex Private Consumer</span>
+                  or<span class="text-purple-500"> Business Owner</span>
                 </p>
                 <div class="banner_b text-center">
                   <BreezeButton class="bg-white"> Get started</BreezeButton>
