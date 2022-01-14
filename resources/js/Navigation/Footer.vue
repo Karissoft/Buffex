@@ -54,7 +54,7 @@ Subscribe today and stay up-to-date with the latest news
       <span class="text-purple-50">Made with love by Buffex Nigeria Limited</span>
     </div>
     <div class="text-center py-2">
-      <small class="text-purple-50"> Copyright &#169;{{new Date().getFullYear()}} buffex.co. All rights reserved | <a href="https://arudovwen.me">Arudovwen.me</a> </small>
+      <small class="text-purple-50"> Copyright &#169;{{new Date().getFullYear()}} buffex.co. All rights reserved
 
     </div>
  </section>
