@@ -23093,7 +23093,7 @@ var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "md:p-16 mb-4 text-xl md:text-3xl text-center"
+    "class": "md:p-16 mb-4 text-xl md:text-2xl text-center"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-purple-500"
   }, "Buffex Instant Payout"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" provides you the freedom of instant access to payout funds in your bank accounts in the currency of your choosing. ")], -1
@@ -23168,7 +23168,7 @@ var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_25 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "p-3 md:p-16 mb-4 text-xl md:text-3xl text-center"
+    "class": "p-3 md:p-16 mb-4 text-xl md:text-2xl text-center"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-purple-500"
   }, " Buffex Wallet"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" empowers you as an individuals or business owner with the freedom to trade (buy, sell and swap) cryptocurrencies and receive payouts in fiat. ")], -1
@@ -23188,7 +23188,7 @@ var _hoisted_28 = {
 
 var _hoisted_29 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "md:p-16 mb-4 text-md md:text-3xl text-center"
+    "class": "md:p-16 mb-4 text-md md:text-2xl text-center"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-purple-500"
   }, " Buffex "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" is an innovative, one-stop financial services platform that gives users premium offerings in popular, legacy financial products alongside more modern, revolutionary utilities available anywhere in the world ")], -1

@@ -43,7 +43,7 @@
               />
               <img src="/images/bag.png" class="w-16 md:w-40  object-contain" alt="" />
             </div>
-            <p class="md:p-16 mb-4 text-xl md:text-3xl text-center">
+            <p class="md:p-16 mb-4 text-xl md:text-2xl text-center">
               <span class="text-purple-500">Buffex Instant Payout</span>
               provides you the freedom of instant access to payout funds in your
               bank accounts in the currency of your choosing.
@@ -85,7 +85,7 @@
                 alt=""
               />
             </div>
-            <p class="p-3 md:p-16 mb-4 text-xl md:text-3xl text-center">
+            <p class="p-3 md:p-16 mb-4 text-xl md:text-2xl text-center">
               <span class="text-purple-500"> Buffex Wallet</span> empowers you
               as an individuals or business owner with the freedom to trade
               (buy, sell and swap) cryptocurrencies and receive payouts in fiat.
@@ -97,7 +97,7 @@
         </slide>
         <slide :key="5">
           <div class="md:p-16 relative">
-            <p class="md:p-16 mb-4 text-md md:text-3xl text-center">
+            <p class="md:p-16 mb-4 text-md md:text-2xl text-center">
               <span class="text-purple-500"> Buffex </span> is an innovative,
               one-stop financial services platform that gives users premium
               offerings in popular, legacy financial products alongside more
