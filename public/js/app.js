@@ -22868,7 +22868,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.form.name = $event;
     }),
     required: "",
-    autofocus: "",
     autocomplete: "name"
   }, null, 8
   /* PROPS */

@@ -17,7 +17,7 @@ Leave a message and we will get back to you shortly.
     <form @submit.prevent="submit">
         <div>
 
-            <BreezeInput id="name" type="text" class="mt-1 block w-full" placeholder="Name" v-model="form.name" required autofocus autocomplete="name" />
+            <BreezeInput id="name" type="text" class="mt-1 block w-full" placeholder="Name" v-model="form.name" required  autocomplete="name" />
         </div>
 
         <div class="mt-4">
