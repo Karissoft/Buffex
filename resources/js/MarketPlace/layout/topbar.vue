@@ -5,7 +5,7 @@
       <div class="flex justify-between items-center h-full">
         <div class="flex justify-start">
           <a href="#">
-            <span class="sr-only">BUFFEX MARKETPLACE</span>
+            <span class="sr-only">BUFFEX</span>
             <img
               class="h-7 w-auto sm:h-9"
               src="/images/logo.png"

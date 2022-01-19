@@ -1,0 +1,489 @@
+
+<template>
+  <TopBar />
+  <div class="container mx-auto py-10">
+    <form action="#" method="POST" class="mt-10 sm:mt-0">
+      <div class="md:grid md:grid-cols-3 md:gap-6">
+           <div class="mt-5 md:mt-0 md:col-span-2">
+
+            <div class="shadow overflow-hidden sm:rounded-md">
+              <div class="px-4 py-3">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">
+                  Personal Information
+                </h3>
+                <p class="mt-1 text-sm text-gray-600">
+                  Use a permanent address where you can receive mail.
+                </p>
+              </div>
+              <div class="px-4 py-5 bg-white sm:p-6">
+                <div class="grid grid-cols-6 gap-6">
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="first-name"
+                      class="block text-sm font-medium text-gray-700"
+                      >First name</label
+                    >
+                    <input
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="last-name"
+                      class="block text-sm font-medium text-gray-700"
+                      >Last name</label
+                    >
+                    <input
+                      type="text"
+                      name="last-name"
+                      id="last-name"
+                      autocomplete="family-name"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-4">
+                    <label
+                      for="email-address"
+                      class="block text-sm font-medium text-gray-700"
+                      >Email address</label
+                    >
+                    <input
+                      type="text"
+                      name="email-address"
+                      id="email-address"
+                      autocomplete="email"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="country"
+                      class="block text-sm font-medium text-gray-700"
+                      >Country</label
+                    >
+                    <select
+                      id="country"
+                      name="country"
+                      autocomplete="country-name"
+                      class="
+                        mt-1
+                        block
+                        w-full
+                        py-2
+                        px-3
+                        border border-gray-300
+                        bg-white
+                        rounded-md
+                        shadow-sm
+                        focus:outline-none
+                        focus:ring-purple-500
+                        focus:border-purple-500
+                        sm:text-sm
+                      "
+                    >
+                      <option>United States</option>
+                      <option>Canada</option>
+                      <option>Mexico</option>
+                    </select>
+                  </div>
+
+                  <div class="col-span-6">
+                    <label
+                      for="street-address"
+                      class="block text-sm font-medium text-gray-700"
+                      >Street address</label
+                    >
+                    <input
+                      type="text"
+                      name="street-address"
+                      id="street-address"
+                      autocomplete="street-address"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <label
+                      for="city"
+                      class="block text-sm font-medium text-gray-700"
+                      >City</label
+                    >
+                    <input
+                      type="text"
+                      name="city"
+                      id="city"
+                      autocomplete="address-level2"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label
+                      for="region"
+                      class="block text-sm font-medium text-gray-700"
+                      >State / Province</label
+                    >
+                    <input
+                      type="text"
+                      name="region"
+                      id="region"
+                      autocomplete="address-level1"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label
+                      for="postal-code"
+                      class="block text-sm font-medium text-gray-700"
+                      >ZIP / Postal code</label
+                    >
+                    <input
+                      type="text"
+                      name="postal-code"
+                      id="postal-code"
+                      autocomplete="postal-code"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
+              <div class="px-4  py-4">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">
+                  Checkout Information
+                </h3>
+              </div>
+              <div class="px-4 py-5 bg-white sm:p-6">
+                <div class="grid grid-cols-6 gap-6">
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="first-name"
+                      class="block text-sm font-medium text-gray-700"
+                      >First name</label
+                    >
+                    <input
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="last-name"
+                      class="block text-sm font-medium text-gray-700"
+                      >Last name</label
+                    >
+                    <input
+                      type="text"
+                      name="last-name"
+                      id="last-name"
+                      autocomplete="family-name"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-4">
+                    <label
+                      for="email-address"
+                      class="block text-sm font-medium text-gray-700"
+                      >Email address</label
+                    >
+                    <input
+                      type="text"
+                      name="email-address"
+                      id="email-address"
+                      autocomplete="email"
+                      class="
+                        mt-1
+                        focus:ring-purple-500 focus:border-purple-500
+                        block
+                        w-full
+                        shadow-sm
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="country"
+                      class="block text-sm font-medium text-gray-700"
+                      >Country</label
+                    >
+                    <select
+                      id="country"
+                      name="country"
+                      autocomplete="country-name"
+                      class="
+                        mt-1
+                        block
+                        w-full
+                        py-2
+                        px-3
+                        border border-gray-300
+                        bg-white
+                        rounded-md
+                        shadow-sm
+                        focus:outline-none
+                        focus:ring-purple-500
+                        focus:border-purple-500
+                        sm:text-sm
+                      "
+                    >
+                      <option>United States</option>
+                      <option>Canada</option>
+                      <option>Mexico</option>
+                    </select>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+
+        </div>
+        <div class="md:col-span-1 px-2">
+          <div class="bg-slate-50 p-4 rounded-md">
+            <div class="px-4 sm:px-0">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">
+              Order Information
+            </h3>
+          </div>
+          <div class="mt-8">
+                    <div class="flow-root">
+                      <ul role="list" class="-my-6 divide-y divide-gray-200">
+                        <li v-for="product in products" :key="product.id" class="py-6 flex">
+                          <div class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
+                            <img :src="product.imageSrc" :alt="product.imageAlt" class="w-full h-full object-center object-cover" />
+                          </div>
+
+                          <div class="ml-4 flex-1 flex flex-col">
+                            <div>
+                              <div class="flex justify-between text-base font-medium text-gray-900">
+                                <h3>
+                                  <a :href="product.href">
+                                    {{ product.name }}
+                                  </a>
+                                </h3>
+                                <p class="ml-4">
+                                  {{ product.price }}
+                                </p>
+                              </div>
+                              <p class="mt-1 text-sm text-gray-500">
+                                {{ product.color }}
+                              </p>
+                            </div>
+                            <div class="flex-1 flex items-end justify-between text-sm">
+                              <p class="text-gray-500">Qty {{ product.quantity }}</p>
+
+
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+
+                <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                  <div class="flex justify-between text-base font-medium text-gray-900">
+                    <p>Subtotal</p>
+                    <p>$262.00</p>
+                  </div>
+                   <div class="flex justify-between text-base font-medium text-gray-900">
+                    <p>Shipping</p>
+                    <p>$262.00</p>
+                  </div>
+                   <div class="flex justify-between text-base font-medium text-gray-900">
+                    <p>Taxes</p>
+                    <p>$262.00</p>
+                  </div>
+
+
+                </div>
+             <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
+                <button
+                  type="submit"
+                  class="
+                    inline-flex
+                    justify-center
+                    py-2
+                    px-4
+                    border border-transparent
+                    shadow-sm
+                    text-sm
+                    font-medium
+                    rounded-md
+                    text-white
+                    bg-purple-600
+                    hover:bg-purple-700
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-purple-500
+                  "
+                >
+                  Proceed to payment
+                </button>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</template>
+<script>
+import { ref } from "vue";
+import { StarIcon } from "@heroicons/vue/solid";
+import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
+import TopBar from "../layout/topbar.vue";
+
+const products = [
+  {
+    id: 1,
+    name: 'Throwback Hip Bag',
+    href: '#',
+    color: 'Salmon',
+    price: '$90.00',
+    quantity: 1,
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+  },
+  {
+    id: 2,
+    name: 'Medium Stuff Satchel',
+    href: '#',
+    color: 'Blue',
+    price: '$32.00',
+    quantity: 1,
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageAlt:
+      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+  },
+  // More products...
+]
+
+const breadcrumbs = [
+  { id: 1, name: "Home", href: "/home" },
+  { id: 2, name: "Marketplace", href: "/" },
+];
+const reviews = { href: "#", average: 4, totalCount: 117 };
+
+export default {
+  components: {
+    RadioGroup,
+    RadioGroupLabel,
+    RadioGroupOption,
+    StarIcon,
+    TopBar,
+  },
+  setup() {
+
+    return {
+      products,
+      reviews,
+
+      breadcrumbs,
+    };
+  },
+};
+</script>
