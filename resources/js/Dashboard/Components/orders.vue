@@ -138,7 +138,7 @@
     </div>
   </div>
   <div class="text-right">
-    <Link href="/orders">View all <ArrowNarrowRightIcon class="w-6 h-6"/></Link>
+    <Link href="/orders"><span class="flex justify-end">View all <ArrowNarrowRightIcon class="w-6 h-6 ml-1"/></span></Link>
   </div>
   <!-- This example requires Tailwind CSS v2.0+ -->
 
