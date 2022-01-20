@@ -8,6 +8,7 @@
     </div>
 
     <form @submit.prevent="submit">
+         <legend class="text-center mb-4">Vendor Login</legend>
         <div>
             <BreezeLabel for="email" value="Email" />
             <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
@@ -26,6 +27,10 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
+             <Link  :href="route('register')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                Sign up
+            </Link>
+            <span class="px-3">/</span>
             <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
                 Forgot your password?
             </Link>

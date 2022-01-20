@@ -57,7 +57,7 @@
               class="
                 w-48
                 bg-purple-100
-                hover:bg-purple-700
+                hover:bg-purple-500
                 h-full
                 flex
                 items-center
@@ -91,7 +91,7 @@
               class="
                 w-48
                 bg-purple-100
-                hover:bg-purple-700
+                hover:bg-purple-500
                 h-full
                 flex
                 items-center
@@ -125,7 +125,7 @@
               class="
                 w-48
                 bg-purple-100
-                hover:bg-purple-700
+                hover:bg-purple-500
                 h-full
                 flex
                 items-center
@@ -159,7 +159,7 @@
               class="
                 w-48
                 bg-purple-100
-                hover:bg-purple-700
+                hover:bg-purple-500
                 h-full
                 flex
                 items-center
@@ -238,6 +238,7 @@
           transform
           origin-top-right
           md:hidden
+          z-40
         "
       >
         <div
@@ -326,7 +327,7 @@
             </div>
             <div>
               <a
-                href="#"
+                href="/register"
                 class="
                   w-full
                   flex
@@ -349,7 +350,7 @@
               <p class="mt-6 text-center text-base font-medium text-gray-500">
                 Existing customer?
                 {{ " " }}
-                <a href="#" class="text-indigo-600 hover:text-indigo-500">
+                <a href="/login" class="text-indigo-600 hover:text-indigo-500">
                   Sign in
                 </a>
               </p>
@@ -395,20 +396,20 @@ const resources = [
     href: "#",
     icon: SupportIcon,
   },
-  {
-    name: "Guides",
-    description:
-      "Learn how to maximize our platform to get the most out of it.",
-    href: "#",
-    icon: BookmarkAltIcon,
-  },
-  {
-    name: "Events",
-    description:
-      "See what meet-ups and other events we might be planning near you.",
-    href: "#",
-    icon: CalendarIcon,
-  },
+  // {
+  //   name: "Guides",
+  //   description:
+  //     "Learn how to maximize our platform to get the most out of it.",
+  //   href: "#",
+  //   icon: BookmarkAltIcon,
+  // },
+  // {
+  //   name: "Events",
+  //   description:
+  //     "See what meet-ups and other events we might be planning near you.",
+  //   href: "#",
+  //   icon: CalendarIcon,
+  // },
   {
     name: "Security",
     description: "Understand how we take your privacy seriously.",

@@ -4,14 +4,19 @@
     <BreezeValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
+        <legend class="text-center mb-4">Vendor Registration</legend>
         <div>
-            <BreezeLabel for="name" value="Name" />
+            <BreezeLabel for="name" value="Store Name" />
             <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
         </div>
 
         <div class="mt-4">
             <BreezeLabel for="email" value="Email" />
             <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
+        </div>
+          <div>
+            <BreezeLabel for="address" value="Address" />
+            <BreezeInput id="address" type="text" class="mt-1 block w-full" v-model="form.address" required autofocus autocomplete="address" />
         </div>
 
         <div class="mt-4">
@@ -63,7 +68,9 @@ export default {
                 email: '',
                 password: '',
                 password_confirmation: '',
+                address:'',
                 terms: false,
+                role_id:2
             })
         }
     },

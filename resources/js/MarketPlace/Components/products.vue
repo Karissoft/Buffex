@@ -4,14 +4,21 @@
       class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8  max-h-screen
           overflow-auto"
     >
-      <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">
+      <div class="flex justify-between">
+        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">
         Products
       </h2>
+        <div class="flex">
+          <SortAscendingIcon class="w-5 h-5 mr-2"/>
+
+          <SortDescendingIcon class="w-5 h-5"/>
+       </div>
+      </div>
 
       <div
         class="
           mt-6
-          grid grid-cols-1
+          grid grid-cols-2
           gap-y-10 gap-x-6
           sm:grid-cols-2
           lg:grid-cols-4
@@ -27,7 +34,7 @@
 
             <div
             class="
-              w-full
+
               min-h-72
               bg-purple-500/30
               aspect-w-1 aspect-h-1
@@ -73,7 +80,7 @@
               py-2
               text-sm
               whitespace-nowrap
-              z-40
+             
               relative
               cursor-pointer
               border border-transparent
@@ -106,6 +113,8 @@
 <script>
 import { Link } from '@inertiajs/inertia-vue3';
 import { ShoppingCartIcon,ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/vue/outline";
+import { SortAscendingIcon, SortDescendingIcon} from "@heroicons/vue/solid";
+
 const products = [
   {
     id: 1,
@@ -211,6 +220,8 @@ export default {
   components: {
     ShoppingCartIcon,
     ArrowCircleLeftIcon, ArrowCircleRightIcon,
+    SortAscendingIcon, SortDescendingIcon,
+
       Link,
   },
 };

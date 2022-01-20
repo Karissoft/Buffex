@@ -3,9 +3,9 @@
     <div >
 <TopBar/>
   </div>
-  <div class="flex">
-   <div class="w-1/6"> <SideBar/></div>
-    <div class="w-5/6"> <MainPage/></div>
+  <div class="flex flex-col md:flex-row">
+   <div class="md:w-1/6"> <SideBar/></div>
+    <div class="md:w-5/6"> <MainPage/></div>
   </div>
 </div>
 </template>

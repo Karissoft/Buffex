@@ -39,9 +39,24 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return Inertia::render('Contact', []);
 });
+Route::get('/transaction', function () {
+    return Inertia::render('Transaction', []);
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/products', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('products');
+
+Route::get('/orders', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('orders');
+
+Route::get('/reports', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('reports');
 
 require __DIR__.'/auth.php';

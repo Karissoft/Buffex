@@ -52,7 +52,7 @@
                               <p class="text-gray-500">Qty {{ product.quantity }}</p>
 
                               <div class="flex">
-                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                <button type="button" class="font-medium text-purple-600 hover:text-purple-500">Remove</button>
                               </div>
                             </div>
                           </div>
@@ -69,11 +69,11 @@
                   </div>
                   <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div class="mt-6">
-                    <a href="/checkout" class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Checkout</a>
+                    <a href="/checkout" class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-purple-600 hover:bg-purple-700">Checkout</a>
                   </div>
                   <div class="mt-6 flex justify-center text-sm text-center text-gray-500">
                     <p>
-                      or <button type="button" class="text-indigo-600 font-medium hover:text-indigo-500" @click="open = false">Continue Shopping<span aria-hidden="true"> &rarr;</span></button>
+                      or <button type="button" class="text-purple-600 font-medium hover:text-purple-500" @click="open = false">Continue Shopping<span aria-hidden="true"> &rarr;</span></button>
                     </p>
                   </div>
                 </div>
