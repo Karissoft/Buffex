@@ -67,6 +67,7 @@
                 </a>
               </h3>
               <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+               <p class="mt-1 text-sm text-gray-500">Store name</p>
             </div>
             <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
           </div>
@@ -80,7 +81,7 @@
               py-2
               text-sm
               whitespace-nowrap
-             
+
               relative
               cursor-pointer
               border border-transparent
@@ -112,7 +113,7 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3';
-import { ShoppingCartIcon,ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/vue/outline";
+import { ShoppingCartIcon,ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/vue/solid";
 import { SortAscendingIcon, SortDescendingIcon} from "@heroicons/vue/solid";
 
 const products = [

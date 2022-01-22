@@ -11,6 +11,26 @@
           <span class="font-bold text-sm text-purple-900">STORE</span>
           <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
         </div>
+          <div class="mb-2">
+            <input
+              placeholder="Search store"
+               type="search"
+              class="
+                form-input
+                px-3
+                py-1
+                rounded-md
+                mt-1
+                focus:ring-purple-100 focus:border-purple-100
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
+            />
+          </div>
         <ul class="pl-3 max-h-48 overflow-auto">
             <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
             <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
@@ -37,6 +57,26 @@
           <span class="font-bold text-sm text-purple-900">CATEGORY</span>
           <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
         </div>
+         <div class="mb-2">
+            <input
+              placeholder="Search category"
+               type="search"
+              class="
+                form-input
+                px-3
+                py-1
+                rounded-md
+                mt-1
+                focus:ring-purple-100 focus:border-purple-100
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
+            />
+          </div>
         <ul class="max-h-48 overflow-auto pl-3">
           <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
             <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>

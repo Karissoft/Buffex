@@ -42,6 +42,12 @@ Route::get('/contact', function () {
 Route::get('/transaction', function () {
     return Inertia::render('Transaction', []);
 });
+Route::get('/category', function () {
+    return Inertia::render('Categories', []);
+});
+Route::get('/stores', function () {
+    return Inertia::render('Stores', []);
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

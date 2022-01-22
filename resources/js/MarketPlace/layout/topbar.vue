@@ -1,22 +1,43 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <Popover class="relative bg-purple-100 h-16 ">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full h-full">
+  <Popover class="relative bg-purple-100 h-16">
+    <div class="px-4 sm:px-6 w-full h-full">
       <div class="flex justify-between items-center h-full">
-        <div class="flex justify-start">
-          <a href="#">
-            <span class="sr-only">BUFFEX</span>
-            <img
-              class="h-7 w-auto sm:h-9"
-              src="/images/logo.png"
-              alt=""
+        <div class="flex justify-start items-center w-[35%] pr-4">
+          <div class="mr-3 flex-none">
+            <a href="#">
+              <span class="sr-only">BUFFEX</span>
+              <img class="h-7 w-auto sm:h-9" src="/images/logo.png" alt="" />
+            </a>
+          </div>
+          <div class="grow">
+            <input
+              placeholder="Search product"
+               type="search"
+              class="
+                form-input
+                px-3
+                py-2
+                rounded-md
+                mt-1
+                focus:ring-purple-100 focus:border-purple-100
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
             />
-          </a>
+          </div>
         </div>
 
         <div class="-mr-2 -my-2 md:hidden flex">
-           <span class=" px-4
-              py-2"><ShoppingCartIcon @click="open=!open" class="w-6 h-6 text-purple-700"/></span>
+          <span class="px-4 py-2"
+            ><ShoppingCartIcon
+              @click="open = !open"
+              class="w-6 h-6 text-purple-700"
+          /></span>
           <PopoverButton
             class="
               bg-white
@@ -39,11 +60,12 @@
         </div>
         <PopoverGroup
           as="nav"
-          class="hidden md:flex justiy-center items-center"
+          class="hidden md:flex justiy-between items-center w-[45%]"
         >
           <a
             href="/home"
             class="
+            w-[20%]
               text-base
               font-medium
               text-gray-500
@@ -55,9 +77,10 @@
           >
             <div
               class="
-                w-48
+                w-full
                 bg-purple-100
                 hover:bg-purple-500
+                text-sm
                 h-full
                 flex
                 items-center
@@ -69,7 +92,8 @@
                 font-bold
               "
               :class="{
-                'text-purple-100 bg-purple-700 border-purple-500': $page.url.includes('/home'),
+                'text-purple-100 bg-purple-700 border-purple-500':
+                  $page.url.includes('/home'),
               }"
             >
               Home
@@ -78,6 +102,8 @@
           <a
             href="/"
             class="
+            w-[20%]
+
               text-base
               font-medium
               text-gray-500
@@ -89,9 +115,10 @@
           >
             <div
               class="
-                w-48
+               w-full
                 bg-purple-100
                 hover:bg-purple-500
+                text-sm
                 h-full
                 flex
                 items-center
@@ -103,15 +130,56 @@
                 font-bold
               "
               :class="{
-                'text-purple-100 bg-purple-700 border-purple-500': $page.url==='/',
+                'text-purple-100 bg-purple-700 border-purple-500':
+                  $page.url === '/stores',
+              }"
+            >
+              Stores
+            </div>
+          </a>
+          <a
+            href="/"
+            class="
+            w-[20%]
+
+              text-base
+              font-medium
+              text-gray-500
+              hover:text-gray-700
+              flex
+              items-center
+              justify-center
+            "
+          >
+            <div
+              class="
+               w-full
+                bg-purple-100
+                hover:bg-purple-500
+                text-sm
+                h-full
+                flex
+                items-center
+                justify-center
+                text-purple-700
+                hover:text-purple-100
+                border-b-4 border-transparent
+                hover:border-purple-300
+                font-bold
+              "
+              :class="{
+                'text-purple-100 bg-purple-700 border-purple-500':
+                  $page.url === '/',
               }"
             >
               Marketplace
             </div>
           </a>
-           <a
+          <a
             href="/about"
             class="
+            w-[20%]
+
               text-base
               font-medium
               text-gray-500
@@ -123,9 +191,10 @@
           >
             <div
               class="
-                w-48
+ w-full
                 bg-purple-100
                 hover:bg-purple-500
+                text-sm
                 h-full
                 flex
                 items-center
@@ -137,15 +206,18 @@
                 font-bold
               "
               :class="{
-                'text-purple-100 bg-purple-700 border-purple-500': $page.url==='/about',
+                'text-purple-100 bg-purple-700 border-purple-500':
+                  $page.url === '/about',
               }"
             >
               About
             </div>
           </a>
-           <a
+          <a
             href="/contact"
             class="
+            w-[20%]
+
               text-base
               font-medium
               text-gray-500
@@ -157,9 +229,10 @@
           >
             <div
               class="
-                w-48
+ w-full
                 bg-purple-100
                 hover:bg-purple-500
+                text-sm
                 h-full
                 flex
                 items-center
@@ -171,14 +244,15 @@
                 font-bold
               "
               :class="{
-                'text-purple-100 bg-purple-700 border-purple-500': $page.url==='/contact',
+                'text-purple-100 bg-purple-700 border-purple-500':
+                  $page.url === '/contact',
               }"
             >
               Contact
             </div>
           </a>
         </PopoverGroup>
-        <div class="hidden md:flex items-center justify-end">
+        <div class="hidden md:flex items-center justify-end w-[20%]">
           <a
             href="/login"
             class="
@@ -213,8 +287,11 @@
           >
             Sign up
           </a>
-          <span class=" px-4
-              py-2"><ShoppingCartIcon @click="open=!open" class="w-6 h-6 text-purple-700"/></span>
+          <span class="px-4 py-2"
+            ><ShoppingCartIcon
+              @click="open = !open"
+              class="w-6 h-6 text-purple-700"
+          /></span>
         </div>
       </div>
     </div>
@@ -360,7 +437,7 @@
       </PopoverPanel>
     </transition>
   </Popover>
-  <Cart :open="open"/>
+  <Cart :open="open" />
 </template>
 
 <script>
@@ -382,8 +459,8 @@ import {
   XIcon,
 } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
-import Cart from '@/MarketPlace/Components/cart'
-import { ref } from 'vue'
+import Cart from "@/MarketPlace/Components/cart";
+import { ref } from "vue";
 const callsToAction = [
   { name: "Watch Demo", href: "#", icon: PlayIcon },
   { name: "Contact Sales", href: "#", icon: PhoneIcon },
@@ -437,15 +514,15 @@ export default {
     MenuAlt3Icon,
     ShoppingCartIcon,
     XIcon,
-    Cart
+    Cart,
   },
   setup() {
-     const open = ref(false)
+    const open = ref(false);
     return {
       callsToAction,
       resources,
       recentPosts,
-      open
+      open,
     };
   },
 };

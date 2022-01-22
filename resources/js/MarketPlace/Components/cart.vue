@@ -49,7 +49,14 @@
                               </p>
                             </div>
                             <div class="flex-1 flex items-end justify-between text-sm">
-                              <p class="text-gray-500">Qty {{ product.quantity }}</p>
+                              <p class="text-gray-500">Qty </p>
+
+
+         <span class="flex justify-center items-center"> <span><MinusCircleIcon class="cursor-pointe w-5 h-5 text-purple-500 "/></span>
+         <span class="mx-2 text-sm text-gray-500"> {{ product.quantity }}</span>
+
+           <span><PlusCircleIcon class="w-5 h-5 text-purple-500  cursor-pointer"/></span></span>
+
 
                               <div class="flex">
                                 <button type="button" class="font-medium text-purple-600 hover:text-purple-500">Remove</button>
@@ -90,7 +97,7 @@
 import { ref } from 'vue'
 import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XIcon } from '@heroicons/vue/outline'
-
+import { PlusCircleIcon,   MinusCircleIcon } from "@heroicons/vue/solid";
 const products = [
   {
     id: 1,
@@ -124,6 +131,7 @@ export default {
     TransitionChild,
     TransitionRoot,
     XIcon,
+    PlusCircleIcon,   MinusCircleIcon
   },
   props:['open'],
   setup() {
