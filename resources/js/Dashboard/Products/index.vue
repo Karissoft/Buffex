@@ -2,7 +2,7 @@
 <template>
   <div class="flex justify-end mb-6">
     <button
-      @click="open = true"
+      @click="toggleModal('create')"
       type="button"
       class="
         font-bold
@@ -60,7 +60,7 @@
                     tracking-wider
                   "
                 >
-                  Title
+                  Description
                 </th>
                 <th
                   scope="col"
@@ -88,38 +88,48 @@
                     tracking-wider
                   "
                 >
-                  Role
+                  Price
+                </th>
+                <th
+                  scope="col"
+                  class="
+                    px-6
+                    py-3
+                    text-left text-xs
+                    font-medium
+                    text-gray-500
+                    uppercase
+                    tracking-wider
+                  "
+                >
+                  Instock
                 </th>
                 <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only">Edit</span>
+                  <span class="sr-only" >Edit</span>
                 </th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="person in people" :key="person.email">
+              <tr v-for="product in products" :key="product.id">
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img
                         class="h-10 w-10 rounded-full"
-                        :src="person.image"
+                        :src="product.images[0]"
                         alt=""
                       />
                     </div>
                     <div class="ml-4">
                       <div class="text-sm font-medium text-gray-900">
-                        {{ person.name }}
-                      </div>
-                      <div class="text-sm text-gray-500">
-                        {{ person.email }}
+                        {{ product.name }}
                       </div>
                     </div>
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ person.title }}</div>
-                  <div class="text-sm text-gray-500">
-                    {{ person.department }}
+                  <div class="text-sm text-gray-900">
+                    {{ product.description }}
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -135,11 +145,14 @@
                       text-green-800
                     "
                   >
-                    Active
+                    {{ product.status }}
                   </span>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ person.role }}
+                  {{ product.price }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {{ product.in_stock }}
                 </td>
                 <td
                   class="
@@ -150,8 +163,11 @@
                     font-medium
                   "
                 >
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Edit</a
+                  <span @click="toggleModal('edit',product)" class="mr-3 text-indigo-600 hover:text-indigo-900"
+                    >Edit</span
+                  >
+                    <span @click="dropProduct(product.id)" class="text-red-600 hover:text-red-900"
+                    >Delete</span
                   >
                 </td>
               </tr>
@@ -226,71 +242,12 @@
             "
           >
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <div class="sm:flex sm:items-start">
-                <div
-                  class="
-                    mx-auto
-                    flex-shrink-0 flex
-                    items-center
-                    justify-center
-                    h-12
-                    w-12
-                    rounded-full
-                    bg-red-100
-                    sm:mx-0 sm:h-10 sm:w-10
-                  "
-                >
-                  <ExclamationIcon
-                    class="h-6 w-6 text-red-600"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <DialogTitle
-                    as="h3"
-                    class="text-lg leading-6 font-medium text-gray-900"
-                  >
-                    Deactivate account
-                  </DialogTitle>
-                  <div class="mt-2">
-                    <p class="text-sm text-gray-500">
-                      Are you sure you want to deactivate your account? All of
-                      your data will be permanently removed. This action cannot
-                      be undone.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <CreateProduct @updatepage="updatepage" v-if="type == 'create'" />
+              <EditProduct :product="product" @updatepage="updatepage" v-if="type == 'edit'" />
             </div>
             <div
               class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
             >
-              <button
-                type="button"
-                class="
-                  w-full
-                  inline-flex
-                  justify-center
-                  rounded-md
-                  border border-transparent
-                  shadow-sm
-                  px-4
-                  py-2
-                  bg-red-600
-                  text-base
-                  font-medium
-                  text-white
-                  hover:bg-red-700
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-offset-2
-                  focus:ring-red-500
-                  sm:ml-3 sm:w-auto sm:text-sm
-                "
-                @click="open = false"
-              >
-                Deactivate
-              </button>
               <button
                 type="button"
                 class="
@@ -329,115 +286,55 @@
 
 <script>
 
-import { ref } from 'vue'
-import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { ExclamationIcon } from '@heroicons/vue/outline'
-
 import {
-PlusCircleIcon
-} from "@heroicons/vue/solid";
-const people = [
-  {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-   {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  // More people...
-]
+  Dialog,
+  DialogOverlay,
+  DialogTitle,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+import { ExclamationIcon } from "@heroicons/vue/outline";
+import CreateProduct from "./CreateProduct";
+import EditProduct from "./EditProduct";
+import { PlusCircleIcon } from "@heroicons/vue/solid";
 
 export default {
-  setup() {
-    const open = ref(false)
-    return {
-      people,
-      open
-    }
-  },
-  components:{
+  props: ["products"],
+
+  components: {
     PlusCircleIcon,
-     Dialog,
+    Dialog,
     DialogOverlay,
     DialogTitle,
     TransitionChild,
     TransitionRoot,
     ExclamationIcon,
-  }
-}
+    CreateProduct,
+    EditProduct
+  },
+  data() {
+    return {
+      open:false,
+      type:'',
+      product:{}
+    }
+  },
+  methods: {
+    toggleModal(val,product) {
+      this.open = !this.open;
+      this.type = val;
+      this.product = product
+    },
+    updatepage() {
+      this.open = false;
+    },
+    dropProduct(id){
+     var res = confirm('Are you sure')
+     if(res){
+ this.$inertia.delete(`/products/${id}`)
+     }
+
+    }
+  },
+};
 </script>

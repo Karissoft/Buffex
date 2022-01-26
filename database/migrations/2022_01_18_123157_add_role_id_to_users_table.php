@@ -16,6 +16,7 @@ class AddRoleIdToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('address')->nullable();
             $table->string('phone_no')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('role_id')->ondelete('cascade')->onupdate('cascade');
         });
     }

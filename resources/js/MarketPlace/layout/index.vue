@@ -1,7 +1,7 @@
 <template lang="">
 <div  class="w-screen h-screen bg-purple-50 overflow-auto">
     <div >
-<TopBar/>
+<TopBar :auth="auth"/>
   </div>
   <div class="flex flex-col md:flex-row">
    <div class="md:w-1/6"> <SideBar/></div>
@@ -14,6 +14,7 @@ import SideBar from './sidebar';
 import TopBar from './topbar';
 import MainPage from './mainpage';
 export default {
+  props:['auth'],
 components: {
   SideBar,
   TopBar,

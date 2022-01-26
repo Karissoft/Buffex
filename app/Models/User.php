@@ -47,8 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class);
     }
-    public function stores()
+    public function products()
     {
-        return $this->hasOne(Store::class);
+        return $this->hasMany(Product::class);
     }
 }

@@ -8,7 +8,7 @@
     </div>
 
     <form @submit.prevent="submit">
-         <legend class="text-center mb-4">Vendor Login</legend>
+         <legend class="text-center mb-4">Customer Login</legend>
         <div>
             <BreezeLabel for="email" value="Email" />
             <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />

@@ -62,3 +62,114 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+
+
+
+// vendor auth
+Route::get('/vendor-register', [RegisteredUserController::class, 'vendorcreate'])
+  ->middleware('guest')
+  ->name('vendorregister');
+
+Route::post('/vendor-register', [RegisteredUserController::class, 'storevendor'])
+  ->middleware('guest');
+
+Route::get('/vendor-login', [AuthenticatedSessionController::class, 'vendorcreate'])
+  ->middleware('guest')
+  ->name('vendorlogin');
+
+Route::post('/vendor-login', [AuthenticatedSessionController::class, 'storevendor'])
+  ->middleware('guest');
+
+Route::get('/vendor-forgot-password', [PasswordResetLinkController::class, 'vendorcreate'])
+  ->middleware('guest')
+  ->name('vendor.password.request');
+
+Route::post('/vendor-forgot-password', [PasswordResetLinkController::class, 'storevendor'])
+  ->middleware('guest')
+  ->name('vendor.password.email');
+
+Route::get('/vendor-reset-password/{token}', [NewPasswordController::class, 'vendorcreate'])
+  ->middleware('guest')
+  ->name('vendor.password.reset');
+
+Route::post('/vendor-reset-password', [NewPasswordController::class, 'storevendor'])
+  ->middleware('guest')
+  ->name('vendor.password.update');
+
+Route::get('/vendor-verify-email', [EmailVerificationPromptController::class, '__invokevendor'])
+  ->middleware('auth')
+  ->name('vendor.verification.notice');
+
+Route::get('/vendor-verify-email/{id}/{hash}', [VerifyEmailController::class, '__invokevendor'])
+  ->middleware(['auth', 'signed', 'throttle:6,1'])
+  ->name('vendor.verification.verify');
+
+Route::post('/vendor-email/verification-notification', [EmailVerificationNotificationController::class, 'storevendor'])
+  ->middleware(['auth', 'throttle:6,1'])
+  ->name('vendor.verification.send');
+
+Route::get('/vendor-confirm-password', [ConfirmablePasswordController::class, 'showvendor'])
+  ->middleware('auth')
+  ->name('vendor.password.confirm');
+
+Route::post('/vendor-confirm-password', [ConfirmablePasswordController::class, 'storevendor'])
+  ->middleware('auth');
+
+Route::post('/vendor-logout', [AuthenticatedSessionController::class, 'destroyvendor'])
+  ->middleware('auth')
+  ->name('vendorlogout');
+
+
+// Admin auth
+Route::get('/admin-register', [RegisteredUserController::class, 'admincreate'])
+  ->middleware('guest')
+  ->name('adminregister');
+
+Route::post('/admin-register', [RegisteredUserController::class, 'storeadmin'])
+  ->middleware('guest');
+
+Route::get('/admin-login', [AuthenticatedSessionController::class, 'admincreate'])
+  ->middleware('guest')
+  ->name('adminlogin');
+
+Route::post('/admin-login', [AuthenticatedSessionController::class, 'storeadmin'])
+  ->middleware('guest');
+
+Route::get('/admin-forgot-password', [PasswordResetLinkController::class, 'admincreate'])
+  ->middleware('guest')
+  ->name('admin.password.request');
+
+Route::post('/admin-forgot-password', [PasswordResetLinkController::class, 'storeadmin'])
+  ->middleware('guest')
+  ->name('admin.password.email');
+
+Route::get('/admin-reset-password/{token}', [NewPasswordController::class, 'admincreate'])
+  ->middleware('guest')
+  ->name('admin.password.reset');
+
+Route::post('/admin-reset-password', [NewPasswordController::class, 'storeadmin'])
+  ->middleware('guest')
+  ->name('admin.password.update');
+
+Route::get('/admin-verify-email', [EmailVerificationPromptController::class, '__invokeadmin'])
+  ->middleware('auth')
+  ->name('admin.verification.notice');
+
+Route::get('/admin-verify-email/{id}/{hash}', [VerifyEmailController::class, '__invokeadmin'])
+  ->middleware(['auth', 'signed', 'throttle:6,1'])
+  ->name('admin.verification.verify');
+
+Route::post('/admin-email/verification-notification', [EmailVerificationNotificationController::class, 'storeadmin'])
+  ->middleware(['auth', 'throttle:6,1'])
+  ->name('admin.verification.send');
+
+Route::get('/admin-confirm-password', [ConfirmablePasswordController::class, 'showadmin'])
+  ->middleware('auth')
+  ->name('admin.password.confirm');
+
+Route::post('/admin-confirm-password', [ConfirmablePasswordController::class, 'storeadmin'])
+  ->middleware('auth');
+
+Route::post('/admin-logout', [AuthenticatedSessionController::class, 'destroyadmin'])
+  ->middleware('auth')
+  ->name('adminlogout');

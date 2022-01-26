@@ -25,6 +25,21 @@ class AuthenticatedSessionController extends Controller
         ]);
     }
 
+    public function vendorcreate()
+    {
+        return Inertia::render('Auth/Vendor/Login', [
+            'canResetPassword' => Route::has('vendor.password.request'),
+            'status' => session('status'),
+        ]);
+    }
+    public function admincreate()
+    {
+        return Inertia::render('Auth/Admin/Login', [
+            'canResetPassword' => Route::has('admin.password.request'),
+            'status' => session('status'),
+        ]);
+    }
+
     /**
      * Handle an incoming authentication request.
      *
@@ -32,6 +47,24 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request)
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function storevendor(LoginRequest $request)
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function storeadmin(LoginRequest $request)
     {
         $request->authenticate();
 

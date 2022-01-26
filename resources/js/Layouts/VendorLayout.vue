@@ -7,7 +7,7 @@
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img class="h-8 w-auto" src="/images/logo.png" alt="Workflow" />
+              <img class="h-8 w-auto" src="/images/buffex2.png" alt="Workflow" />
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
@@ -69,7 +69,7 @@
                     <span class="sr-only">Open user menu</span>
                     <img
                       class="h-8 w-8 rounded-full"
-                      :src="user.imageUrl"
+                      :src="$page.props.auth.user.image"
                       alt=""
                     />
                   </MenuButton>
@@ -165,7 +165,7 @@
         <div class="pt-4 pb-3 border-t border-gray-700">
           <div class="flex items-center px-5">
             <div class="flex-shrink-0">
-              <img class="h-10 w-10 rounded-full" :src="user.imageUrl" alt="" />
+              <img class="h-10 w-10 rounded-full" :src="$page.props.auth.user.image" alt="" />
             </div>
             <div class="ml-3">
               <div class="text-base font-medium leading-none text-white">
@@ -228,32 +228,18 @@
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <h1
           class="text-xl md:text-3xl font-bold text-gray-900"
-          v-if="$page.url === '/dashboard'"
+
         >
-          Dashboard
+          <slot name="title"></slot>
         </h1>
-        <h1
-          class="text-xl md:text-3xl font-bold text-gray-900"
-          v-if="$page.url === '/products'"
-        >
-          Products
-        </h1>
-        <h1
-          class="text-xl md:text-3xl font-bold text-gray-900"
-          v-if="$page.url === '/orders'"
-        >
-          Orders
-        </h1>
+
       </div>
     </header>
     <main class="bg-purple-50">
       <div class="max-w-7xl mx-auto py-6 px-6 lg:px-8">
-        <!-- Replace with your content -->
-        <Index v-if="$page.url === '/dashboard'" />
-        <Products v-if="$page.url === '/products'" />
-         <Orders v-if="$page.url === '/orders'" />
+       <slot>
 
-        <!-- /End replace -->
+       </slot>
       </div>
     </main>
   </div>
@@ -271,15 +257,8 @@ import {
 } from "@headlessui/vue";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 import { Link } from "@inertiajs/inertia-vue3";
-import Index from "@/Dashboard/index";
-import Products from "@/Dashboard/Products/index";
-import Orders from "@/Dashboard/orders";
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+
+
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: true },
   { name: "Products", href: "/products", current: false },
@@ -288,7 +267,6 @@ const navigation = [
 ];
 const userNavigation = [
   { name: "Your Profile", href: "/profile", method: "get" },
-
   { name: "Sign out", href: route("logout"), method: "post" },
 ];
 
@@ -305,14 +283,12 @@ export default {
     BellIcon,
     MenuIcon,
     XIcon,
-    Index,
-    Products,
-    Orders,
+
     Link,
   },
   setup() {
     return {
-      user,
+
       navigation,
       userNavigation,
     };

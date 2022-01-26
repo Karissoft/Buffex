@@ -1,19 +1,19 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <Popover class="relative bg-purple-100 h-16">
+  <Popover class="relative bg-purple-100 h-16 shadow  w-full sticky top-0 z-40">
     <div class="px-4 sm:px-6 w-full h-full">
       <div class="flex justify-between items-center h-full">
-        <div class="flex justify-start items-center w-[35%] pr-4">
-          <div class="mr-3 flex-none">
-            <a href="#">
+        <div class="flex justify-start items-center w-[35%] mr-6">
+          <div class="mr-7 flex-none">
+            <a href="/">
               <span class="sr-only">BUFFEX</span>
-              <img class="h-7 w-auto sm:h-9" src="/images/logo.png" alt="" />
+              <img class="h-7 w-auto sm:h-9" src="/images/buffex2.png" alt="Buffex" />
             </a>
           </div>
-          <div class="grow">
+          <div class="grow hidden md:block">
             <input
               placeholder="Search product"
-               type="search"
+              type="search"
               class="
                 form-input
                 px-3
@@ -65,7 +65,7 @@
           <a
             href="/home"
             class="
-            w-[20%]
+              w-[20%]
               text-base
               font-medium
               text-gray-500
@@ -100,10 +100,9 @@
             </div>
           </a>
           <a
-            href="/"
+            href="/stores"
             class="
-            w-[20%]
-
+              w-[20%]
               text-base
               font-medium
               text-gray-500
@@ -115,7 +114,7 @@
           >
             <div
               class="
-               w-full
+                w-full
                 bg-purple-100
                 hover:bg-purple-500
                 text-sm
@@ -140,8 +139,7 @@
           <a
             href="/"
             class="
-            w-[20%]
-
+              w-[20%]
               text-base
               font-medium
               text-gray-500
@@ -153,7 +151,7 @@
           >
             <div
               class="
-               w-full
+                w-full
                 bg-purple-100
                 hover:bg-purple-500
                 text-sm
@@ -178,8 +176,7 @@
           <a
             href="/about"
             class="
-            w-[20%]
-
+              w-[20%]
               text-base
               font-medium
               text-gray-500
@@ -191,7 +188,7 @@
           >
             <div
               class="
- w-full
+                w-full
                 bg-purple-100
                 hover:bg-purple-500
                 text-sm
@@ -216,8 +213,7 @@
           <a
             href="/contact"
             class="
-            w-[20%]
-
+              w-[20%]
               text-base
               font-medium
               text-gray-500
@@ -229,7 +225,7 @@
           >
             <div
               class="
- w-full
+                w-full
                 bg-purple-100
                 hover:bg-purple-500
                 text-sm
@@ -254,6 +250,7 @@
         </PopoverGroup>
         <div class="hidden md:flex items-center justify-end w-[20%]">
           <a
+            v-if="!$page.props.auth.user"
             href="/login"
             class="
               whitespace-nowrap
@@ -266,6 +263,7 @@
             Sign in
           </a>
           <a
+            v-if="!$page.props.auth.user"
             href="/register"
             class="
               ml-8
@@ -287,6 +285,63 @@
           >
             Sign up
           </a>
+          <div class="hidden sm:flex sm:items-center sm:ml-6" v-if="$page.props.auth.user">
+            <!-- Settings Dropdown -->
+            <div class="ml-3 relative">
+              <BreezeDropdown align="right" width="48">
+                <template #trigger>
+                  <span class="inline-flex rounded-md">
+                    <button
+                      type="button"
+                      class="
+                        inline-flex
+                        items-center
+                        px-3
+                        py-2
+                        border border-transparent
+                        text-sm
+                        leading-4
+                        font-medium
+                        rounded-md
+                        text-gray-500
+                        bg-white
+                        hover:text-gray-700
+                        focus:outline-none
+                        transition
+                        ease-in-out
+                        duration-150
+                      "
+                    >
+                      {{ $page.props.auth.user.name }}
+
+                      <svg
+                        class="ml-2 -mr-0.5 h-4 w-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                </template>
+
+                <template #content>
+                  <BreezeDropdownLink
+                    :href="route('logout')"
+                    method="post"
+                    as="button"
+                  >
+                    Log Out
+                  </BreezeDropdownLink>
+                </template>
+              </BreezeDropdown>
+            </div>
+          </div>
           <span class="px-4 py-2"
             ><ShoppingCartIcon
               @click="open = !open"
@@ -332,8 +387,8 @@
               <div>
                 <img
                   class="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                  alt="Workflow"
+                  src="/images/buffex.png"
+                  alt="buffex"
                 />
               </div>
               <div class="-mr-2">
@@ -402,7 +457,7 @@
                 {{ item.name }}
               </a>
             </div>
-            <div>
+            <div v-if="!$page.props.auth.user">
               <a
                 href="/register"
                 class="
@@ -432,6 +487,18 @@
                 </a>
               </p>
             </div>
+             <div class="md:hidden pt-4 pb-1 border-t border-gray-200" v-if="$page.props.auth.user">
+                        <div class="">
+                            <div class="font-medium text-base text-gray-800">{{ $page.props.auth.user.name }}</div>
+
+                        </div>
+
+                        <div class="mt-3 space-y-1">
+                            <Link :href="route('logout')" method="post" as="button">
+                                Log Out
+                            </Link>
+                        </div>
+                    </div>
           </div>
         </div>
       </PopoverPanel>
@@ -461,6 +528,9 @@ import {
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import Cart from "@/MarketPlace/Components/cart";
 import { ref } from "vue";
+import BreezeDropdown from "@/Components/Dropdown.vue";
+import BreezeDropdownLink from "@/Components/DropdownLink.vue";
+import { Link } from '@inertiajs/inertia-vue3';
 const callsToAction = [
   { name: "Watch Demo", href: "#", icon: PlayIcon },
   { name: "Contact Sales", href: "#", icon: PhoneIcon },
@@ -473,20 +543,7 @@ const resources = [
     href: "#",
     icon: SupportIcon,
   },
-  // {
-  //   name: "Guides",
-  //   description:
-  //     "Learn how to maximize our platform to get the most out of it.",
-  //   href: "#",
-  //   icon: BookmarkAltIcon,
-  // },
-  // {
-  //   name: "Events",
-  //   description:
-  //     "See what meet-ups and other events we might be planning near you.",
-  //   href: "#",
-  //   icon: CalendarIcon,
-  // },
+
   {
     name: "Security",
     description: "Understand how we take your privacy seriously.",
@@ -505,6 +562,7 @@ const recentPosts = [
 ];
 
 export default {
+  props: ["auth"],
   components: {
     Popover,
     PopoverButton,
@@ -515,6 +573,9 @@ export default {
     ShoppingCartIcon,
     XIcon,
     Cart,
+    BreezeDropdown,
+    BreezeDropdownLink,
+    Link
   },
   setup() {
     const open = ref(false);

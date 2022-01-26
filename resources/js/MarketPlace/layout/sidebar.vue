@@ -1,5 +1,6 @@
 <template lang="">
   <div class="px-8 py-10 hidden md:block">
+
    <div class="flex justify-between py-2 border-b-2 border-purple-500 mb-4">
     <span class="font-bold text-sm text-purple-900">Filter</span>
     <span class="font-bold text-sm text-slate-500">Clear all</span>
@@ -32,21 +33,8 @@
             />
           </div>
         <ul class="pl-3 max-h-48 overflow-auto">
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                  <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                  <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
+            <li class="text-md" v-for="item in $page.props.stores" :key="item.id"><input type="checkbox" v-model="stores" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+
         </ul>
 
    </div>
@@ -61,6 +49,7 @@
             <input
               placeholder="Search category"
                type="search"
+               v-model="categories"
               class="
                 form-input
                 px-3
@@ -78,11 +67,8 @@
             />
           </div>
         <ul class="max-h-48 overflow-auto pl-3">
-          <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
+        <li class="text-md" v-for="item in $page.props.categories" :key="item.id"><input type="checkbox" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+
         </ul>
 
    </div>
@@ -205,21 +191,8 @@
           <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
         </div>
         <ul class="pl-3 max-h-48 overflow-auto">
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                  <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                  <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
+           <li class="text-md" v-for="item in $page.props.stores" :key="item.id"><input type="checkbox" v-model="stores" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+
         </ul>
 
    </div>
@@ -231,11 +204,8 @@
           <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
         </div>
         <ul class="max-h-48 overflow-auto pl-3">
-          <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-            <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-              <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
-                <li class="text-md"><input type="checkbox" class="form-checkbox rounded text-purple-500" /> Hubmart</li>
+         <li class="text-md" v-for="item in $page.props.categories" :key="item.id"><input type="checkbox" v-model="stores" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+
         </ul>
 
    </div>
@@ -308,6 +278,12 @@ export default {
   XIcon,
   FilterIcon
   },
+  data(){
+    return {
+      categories:[],
+      stores:[]
+    }
+  }
 };
 </script>
 <style lang="">

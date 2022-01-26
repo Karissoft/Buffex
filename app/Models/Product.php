@@ -13,10 +13,21 @@ class Product extends Model
         'description',
         'images',
         'in_stock',
-        'store_id'
+        'category_id',
+        'price',
+        'status'
+
     ];
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
+
+    protected $casts = [
+        'images' => 'array'
+    ];
 }

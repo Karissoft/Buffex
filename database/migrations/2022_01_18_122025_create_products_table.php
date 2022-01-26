@@ -19,7 +19,10 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->json('images');
             $table->integer('in_stock');
-            $table->foreignId('store_id')->ondelete('cascade')->onupdate('cascade');
+            $table->boolean('status');
+            $table->integer('price');
+            $table->foreignId('user_id')->ondelete('cascade')->onupdate('cascade');
+            $table->foreignId('category_id')->ondelete('cascade')->onupdate('cascade');
             $table->timestamps();
         });
     }
