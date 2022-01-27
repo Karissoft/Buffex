@@ -4,7 +4,7 @@
       <h1 class="text-center text-2xl md:text-4xl font-bold pt-4 md:pt-8">
         Our Product Offering
       </h1>
-      <carousel :items-to-show="1">
+      <carousel :items-to-show="1" :autoplay="5000" :loop="true">
         <slide :key="1">
           <div class="flex items-center">
             <div class="flex flex-col md:flex-row">
