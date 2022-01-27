@@ -22,9 +22,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function store()
+    public function user()
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(User::class);
     }
 
     protected $casts = [

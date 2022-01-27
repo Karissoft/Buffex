@@ -1,5 +1,5 @@
 <template >
- <Head title="Welcome" />
+ <Head title="Marketplace" />
   <Index :auth="auth"/>
 </template>
 <script>

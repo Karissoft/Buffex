@@ -1,19 +1,21 @@
 <template lang="">
-  <div class="px-8 py-10 hidden md:block">
+  <div class="px-8 py-10 hidden md:block h-[90vh] overflow-auto">
 
    <div class="flex justify-between py-2 border-b-2 border-purple-500 mb-4">
-    <span class="font-bold text-sm text-purple-900">Filter</span>
-    <span class="font-bold text-sm text-slate-500">Clear all</span>
+    <span class="font-bold text-sm text-purple-900" >Filter</span>
+    <span class="font-bold text-sm text-slate-500" @click="resetFilter">Clear all</span>
    </div>
 
 
-   <div class="mb-8">
+   <div class="mb-1">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">STORE</span>
-          <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isStoreEnabled=!isStoreEnabled" v-if="isStoreEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+           <span class="font-bold text-sm text-slate-500" @click="isStoreEnabled=!isStoreEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
-          <div class="mb-2">
+          <div class="mb-2" v-if="isStoreEnabled">
             <input
+            v-model="store"
               placeholder="Search store"
                type="search"
               class="
@@ -32,24 +34,25 @@
               "
             />
           </div>
-        <ul class="pl-3 max-h-48 overflow-auto">
-            <li class="text-md" v-for="item in $page.props.stores" :key="item.id"><input type="checkbox" v-model="stores" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+        <ul class="pl-3 max-h-48 overflow-auto" v-if="isStoreEnabled">
+            <li class="text-sm flex items-center " v-for="item in filteredStores" :key="item.id"><input type="checkbox" v-model="storeIds" class="form-checkbox rounded text-purple-500 w-[.9rem] h-[.9rem] mr-2" :value="item.id" /> {{item.name}}</li>
 
         </ul>
 
    </div>
 
 
-    <div class="mb-8">
+    <div class="mb-1">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">CATEGORY</span>
-          <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isCategoryEnabled=!isCategoryEnabled" v-if="isCategoryEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isCategoryEnabled=!isCategoryEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
-         <div class="mb-2">
+         <div class="mb-2" v-if="isCategoryEnabled">
             <input
               placeholder="Search category"
                type="search"
-               v-model="categories"
+               v-model="category"
               class="
                 form-input
                 px-3
@@ -66,8 +69,8 @@
               "
             />
           </div>
-        <ul class="max-h-48 overflow-auto pl-3">
-        <li class="text-md" v-for="item in $page.props.categories" :key="item.id"><input type="checkbox" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+        <ul class="max-h-48 overflow-auto pl-3 " v-if="isCategoryEnabled">
+        <li class="text-sm flex items-center " v-for="item in filteredCategories" :key="item.id"><input type="checkbox" class="form-checkbox rounded text-purple-500 w-[.9rem] h-[.9rem] mr-2" :value="item.id" v-model="categoryIds" /> {{item.name}}</li>
 
         </ul>
 
@@ -75,14 +78,17 @@
      <div class="mb-8">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">PRICE</span>
-          <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isPriceEnabled=!isPriceEnabled" v-if="isPriceEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isPriceEnabled=!isPriceEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
-      <div class="pl-3">
+      <div class="pl-3" v-if="isPriceEnabled">
           <div class=" text-sm">
-        <span>  <input type="checkbox" class="form-checkbox rounded text-purple-500" />  <span>Low</span> - <span>High</span></span>
+        <label>  <input type="radio" class="form-checkbox rounded text-purple-500" v-model="priceType"  value="lth" />  <span>Low</span> - <span>High</span></label>
         </div>
          <div class=" text-sm">
-         <input type="checkbox" class="form-checkbox rounded text-purple-500" />  <span>High</span> - <span>Low</span>
+        <label>
+           <input type="radio" class="form-checkbox rounded text-purple-500" v-model="priceType" value="htl" />  <span>High</span> - <span>Low</span>
+        </label>
         </div>
       </div>
 
@@ -185,26 +191,70 @@
    </div>
 
 
-   <div class="mb-8">
+   <div class="mb-1">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">STORE</span>
-          <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isStoreEnabled=!isStoreEnabled" v-if="isStoreEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+           <span class="font-bold text-sm text-slate-500" @click="isStoreEnabled=!isStoreEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
-        <ul class="pl-3 max-h-48 overflow-auto">
-           <li class="text-md" v-for="item in $page.props.stores" :key="item.id"><input type="checkbox" v-model="stores" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+         <div class="mb-2" v-if="isStoreEnabled">
+            <input
+              placeholder="Search store"
+               type="search"
+               v-model="store"
+              class="
+                form-input
+                px-3
+                py-1
+                rounded-md
+                mt-1
+                focus:ring-purple-100 focus:border-purple-100
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
+            />
+          </div>
+        <ul class="pl-3 max-h-48 overflow-auto" v-if="isStoreEnabled">
+           <li class="text-sm flex items-center " v-for="item in filteredStores" :key="item.id"><input type="checkbox" v-model="storeIds" class="form-checkbox rounded text-purple-500 w-[.9rem] h-[.9rem] mr-2" :value="item.id" /> {{item.name}}</li>
 
         </ul>
 
    </div>
 
 
-    <div class="mb-8">
+    <div class="mb-1">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">CATEGORY</span>
-          <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isCategoryEnabled=!isCategoryEnabled" v-if="isCategoryEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+           <span class="font-bold text-sm text-slate-500" @click="isCategoryEnabled=!isCategoryEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
-        <ul class="max-h-48 overflow-auto pl-3">
-         <li class="text-md" v-for="item in $page.props.categories" :key="item.id"><input type="checkbox" v-model="stores" class="form-checkbox rounded text-purple-500" :value="item.id" /> {{item.name}}</li>
+         <div class="mb-2" v-if="isCategoryEnabled">
+            <input
+              placeholder="Search category"
+               type="search"
+               v-model="category"
+              class="
+                form-input
+                px-3
+                py-1
+                rounded-md
+                mt-1
+                focus:ring-purple-100 focus:border-purple-100
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
+            />
+          </div>
+        <ul class="max-h-48 overflow-auto pl-3" v-if="isCategoryEnabled">
+         <li class="text-sm flex items-center " v-for="item in filteredCategories" :key="item.id"><input type="checkbox" v-model="categoryIds" class="form-checkbox rounded text-purple-500 w-[.9rem] h-[.9rem] mr-2" :value="item.id" /> {{item.name}}</li>
 
         </ul>
 
@@ -212,14 +262,17 @@
      <div class="mb-8">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">PRICE</span>
-          <span class="font-bold text-sm text-slate-500"><ChevronUpIcon class="w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isPriceEnabled=!isPriceEnabled" v-if="isPriceEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500" @click="isPriceEnabled=!isPriceEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
-      <div class="pl-3">
+      <div class="pl-3" v-if="isPriceEnabled">
           <div class=" text-sm">
-        <span>  <input type="checkbox" class="form-checkbox rounded text-purple-500" />  <span>Low</span> - <span>High</span></span>
+        <label>  <input type="radio" class="form-checkbox rounded text-purple-500" v-model="priceType"  value="lth" />  <span>Low</span> - <span>High</span></label>
         </div>
          <div class=" text-sm">
-         <input type="checkbox" class="form-checkbox rounded text-purple-500" />  <span>High</span> - <span>Low</span>
+        <label>
+           <input type="radio" class="form-checkbox rounded text-purple-500" v-model="priceType" value="htl" />  <span>High</span> - <span>Low</span>
+        </label>
         </div>
       </div>
 
@@ -238,7 +291,7 @@ import {
   ChevronUpIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  FilterIcon
+  FilterIcon,
 } from "@heroicons/vue/solid";
 import {
   Popover,
@@ -267,23 +320,68 @@ export default {
     PopoverButton,
     PopoverGroup,
     PopoverPanel,
-     BookmarkAltIcon,
-  CalendarIcon,
-  MenuAlt3Icon,
-  PhoneIcon,
-  PlayIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ShoppingCartIcon,
-  XIcon,
-  FilterIcon
+    BookmarkAltIcon,
+    CalendarIcon,
+    MenuAlt3Icon,
+    PhoneIcon,
+    PlayIcon,
+    ShieldCheckIcon,
+    SupportIcon,
+    ShoppingCartIcon,
+    XIcon,
+    FilterIcon,
   },
-  data(){
+  inject: ["emitter"],
+  data() {
     return {
-      categories:[],
-      stores:[]
-    }
-  }
+      isCategoryEnabled: false,
+      isStoreEnabled: false,
+      isPriceEnabled: false,
+      category: "",
+      store: "",
+      storeIds: [],
+      categoryIds: [],
+      priceType: "",
+    };
+  },
+  computed: {
+    filteredCategories() {
+      return this.$page.props.categories.filter((item) =>
+        item.name.toLowerCase().includes(this.store.toLowerCase())
+      );
+    },
+    filteredStores() {
+      return this.$page.props.stores.filter((item) =>
+        item.name.toLowerCase().includes(this.store.toLowerCase())
+      );
+    },
+  },
+  watch: {
+    storeIds: "sendInfo",
+    categoryIds: "sendInfo",
+    priceType: "sendInfo",
+  },
+  methods: {
+    resetFilter() {
+      this.isCategoryEnabled = false;
+      this.isStoreEnabled = false;
+      this.isPriceEnabled = false;
+      this.category = "";
+      this.store = "";
+      this.storeIds = [];
+      this.categoryIds = [];
+      this.priceType = "";
+      this.emitter.emit("sendFilterInfo", null);
+    },
+
+    sendInfo() {
+      this.emitter.emit("sendFilterInfo", {
+        storeIds: this.storeIds,
+        categoryIds: this.categoryIds,
+        priceType: this.priceType,
+      });
+    },
+  },
 };
 </script>
 <style lang="">

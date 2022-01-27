@@ -62,8 +62,8 @@
           as="nav"
           class="hidden md:flex justiy-between items-center w-[45%]"
         >
-          <a
-            href="/home"
+ <a
+            href="/marketplace"
             class="
               w-[20%]
               text-base
@@ -88,15 +88,15 @@
                 text-purple-700
                 hover:text-purple-100
                 border-b-4 border-transparent
-                hover:border-purple-500
+                hover:border-purple-300
                 font-bold
               "
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
-                  $page.url.includes('/home'),
+                  $page.url === '/marketplace',
               }"
             >
-              Home
+              Marketplace
             </div>
           </a>
           <a
@@ -136,43 +136,7 @@
               Stores
             </div>
           </a>
-          <a
-            href="/"
-            class="
-              w-[20%]
-              text-base
-              font-medium
-              text-gray-500
-              hover:text-gray-700
-              flex
-              items-center
-              justify-center
-            "
-          >
-            <div
-              class="
-                w-full
-                bg-purple-100
-                hover:bg-purple-500
-                text-sm
-                h-full
-                flex
-                items-center
-                justify-center
-                text-purple-700
-                hover:text-purple-100
-                border-b-4 border-transparent
-                hover:border-purple-300
-                font-bold
-              "
-              :class="{
-                'text-purple-100 bg-purple-700 border-purple-500':
-                  $page.url === '/',
-              }"
-            >
-              Marketplace
-            </div>
-          </a>
+
           <a
             href="/about"
             class="
@@ -208,6 +172,43 @@
               }"
             >
               About
+            </div>
+          </a>
+            <a
+            href="/blog"
+            class="
+              w-[20%]
+              text-base
+              font-medium
+              text-gray-500
+              hover:text-gray-700
+              flex
+              items-center
+              justify-center
+            "
+          >
+            <div
+              class="
+                w-full
+                bg-purple-100
+                hover:bg-purple-500
+                text-sm
+                h-full
+                flex
+                items-center
+                justify-center
+                text-purple-700
+                hover:text-purple-100
+                border-b-4 border-transparent
+                hover:border-purple-500
+                font-bold
+              "
+              :class="{
+                'text-purple-100 bg-purple-700 border-purple-500':
+                  $page.url.includes('/blog'),
+              }"
+            >
+              Blog
             </div>
           </a>
           <a

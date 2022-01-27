@@ -1,18 +1,27 @@
 <template>
   <div class="bg-transparent">
     <div
-      class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8  max-h-screen
-          overflow-auto"
+      class="
+        max-w-2xl
+        mx-auto
+        py-16
+        px-4
+        sm:py-24 sm:px-6
+        lg:max-w-7xl lg:px-8
+        max-h-screen
+        overflow-auto
+      "
     >
       <div class="flex justify-between">
         <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">
-        Products
-      </h2>
-        <div class="flex">
-          <SortAscendingIcon class="w-5 h-5 mr-2"/>
+          Products
+        </h2>
 
-          <SortDescendingIcon class="w-5 h-5"/>
-       </div>
+        <div class="flex">
+          <SortAscendingIcon class="w-5 h-5 mr-2" />
+
+          <SortDescendingIcon class="w-5 h-5" />
+        </div>
       </div>
 
       <div
@@ -23,7 +32,6 @@
           sm:grid-cols-2
           lg:grid-cols-4
           xl:gap-x-8
-
         "
       >
         <div
@@ -31,10 +39,8 @@
           :key="product.id"
           class="group relative mb-4"
         >
-
-            <div
+          <div
             class="
-
               min-h-72
               bg-purple-500/30
               aspect-w-1 aspect-h-1
@@ -44,17 +50,17 @@
               lg:h-72 lg:aspect-none
             "
           >
-          <Link href="/product/1">
-            <img
-              :src="product.imageSrc"
-              :alt="product.imageAlt"
-              class="
-                w-full
-                h-full
-                object-center object-cover
-                lg:w-full lg:h-full
-              "
-            />
+            <Link href="/product/1">
+              <img
+                :src="product.images[0]"
+                :alt="product.images[0]"
+                class="
+                  w-full
+                  h-full
+                  object-center object-cover
+                  lg:w-full lg:h-full
+                "
+              />
             </Link>
           </div>
 
@@ -66,8 +72,8 @@
                   {{ product.name }}
                 </a>
               </h3>
-              <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
-               <p class="mt-1 text-sm text-gray-500">Store name</p>
+
+              <p class="mt-1 text-sm text-gray-500">{{ product.user.name }}</p>
             </div>
             <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
           </div>
@@ -81,7 +87,6 @@
               py-2
               text-sm
               whitespace-nowrap
-
               relative
               cursor-pointer
               border border-transparent
@@ -98,132 +103,108 @@
             <ShoppingCartIcon class="w-4 h-4 text-white" />
           </button>
         </div>
-
-
       </div>
-       <div class="pagination text-center mt-8">
-
-         <span class="flex justify-center items-center"> <span><ArrowCircleLeftIcon class="cursor-pointe w-8 h-8 text-purple-700 mr-2"/></span>
-          <input class="form-input w-12 py-1 px-3 text-center border border-purple-700 rounded" value="1"/> <span class="font-bold ml-2 text-sm">of 300</span>
-           <span><ArrowCircleRightIcon class="w-8 h-8 text-purple-700 ml-2 cursor-pointer"/></span></span>
-        </div>
+      <div class="pagination text-center mt-8">
+        <span class="flex justify-center items-center">
+          <span
+            ><ArrowCircleLeftIcon
+              class="cursor-pointe w-8 h-8 text-purple-700 mr-2"
+          /></span>
+          <input
+            class="
+              form-input
+              w-12
+              py-1
+              px-3
+              text-center
+              border border-purple-700
+              rounded
+            "
+            value="1" />
+          <span class="font-bold ml-2 text-sm">of 300</span>
+          <span
+            ><ArrowCircleRightIcon
+              class="w-8 h-8 text-purple-700 ml-2 cursor-pointer" /></span
+        ></span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Link } from '@inertiajs/inertia-vue3';
-import { ShoppingCartIcon,ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/vue/solid";
-import { SortAscendingIcon, SortDescendingIcon} from "@heroicons/vue/solid";
+import { Link } from "@inertiajs/inertia-vue3";
+import {
+  ShoppingCartIcon,
+  ArrowCircleLeftIcon,
+  ArrowCircleRightIcon,
+} from "@heroicons/vue/solid";
+import { SortAscendingIcon, SortDescendingIcon } from "@heroicons/vue/solid";
 
-const products = [
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 2,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 3,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 4,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 4,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 6,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 7,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 8,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  // More products...
-];
+import { usePage } from "@inertiajs/inertia-vue3";
 
 export default {
-  setup() {
-    return {
-      products,
+  inject: ["emitter"],
+  computed: {
+    products() {
+      let productArray = usePage().props.value.products;
+      if (this.filterData) {
+        if(this.filterData.storeIds.length || this.filterData.categoryIds.length){
+          productArray = productArray.filter(
+          (item) =>
+            this.filterData.storeIds.includes(item.user_id) ||
+            this.filterData.categoryIds.includes(item.category_id)
+        );
+        }
 
 
-    };
+
+        if (this.filterData.priceType == "lth") {
+
+          return productArray.sort((a, b) => {
+            if (a.price < b.price) {
+              return -1;
+            }
+            if (a.price > b.price) {
+              return 1;
+            }
+            return 0;
+          });
+        }
+        if (this.filterData.priceType == "htl") {
+          return productArray.sort((a, b) => {
+            if (a.price > b.price) {
+              return -1;
+            }
+            if (a.price < b.price) {
+              return 1;
+            }
+            return 0;
+          });
+        }
+
+      }
+      return productArray;
+    },
   },
+
   components: {
     ShoppingCartIcon,
-    ArrowCircleLeftIcon, ArrowCircleRightIcon,
-    SortAscendingIcon, SortDescendingIcon,
+    ArrowCircleLeftIcon,
+    ArrowCircleRightIcon,
+    SortAscendingIcon,
+    SortDescendingIcon,
 
-      Link,
+    Link,
+  },
+  data() {
+    return {
+      filterData: null,
+    };
+  },
+  mounted() {
+    this.emitter.on("sendFilterInfo", (data) => {
+      this.filterData = data;
+    });
   },
 };
 </script>

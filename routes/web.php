@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Inertia\Inertia;
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -21,22 +22,28 @@ use App\Http\Controllers\Auth\RedirectAuthenticatedUserController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('MarketPlace', [
+    return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'categories' => Category::get(['id','name']),
-        'stores' => User::where('role_id',2)->get(['id', 'name'])
+
 
     ]);
 });
 Route::get('/product/{id}', function () {
     return Inertia::render('Product', []);
 });
-Route::get('/home', function () {
-    return Inertia::render('Welcome', []);
+Route::get('/marketplace', function () {
+    return Inertia::render('MarketPlace', [
+        'categories' => Category::get(['id', 'name']),
+        'products' => Product::with('user')->inRandomOrder()->get(),
+        'stores' => User::where('role_id', 2)->get(['id', 'name'])
+    ]);
 });
 Route::get('/checkout', function () {
     return Inertia::render('Checkout', []);
+});
+Route::get('/blog', function () {
+    return Inertia::render('Blog', []);
 });
 Route::get('/about', function () {
     return Inertia::render('About', []);
