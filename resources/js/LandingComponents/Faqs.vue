@@ -1,5 +1,5 @@
 <template lang="">
- <section id="faqs" class="h-full md:h-[80vh]">
+ <section id="faqs" class="h-full ">
     <div class="container mx-auto pt-24 pb-20 h-full p-3">
       <div class="flex justify-center mb-4">
         <span class="text-center mr-6">

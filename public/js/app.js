@@ -32336,7 +32336,7 @@ var _withScopeId = function _withScopeId(n) {
 };
 
 var _hoisted_1 = {
-  "class": "relative h-full md:h-[95vh]"
+  "class": "relative h-full"
 };
 var _hoisted_2 = {
   "class": "container mx-auto h-full w-full pt-20 text-center p-3"
@@ -32511,7 +32511,7 @@ var _withScopeId = function _withScopeId(n) {
 
 var _hoisted_1 = {
   id: "faqs",
-  "class": "h-full md:h-[80vh]"
+  "class": "h-full"
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container mx-auto pt-24 pb-20 h-full p-3\" data-v-05f00dc6><div class=\"flex justify-center mb-4\" data-v-05f00dc6><span class=\"text-center mr-6\" data-v-05f00dc6><span class=\"text-3xl md:text-5xl font-bold\" data-v-05f00dc6>F.</span> <br data-v-05f00dc6><span class=\"font-bold\" data-v-05f00dc6>Frequently</span></span><span class=\"text-center mr-6\" data-v-05f00dc6><span class=\"text-3xl md:text-5xl font-bold\" data-v-05f00dc6>A.</span> <br data-v-05f00dc6><span class=\"font-bold\" data-v-05f00dc6>Asked</span></span><span class=\"text-center\" data-v-05f00dc6><span class=\"text-3xl md:text-5xl font-bold\" data-v-05f00dc6>Q.</span> <br data-v-05f00dc6><span class=\"font-bold\" data-v-05f00dc6>Questions</span></span></div><div data-v-05f00dc6><ul data-v-05f00dc6><li data-v-05f00dc6><img src=\"/images/star.png\" class=\"w-8 h-8 mr-3\" data-v-05f00dc6> Who can use Buffex?</li><li data-v-05f00dc6><img src=\"/images/star.png\" class=\"w-8 h-8 mr-3\" data-v-05f00dc6> How can I access my Buffex Wallet?</li><li data-v-05f00dc6><img src=\"/images/star.png\" class=\"w-8 h-8 mr-3\" data-v-05f00dc6> How long does it take for a transaction to be completed on Buffex? </li><li data-v-05f00dc6><img src=\"/images/star.png\" class=\"w-8 h-8 mr-3\" data-v-05f00dc6> What currencies does Buffex support?</li><li data-v-05f00dc6><img src=\"/images/star.png\" class=\"w-8 h-8 mr-3\" data-v-05f00dc6> What currencies does Buffex support?</li><li data-v-05f00dc6><img src=\"/images/star.png\" class=\"w-8 h-8 mr-3\" data-v-05f00dc6> What currencies does Buffex support?</li></ul></div><div class=\"flex justify-end py-3\" data-v-05f00dc6><span class=\"flex\" data-v-05f00dc6><span class=\"text-sm\" data-v-05f00dc6>Click for more</span> <img src=\"/images/star.png\" class=\"w-4 h-4 ml-3\" data-v-05f00dc6></span></div></div>", 1);
@@ -35489,7 +35489,7 @@ var _hoisted_3 = {
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-  "class": "text-3xl font-bold mb-3"
+  "class": "text-3xl font-bold mb-3 text-slate-100"
 }, "Buffex Letters", -1
 /* HOISTED */
 );
@@ -35511,7 +35511,7 @@ var _hoisted_8 = {
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-  "class": "mb-3"
+  "class": "mb-3 text-slate-100"
 }, "About us", -1
 /* HOISTED */
 );
@@ -35558,7 +35558,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"basis-1/4 p-3 text-center\"><h3 class=\"mb-3\"> Legal</h3><p class=\"text-purple-50 text-sm\">Terms of use</p><p class=\"text-purple-50 text-sm\">Terms and Conditions</p><p class=\"text-purple-50 text-sm\">Privacy policy</p><p class=\"text-purple-50 text-sm\">Cookie policy</p></div><div class=\"basis-1/4 p-3 text-center\"><h3 class=\"mb-3\"> Community</h3><div class=\"flex flex-row md:flex-col\"><p class=\"w-12 mb-1 mx-auto\"><img src=\"/images/fb.png\"></p><p class=\"w-12 mb-1 mx-auto\"><img src=\"/images/insta.png\"></p><p class=\"w-12 mb-1 mx-auto\"><img src=\"/images/gram.png\"></p><p class=\"w-12 h-auto mx-auto\"><img src=\"/images/twitter.png\"></p></div></div>", 2);
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"basis-1/4 p-3 text-center\"><h3 class=\"mb-3 text-slate-100\"> Legal</h3><p class=\"text-purple-50 text-sm\">Terms of use</p><p class=\"text-purple-50 text-sm\">Terms and Conditions</p><p class=\"text-purple-50 text-sm\">Privacy policy</p><p class=\"text-purple-50 text-sm\">Cookie policy</p></div><div class=\"basis-1/4 p-3 text-center\"><h3 class=\"mb-3 text-slate-100\"> Community</h3><div class=\"flex flex-row md:flex-col\"><p class=\"w-12 mb-1 mx-auto\"><img src=\"/images/fb.png\"></p><p class=\"w-12 mb-1 mx-auto\"><img src=\"/images/insta.png\"></p><p class=\"w-12 mb-1 mx-auto\"><img src=\"/images/gram.png\"></p><p class=\"w-12 h-auto mx-auto\"><img src=\"/images/twitter.png\"></p></div></div>", 2);
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
 /* HOISTED */
@@ -35589,10 +35589,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "text",
     type: "text",
     "class": "mt-1 block w-full rounded-full",
-    placeholder: "Subscribe",
+    placeholder: "Subscribe to our mailing list",
     autocomplete: "email"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButtonSmall, {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["absolute top-[10%] right-[7px] bg-purple-500 rounded-full", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["absolute text-slate-100 top-[10%] right-[7px] bg-purple-500 rounded-full", {
       'opacity-25': $data.form.processing
     }]),
     disabled: $data.form.processing
@@ -35615,7 +35615,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: "/#about"
+    href: "/#products"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_11];
@@ -35624,7 +35624,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: "/#causes"
+    href: "/#partners"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_12];
@@ -35633,7 +35633,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: "/#events"
+    href: "/#testimoials"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_13];
@@ -35642,7 +35642,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: "/#donations"
+    href: "/blogs"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_14];
@@ -35651,7 +35651,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: "/#volunteer"
+    href: "/#faqs"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_15];
@@ -35660,7 +35660,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: "/#volunteer"
+    href: "/#contact"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_16];
