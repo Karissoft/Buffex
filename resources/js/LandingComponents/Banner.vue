@@ -3,19 +3,19 @@
     <div class="container mx-auto flex h-full w-full">
       <div class="left_banner w-full md:w-3/6 h-full flex flex-col justify-center py-5 px-14">
 
-      <div class="banner_h text-center">
+      <div class="banner_h text-center transition ease-in-out">
         <img src="/images/topb.png" alt="freedom" class="mx-auto">
       </div>
         <div class="banner_m  text-center md:text-left">
           <p class="font-bold"><span class="text-purple-500 font-bold">Buffex</span> provides unique consumer-centric <br> <span  class="text-purple-500 font-bold">Digital Financial Services</span> built around <br>  <span  class="text-purple-500 font-bold">blockchain</span> and <span  class="text-purple-500 font-bold">digital currencies</span>.</p>
         </div>
           <div class="banner_b text-center ">
-            <BreezeButton class="bg-white">Register now</BreezeButton>
+            <BreezeButton class="bg-purple-800 text-white">Register now</BreezeButton>
           </div>
       </div>
-        <div class="right_banner hidden md:block md:w-3/6 h-full p-5 pl-14 relative flex items-center">
+        <div class="right_banner hidden md:block md:w-3/6 h-full p-5 md:pt-16 pl-14 relative flex items-center">
        <div class="">
-          <div class="search flex items-center">
+          <!-- <div class="search flex items-center">
 
             <BreezeInput id="search" type="text" placeholder="Type in search" class="mt-1 block w-full mr-5 " required  autocomplete="search" />
              <BreezeDropdown align="center" width="30">
@@ -37,34 +37,34 @@
                                         </BreezeDropdownLink>
                                     </template>
                                 </BreezeDropdown>
-        </div>
+        </div> -->
                 <div class="flex justify-between items-center w-3/6">
                   <span>
-                    <img  src="/images/banner1.png" class="w-28"/>
+                    <img  src="/images/banner1.png" class="w-28 hover:motion-safe:animate-wiggle"/>
                   </span>
                    <span>
-                   <img  src="/images/banner2.png"  class="w-36"/>
+                   <img  src="/images/banner2.png"  class="w-36 hover:motion-safe:animate-wiggle"/>
                   </span>
                 </div>
                  <div class="flex justify-between items-center w-2/3">
                   <span>
-                   <img  src="/images/banner3.png" class="w-44"/>
+                   <img  src="/images/banner3.png" class="w-44 hover:motion-safe:animate-wiggle"/>
                   </span>
                    <span>
-                   <img  src="/images/banner4.png" class="w-36"/>
+                   <img  src="/images/banner4.png" class="w-36 hover:motion-safe:animate-wiggle"/>
                   </span>
                 </div>
-                 <div class="flex justify-between items-center   w-3/4">
+                 <div class="flex justify-between items-center   w-3/4 ">
                   <span>
-                   <img  src="/images/banner5.png" class="w-40"/>
+                   <img  src="/images/banner5.png" class="w-40 hover:motion-safe:animate-wiggle"/>
                   </span>
                    <span>
-                   <img  src="/images/banner6.png" class="w-52"/>
+                   <img  src="/images/banner6.png" class="w-52 hover:motion-safe:animate-wiggle"/>
                   </span>
                 </div>
                  <div class="">
                   <span>
-                   <img  src="/images/banner7.png" class="w-52"/>
+                   <img  src="/images/banner7.png" class="w-52 hover:motion-safe:animate-wiggle"/>
                   </span>
 
                 </div>

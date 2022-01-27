@@ -1,5 +1,5 @@
 <template >
-  <section id="product" class="p-3 md:p-14 pt-24 pb-20">
+  <section id="about" class="p-3 md:p-14 pt-24 pb-20">
     <div class="container mx-auto">
       <h1 class="text-center text-2xl md:text-4xl font-bold pt-4 md:pt-8">
         Our Product Offering
@@ -18,7 +18,7 @@
                   or<span class="text-purple-500"> Business Owner</span>
                 </p>
                 <div class="banner_b text-center">
-                  <BreezeButton class="bg-white"> Get started</BreezeButton>
+                  <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
                 </div>
               </div>
               <div class="flex justify-center md:w-3/6">
@@ -49,7 +49,7 @@
               bank accounts in the currency of your choosing.
             </p>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-white"> Get started</BreezeButton>
+              <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
             </div>
           </div>
         </slide>
@@ -68,7 +68,7 @@
               lifestyle services with cryptocurrencies.
             </p>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-white"> Get started</BreezeButton>
+              <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
             </div>
 
             <span class="absolute bottom-0 right-0">
@@ -91,7 +91,7 @@
               (buy, sell and swap) cryptocurrencies and receive payouts in fiat.
             </p>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-white"> Get started</BreezeButton>
+              <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
             </div>
           </div>
         </slide>
@@ -164,7 +164,7 @@
               </div>
             </div>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-white">Register Now</BreezeButton>
+              <BreezeButton class="bg-purple-800 text-white">Register Now</BreezeButton>
             </div>
           </div>
         </slide>

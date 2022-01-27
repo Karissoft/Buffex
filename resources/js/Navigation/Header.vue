@@ -1,34 +1,21 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <Popover class="relative bg-purple-100 h-16 shadow  w-full sticky top-0 z-40">
-    <div class="px-4 sm:px-6 w-full h-full">
+  <Popover
+    class="h-16 w-full  top-0 z-30 transition ease-in-out duration-300"
+    :class="active ? ' fixed shadow  bg-[#F5F2FF]' : ' bg-transparent absolute'"
+  >
+    <div class="px-4 sm:px-6 max-w-screen-xl mx-auto h-full">
       <div class="flex justify-between items-center h-full">
-        <div class="flex justify-start items-center w-[35%] mr-6">
+        <div class="flex justify-start items-center mr-6">
           <div class="mr-7 flex-none">
             <a href="/">
               <span class="sr-only">BUFFEX</span>
-              <img class="h-7 w-auto sm:h-9" src="/images/buffex2.png" alt="Buffex" />
+              <img
+                class="h-7 w-auto sm:h-9"
+                src="/images/buffex2.png"
+                alt="Buffex"
+              />
             </a>
-          </div>
-          <div class="grow hidden md:block">
-            <input
-              placeholder="Search product"
-              type="search"
-              class="
-                form-input
-                px-3
-                py-2
-                rounded-md
-                mt-1
-                focus:ring-purple-100 focus:border-purple-100
-                block
-                w-full
-                shadow-sm
-                sm:text-sm
-                border-gray-300
-                rounded-md
-              "
-            />
           </div>
         </div>
 
@@ -60,9 +47,9 @@
         </div>
         <PopoverGroup
           as="nav"
-          class="hidden md:flex justiy-between items-center w-[45%]"
+          class="hidden md:flex justiy-between items-center w-[40%]"
         >
- <a
+          <a
             href="/marketplace"
             class="
               w-[20%]
@@ -76,9 +63,10 @@
             "
           >
             <div
+
               class="
                 w-full
-                bg-purple-100
+
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -94,13 +82,15 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/marketplace',
+                  'bg-transparent':!active,
+                  'bg-[#F5F2FF]':active
               }"
             >
               Marketplace
             </div>
           </a>
           <a
-            href="/stores"
+            href="https://buffex.co/instant-payout/"
             class="
               w-[20%]
               text-base
@@ -115,7 +105,7 @@
             <div
               class="
                 w-full
-                bg-purple-100
+                
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -133,12 +123,12 @@
                   $page.url === '/stores',
               }"
             >
-              Stores
+              Instant Pay
             </div>
           </a>
 
           <a
-            href="/about"
+            href="/#about"
             class="
               w-[20%]
               text-base
@@ -151,9 +141,10 @@
             "
           >
             <div
+
               class="
                 w-full
-                bg-purple-100
+
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -168,14 +159,17 @@
               "
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
-                  $page.url === '/about',
+                  $page.url === '/#about',
+                  'bg-transparent':!active,
+                  'bg-[#F5F2FF]':active
               }"
             >
               About
             </div>
           </a>
-            <a
-            href="/blog"
+          <a
+            href="https://blog.buffex.co"
+            targt="_blank"
             class="
               w-[20%]
               text-base
@@ -188,9 +182,10 @@
             "
           >
             <div
+
               class="
                 w-full
-                bg-purple-100
+
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -200,19 +195,21 @@
                 text-purple-700
                 hover:text-purple-100
                 border-b-4 border-transparent
-                hover:border-purple-500
+                hover:border-purple-300
                 font-bold
               "
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
-                  $page.url.includes('/blog'),
+                  $page.url === '/blog',
+                  'bg-transparent':!active,
+                  'bg-[#F5F2FF]':active
               }"
             >
               Blog
             </div>
           </a>
           <a
-            href="/contact"
+            href="/#contact"
             class="
               w-[20%]
               text-base
@@ -225,9 +222,10 @@
             "
           >
             <div
+
               class="
                 w-full
-                bg-purple-100
+
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -242,14 +240,16 @@
               "
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
-                  $page.url === '/contact',
+                  $page.url === '/#contact',
+                  'bg-transparent':!active,
+                  'bg-[#F5F2FF]':active
               }"
             >
               Contact
             </div>
           </a>
         </PopoverGroup>
-        <div class="hidden md:flex items-center justify-end w-[20%]">
+        <div class="hidden md:flex items-center justify-end">
           <a
             v-if="!$page.props.auth.user"
             href="/login"
@@ -259,6 +259,7 @@
               font-medium
               text-gray-500
               hover:text-gray-700
+              text-sm
             "
           >
             Sign in
@@ -286,7 +287,10 @@
           >
             Sign up
           </a>
-          <div class="hidden sm:flex sm:items-center sm:ml-6" v-if="$page.props.auth.user">
+          <div
+            class="hidden sm:flex sm:items-center sm:ml-6"
+            v-if="$page.props.auth.user"
+          >
             <!-- Settings Dropdown -->
             <div class="ml-3 relative">
               <BreezeDropdown align="right" width="48">
@@ -386,11 +390,7 @@
           <div class="pt-5 pb-6 px-5">
             <div class="flex items-center justify-between">
               <div>
-                <img
-                  class="h-8 w-auto"
-                  src="/images/buffex.png"
-                  alt="buffex"
-                />
+                <img class="h-8 w-auto" src="/images/buffex.png" alt="buffex" />
               </div>
               <div class="-mr-2">
                 <PopoverButton
@@ -488,18 +488,22 @@
                 </a>
               </p>
             </div>
-             <div class="md:hidden pt-4 pb-1 border-t border-gray-200" v-if="$page.props.auth.user">
-                        <div class="">
-                            <div class="font-medium text-base text-gray-800">{{ $page.props.auth.user.name }}</div>
+            <div
+              class="md:hidden pt-4 pb-1 border-t border-gray-200"
+              v-if="$page.props.auth.user"
+            >
+              <div class="">
+                <div class="font-medium text-base text-gray-800">
+                  {{ $page.props.auth.user.name }}
+                </div>
+              </div>
 
-                        </div>
-
-                        <div class="mt-3 space-y-1">
-                            <Link :href="route('logout')" method="post" as="button">
-                                Log Out
-                            </Link>
-                        </div>
-                    </div>
+              <div class="mt-3 space-y-1">
+                <Link :href="route('logout')" method="post" as="button">
+                  Log Out
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </PopoverPanel>
@@ -531,7 +535,7 @@ import Cart from "@/MarketPlace/Components/cart";
 import { ref } from "vue";
 import BreezeDropdown from "@/Components/Dropdown.vue";
 import BreezeDropdownLink from "@/Components/DropdownLink.vue";
-import { Link } from '@inertiajs/inertia-vue3';
+import { Link } from "@inertiajs/inertia-vue3";
 const callsToAction = [
   { name: "Watch Demo", href: "#", icon: PlayIcon },
   { name: "Contact Sales", href: "#", icon: PhoneIcon },
@@ -576,7 +580,7 @@ export default {
     Cart,
     BreezeDropdown,
     BreezeDropdownLink,
-    Link
+    Link,
   },
   setup() {
     const open = ref(false);
@@ -586,6 +590,20 @@ export default {
       recentPosts,
       open,
     };
+  },
+  data() {
+    return {
+      active: false,
+    };
+  },
+  mounted() {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > window.innerHeight * 0.4) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    });
   },
 };
 </script>

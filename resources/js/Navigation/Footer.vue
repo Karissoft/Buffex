@@ -11,8 +11,8 @@ Subscribe today and stay up-to-date with the latest news
         </p>
            <div class="mt-4 relative">
 
-            <BreezeInput id="text" type="text" class="mt-1 block w-full rounded-full" placeholder="Subscribe to our mailing list"   autocomplete="email" />
-           <BreezeButtonSmall class="absolute  text-slate-100 top-[10%] right-[7px] bg-purple-500 rounded-full" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <BreezeInput id="text" type="text" class="mt-1 block w-full rounded-full" placeholder="Your email"   autocomplete="email" />
+           <BreezeButtonSmall class="footer absolute  text-slate-100 top-[10%] right-[7px] bg-purple-500 rounded-full" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Subscribe
             </BreezeButtonSmall>
         </div>

@@ -1,5 +1,5 @@
 <template lang="">
- <section class="relative h-full ">
+ <section class="relative h-full " id="contact">
     <div class="container mx-auto h-full w-full pt-20 text-center p-3">
       <h1 class="text-4xl font-bold text-center mb-4">Contact Us</h1>
       <p class="mb-3">Thank you for stopping by. <br>
