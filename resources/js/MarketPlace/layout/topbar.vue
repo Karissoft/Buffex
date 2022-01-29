@@ -1,10 +1,19 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <Popover
-    class=" relative h-16 w-full  top-0 z-30 transition ease-in-out duration-300 bg-purple-100"
-
+    class="
+      relative
+      h-16
+      w-full
+      top-0
+      z-30
+      transition
+      ease-in-out
+      duration-300
+      bg-purple-100
+    "
   >
-    <div class="px-4 sm:px-6  mx-auto h-full">
+    <div class="px-4 sm:px-6 mx-auto h-full">
       <div class="flex justify-between items-center h-full">
         <div class="flex justify-start items-center mr-6">
           <div class="mr-7 flex-none">
@@ -20,11 +29,13 @@
         </div>
 
         <div class="-mr-2 -my-2 md:hidden flex">
-          <span class="px-4 py-2"
+          <span class="px-4 py-2 relative"   @click="open = !open"
             ><ShoppingCartIcon
-              @click="open = !open"
+
               class="w-6 h-6 text-purple-700"
-          /></span>
+          />
+          <span class="p-1 absolute -top-4 -left-4">{{cartItems.length}}</span>
+          </span>
           <PopoverButton
             class="
               bg-white
@@ -63,10 +74,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -82,7 +91,6 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/marketplace',
-
               }"
             >
               Marketplace
@@ -104,7 +112,6 @@
             <div
               class="
                 w-full
-               
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -140,10 +147,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -159,7 +164,6 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/#about',
-
               }"
             >
               About
@@ -180,10 +184,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -199,7 +201,6 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/blog',
-
               }"
             >
               Blog
@@ -219,10 +220,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -238,7 +237,6 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/#contact',
-
               }"
             >
               Contact
@@ -343,11 +341,13 @@
               </BreezeDropdown>
             </div>
           </div>
-          <span class="px-4 py-2"
+          <span class="px-4 py-2 relative"   @click="open = !open"
             ><ShoppingCartIcon
-              @click="open = !open"
+             
               class="w-6 h-6 text-purple-700"
-          /></span>
+          />
+          <span class="px-1 absolute top-[0px] right-[8px] rounded-md bg-white text-sm">{{cartItems.length}}</span>
+          </span>
         </div>
       </div>
     </div>
@@ -578,6 +578,7 @@ export default {
     BreezeDropdownLink,
     Link,
   },
+  inject: ["emitter"],
   setup() {
     const open = ref(false);
     return {
@@ -590,9 +591,11 @@ export default {
   data() {
     return {
       active: false,
+      cartItems: [],
     };
   },
   mounted() {
+    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     window.addEventListener("scroll", () => {
       if (window.scrollY > window.innerHeight * 0.4) {
         this.active = true;
@@ -600,7 +603,24 @@ export default {
         this.active = false;
       }
     });
+    this.emitter.on("addtocart", (data) => {
+      this.addtocart(data)
+    });
+     this.emitter.on("updatecart", () => {
+    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    });
   },
+  methods: {
+     addtocart(product) {
+      this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+      product.quantity = 1;
+      this.cartItems.push(product);
+      localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
+
+
+    },
+  },
+
 };
 </script>
 <style scoped lang="scss">

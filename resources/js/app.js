@@ -4,6 +4,11 @@ import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
 import mitt from "mitt";
+
+if (!localStorage.getItem("cartItems")) {
+    localStorage.setItem("cartItems", JSON.stringify([]));
+}
+
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 

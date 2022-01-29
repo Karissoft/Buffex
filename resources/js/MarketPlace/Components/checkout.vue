@@ -350,16 +350,16 @@
           <div class="mt-8">
                     <div class="flow-root">
                       <ul role="list" class="-my-6 divide-y divide-gray-200">
-                        <li v-for="product in products" :key="product.id" class="py-6 flex">
+                        <li v-for="product in cartItems" :key="product.id" class="py-6 flex">
                           <div class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
-                            <img :src="product.imageSrc" :alt="product.imageAlt" class="w-full h-full object-center object-cover" />
+                            <img :src="product.images[0]" :alt="product.images[0]" class="w-full h-full object-center object-cover" />
                           </div>
 
                           <div class="ml-4 flex-1 flex flex-col">
                             <div>
                               <div class="flex justify-between text-base font-medium text-gray-900">
                                 <h3>
-                                  <a :href="product.href">
+                                  <a href="#">
                                     {{ product.name }}
                                   </a>
                                 </h3>
@@ -368,7 +368,7 @@
                                 </p>
                               </div>
                               <p class="mt-1 text-sm text-gray-500">
-                                {{ product.color }}
+                                {{ product.user.name }}
                               </p>
                             </div>
                             <div class="flex-1 flex items-end justify-between text-sm">
@@ -386,7 +386,7 @@
                 <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
                   <div class="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$262.00</p>
+                    <p>{{total}}</p>
                   </div>
                    <div class="flex justify-between text-base font-medium text-gray-900">
                     <p>Shipping</p>
@@ -437,30 +437,6 @@ import { StarIcon } from "@heroicons/vue/solid";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 import TopBar from "../layout/topbar.vue";
 
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-]
 
 const breadcrumbs = [
   { id: 1, name: "Home", href: "/home" },
@@ -477,13 +453,17 @@ export default {
     TopBar,
   },
   setup() {
-
+   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
     return {
-      products,
+      cartItems,
       reviews,
-
       breadcrumbs,
     };
+  },
+   computed:{
+    total(){
+     return this.cartItems.map(item=>item.price).reduce((a,b)=> a+b)
+    }
   },
 };
 </script>

@@ -6,7 +6,7 @@
 </template>
 <script>
 import { Head } from '@inertiajs/inertia-vue3';
-p
+import Checkout from '@/MarketPlace/Components/Checkout'
 
 export default {
 components: {

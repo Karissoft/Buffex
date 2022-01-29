@@ -16,12 +16,6 @@
         <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">
           Products
         </h2>
-
-        <div class="flex">
-          <SortAscendingIcon class="w-5 h-5 mr-2" />
-
-          <SortDescendingIcon class="w-5 h-5" />
-        </div>
       </div>
 
       <div
@@ -79,7 +73,10 @@
           </div>
 
           <button
+            :disabled="inCart(product.id)"
+            @click="addtocart(product)"
             type="button"
+
             class="
               font-bold
               w-full
@@ -97,8 +94,9 @@
               flex
               justify-between
             "
+             :class="inCart(product.id)?'bg-slate-400 opacity-70':''"
           >
-            <span class="text-white"> Add to cart</span>
+            <span class="text-white"> {{inCart(product.id) ? 'Added':'Add' }} to cart</span>
 
             <ShoppingCartIcon class="w-4 h-4 text-white" />
           </button>
@@ -148,18 +146,18 @@ export default {
     products() {
       let productArray = usePage().props.value.products;
       if (this.filterData) {
-        if(this.filterData.storeIds.length || this.filterData.categoryIds.length){
+        if (
+          this.filterData.storeIds.length ||
+          this.filterData.categoryIds.length
+        ) {
           productArray = productArray.filter(
-          (item) =>
-            this.filterData.storeIds.includes(item.user_id) ||
-            this.filterData.categoryIds.includes(item.category_id)
-        );
+            (item) =>
+              this.filterData.storeIds.includes(item.user_id) ||
+              this.filterData.categoryIds.includes(item.category_id)
+          );
         }
 
-
-
         if (this.filterData.priceType == "lth") {
-
           return productArray.sort((a, b) => {
             if (a.price < b.price) {
               return -1;
@@ -181,7 +179,6 @@ export default {
             return 0;
           });
         }
-
       }
       return productArray;
     },
@@ -199,12 +196,26 @@ export default {
   data() {
     return {
       filterData: null,
+      cartItems:[]
     };
   },
   mounted() {
+     this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     this.emitter.on("sendFilterInfo", (data) => {
       this.filterData = data;
     });
+      this.emitter.on("updatecart", () => {
+    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    });
+  },
+  methods: {
+    addtocart(product) {
+      this.emitter.emit("addtocart", product);
+      this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    },
+    inCart(id) {
+      return this.cartItems.some((item) => item.id == id);
+    },
   },
 };
 </script>

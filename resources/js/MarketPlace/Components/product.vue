@@ -1,4 +1,3 @@
-
 <template>
 <TopBar/>
   <div class="bg-purple-50">

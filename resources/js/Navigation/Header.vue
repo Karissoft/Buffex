@@ -1,7 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <Popover
-    class="h-16 w-full  top-0 z-30 transition ease-in-out duration-300"
+    class="h-20 w-full  top-0 z-30 transition ease-in-out duration-300"
     :class="active ? ' fixed shadow  bg-[#F5F2FF]' : ' bg-transparent absolute'"
   >
     <div class="px-4 sm:px-6 max-w-screen-xl mx-auto h-full">
@@ -38,7 +38,7 @@
               focus:outline-none
               focus:ring-2
               focus:ring-inset
-              focus:ring-indigo-500
+              focus:ring-purple-500
             "
           >
             <span class="sr-only">Open menu</span>
@@ -105,7 +105,7 @@
             <div
               class="
                 w-full
-                
+
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -406,7 +406,7 @@
                     focus:outline-none
                     focus:ring-2
                     focus:ring-inset
-                    focus:ring-indigo-500
+                    focus:ring-purple-500
                   "
                 >
                   <span class="sr-only">Close menu</span>
@@ -424,7 +424,7 @@
                 >
                   <component
                     :is="item.icon"
-                    class="flex-shrink-0 h-6 w-6 text-indigo-600"
+                    class="flex-shrink-0 h-6 w-6 text-purple-600"
                     aria-hidden="true"
                   />
                   <span class="ml-3 text-base font-medium text-gray-700">
@@ -437,14 +437,14 @@
           <div class="py-6 px-5 space-y-6">
             <div class="grid grid-cols-2 gap-y-4 gap-x-8">
               <a
-                href="#"
+                href="/"
                 class="text-base font-medium text-gray-700 hover:text-gray-700"
               >
                 Home
               </a>
 
               <a
-                href="#"
+                href="marketplace"
                 class="text-base font-medium text-gray-700 hover:text-gray-700"
               >
                 Marketplace
@@ -474,8 +474,8 @@
                   text-base
                   font-medium
                   text-white
-                  bg-indigo-600
-                  hover:bg-indigo-700
+                  bg-purple-600
+                  hover:bg-purple-700
                 "
               >
                 Sign up
@@ -483,7 +483,7 @@
               <p class="mt-6 text-center text-base font-medium text-gray-500">
                 Existing customer?
                 {{ " " }}
-                <a href="/login" class="text-indigo-600 hover:text-indigo-500">
+                <a href="/login" class="text-purple-600 hover:text-purple-500">
                   Sign in
                 </a>
               </p>
@@ -542,19 +542,21 @@ const callsToAction = [
 ];
 const resources = [
   {
-    name: "Help Center",
-    description:
-      "Get all of your questions answered in our forums or contact support.",
-    href: "#",
-    icon: SupportIcon,
-  },
-
-  {
-    name: "Security",
-    description: "Understand how we take your privacy seriously.",
-    href: "#",
-    icon: ShieldCheckIcon,
-  },
+  name:'Instant Pay',
+  href:'https://buffex.co/instant-payout',
+},
+{
+  name:'About',
+  href:'/#about',
+},
+{
+  name:'Blog',
+  href:'https://blog.buffex.co',
+},
+{
+  name:'Contact',
+  href:'/#contact',
+},
 ];
 const recentPosts = [
   { id: 1, name: "Boost your conversion rate", href: "#" },
