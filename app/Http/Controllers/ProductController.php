@@ -45,6 +45,11 @@ class ProductController extends Controller
             'products'=> $products
         ]);
     }
+    public function allproducts()
+    {
+
+        return Product::with('user')->inRandomOrder()->paginate(20);
+    }
 
     public function getstoreproducts()
     {

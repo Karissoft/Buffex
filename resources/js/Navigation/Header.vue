@@ -1,7 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <Popover
-    class="h-20 w-full  top-0 z-30 transition ease-in-out duration-300"
+    class="h-20 w-full top-0 z-30 transition ease-in-out duration-300"
     :class="active ? ' fixed shadow  bg-[#F5F2FF]' : ' bg-transparent absolute'"
   >
     <div class="px-4 sm:px-6 max-w-screen-xl mx-auto h-full">
@@ -20,11 +20,21 @@
         </div>
 
         <div class="-mr-2 -my-2 md:hidden flex">
-          <span class="px-4 py-2"
-            ><ShoppingCartIcon
-              @click="open = !open"
-              class="w-6 h-6 text-purple-700"
-          /></span>
+          <span class="px-4 py-2 relative" @click="open = !open"
+            ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
+            <span
+              class="
+                px-1
+                absolute
+                top-[0px]
+                right-[8px]
+                rounded-md
+                bg-white
+                text-sm
+              "
+              >{{ cartItems.length }}</span
+            >
+          </span>
           <PopoverButton
             class="
               bg-white
@@ -63,10 +73,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -82,8 +90,8 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/marketplace',
-                  'bg-transparent':!active,
-                  'bg-[#F5F2FF]':active
+                'bg-transparent': !active,
+                'bg-[#F5F2FF]': active,
               }"
             >
               Marketplace
@@ -105,7 +113,6 @@
             <div
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -141,10 +148,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -160,8 +165,8 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/#about',
-                  'bg-transparent':!active,
-                  'bg-[#F5F2FF]':active
+                'bg-transparent': !active,
+                'bg-[#F5F2FF]': active,
               }"
             >
               About
@@ -182,10 +187,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -201,8 +204,8 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/blog',
-                  'bg-transparent':!active,
-                  'bg-[#F5F2FF]':active
+                'bg-transparent': !active,
+                'bg-[#F5F2FF]': active,
               }"
             >
               Blog
@@ -222,10 +225,8 @@
             "
           >
             <div
-
               class="
                 w-full
-
                 hover:bg-purple-500
                 text-sm
                 h-full
@@ -241,8 +242,8 @@
               :class="{
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/#contact',
-                  'bg-transparent':!active,
-                  'bg-[#F5F2FF]':active
+                'bg-transparent': !active,
+                'bg-[#F5F2FF]': active,
               }"
             >
               Contact
@@ -347,11 +348,21 @@
               </BreezeDropdown>
             </div>
           </div>
-          <span class="px-4 py-2"
-            ><ShoppingCartIcon
-              @click="open = !open"
-              class="w-6 h-6 text-purple-700"
-          /></span>
+          <span class="px-4 py-2 relative" @click="open = !open"
+            ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
+            <span
+              class="
+                px-1
+                absolute
+                top-[0px]
+                right-[8px]
+                rounded-md
+                bg-white
+                text-sm
+              "
+              >{{ cartItems.length }}</span
+            >
+          </span>
         </div>
       </div>
     </div>
@@ -542,21 +553,21 @@ const callsToAction = [
 ];
 const resources = [
   {
-  name:'Instant Pay',
-  href:'https://buffex.co/instant-payout',
-},
-{
-  name:'About',
-  href:'/#about',
-},
-{
-  name:'Blog',
-  href:'https://blog.buffex.co',
-},
-{
-  name:'Contact',
-  href:'/#contact',
-},
+    name: "Instant Pay",
+    href: "https://buffex.co/instant-payout",
+  },
+  {
+    name: "About",
+    href: "/#about",
+  },
+  {
+    name: "Blog",
+    href: "https://blog.buffex.co",
+  },
+  {
+    name: "Contact",
+    href: "/#contact",
+  },
 ];
 const recentPosts = [
   { id: 1, name: "Boost your conversion rate", href: "#" },
@@ -596,9 +607,11 @@ export default {
   data() {
     return {
       active: false,
+      cartItems: [],
     };
   },
   mounted() {
+    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     window.addEventListener("scroll", () => {
       if (window.scrollY > window.innerHeight * 0.4) {
         this.active = true;

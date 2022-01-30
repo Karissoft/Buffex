@@ -6,7 +6,7 @@
     <form @submit.prevent="submit">
         <legend class="text-center mb-4">Customer Registration</legend>
         <div>
-            <BreezeLabel for="name" value="Store Name" />
+            <BreezeLabel for="name" value="Full Name" />
             <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
         </div>
 

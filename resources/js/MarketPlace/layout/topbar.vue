@@ -34,7 +34,7 @@
 
               class="w-6 h-6 text-purple-700"
           />
-          <span class="p-1 absolute -top-4 -left-4">{{cartItems.length}}</span>
+          <span class="px-1 absolute top-[0px] right-[8px] rounded-md bg-white text-sm">{{cartItems.length}}</span>
           </span>
           <PopoverButton
             class="
@@ -341,12 +341,20 @@
               </BreezeDropdown>
             </div>
           </div>
-          <span class="px-4 py-2 relative"   @click="open = !open"
-            ><ShoppingCartIcon
-             
-              class="w-6 h-6 text-purple-700"
-          />
-          <span class="px-1 absolute top-[0px] right-[8px] rounded-md bg-white text-sm">{{cartItems.length}}</span>
+          <span class="px-4 py-2 relative" @click="open = !open"
+            ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
+            <span
+              class="
+                px-1
+                absolute
+                top-[0px]
+                right-[8px]
+                rounded-md
+                bg-white
+                text-sm
+              "
+              >{{ cartItems.length }}</span
+            >
           </span>
         </div>
       </div>
@@ -604,23 +612,20 @@ export default {
       }
     });
     this.emitter.on("addtocart", (data) => {
-      this.addtocart(data)
+      this.addtocart(data);
     });
-     this.emitter.on("updatecart", () => {
-    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    this.emitter.on("updatecart", () => {
+      this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     });
   },
   methods: {
-     addtocart(product) {
+    addtocart(product) {
       this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
       product.quantity = 1;
       this.cartItems.push(product);
       localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
-
-
     },
   },
-
 };
 </script>
 <style scoped lang="scss">

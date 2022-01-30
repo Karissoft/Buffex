@@ -29,7 +29,7 @@
         "
       >
         <div
-          v-for="product in products"
+          v-for="product in filteredproducts"
           :key="product.id"
           class="group relative mb-4"
         >
@@ -76,7 +76,6 @@
             :disabled="inCart(product.id)"
             @click="addtocart(product)"
             type="button"
-
             class="
               font-bold
               w-full
@@ -94,18 +93,22 @@
               flex
               justify-between
             "
-             :class="inCart(product.id)?'bg-slate-400 opacity-70':''"
+            :class="inCart(product.id) ? 'bg-slate-400 opacity-70' : ''"
           >
-            <span class="text-white"> {{inCart(product.id) ? 'Added':'Add' }} to cart</span>
+            <span class="text-white">
+              {{ inCart(product.id) ? "Added" : "Add" }} to cart</span
+            >
 
             <ShoppingCartIcon class="w-4 h-4 text-white" />
           </button>
         </div>
       </div>
-      <div class="pagination text-center mt-8">
+      <div class="pagination text-center mt-8" v-show="last_page > 1 ">
         <span class="flex justify-center items-center">
           <span
             ><ArrowCircleLeftIcon
+              :class="current_page > 1 ? '' : 'opacity-70 text-slate-300'"
+              @click="prev"
               class="cursor-pointe w-8 h-8 text-purple-700 mr-2"
           /></span>
           <input
@@ -118,10 +121,15 @@
               border border-purple-700
               rounded
             "
-            value="1" />
-          <span class="font-bold ml-2 text-sm">of 300</span>
+            :disabled="current_page == last_page"
+            v-model="current_page" />
+          <span class="font-bold ml-2 text-sm">of {{ last_page }}</span>
           <span
             ><ArrowCircleRightIcon
+              :class="
+                current_page < last_page ? '' : 'opacity-70 text-slate-300'
+              "
+              @click="next"
               class="w-8 h-8 text-purple-700 ml-2 cursor-pointer" /></span
         ></span>
       </div>
@@ -139,18 +147,19 @@ import {
 import { SortAscendingIcon, SortDescendingIcon } from "@heroicons/vue/solid";
 
 import { usePage } from "@inertiajs/inertia-vue3";
-
+import axios from "axios";
 export default {
   inject: ["emitter"],
   computed: {
-    products() {
-      let productArray = usePage().props.value.products;
+
+    filteredproducts() {
+         var products = this.products;
       if (this.filterData) {
         if (
           this.filterData.storeIds.length ||
           this.filterData.categoryIds.length
         ) {
-          productArray = productArray.filter(
+         return products.filter(
             (item) =>
               this.filterData.storeIds.includes(item.user_id) ||
               this.filterData.categoryIds.includes(item.category_id)
@@ -158,7 +167,7 @@ export default {
         }
 
         if (this.filterData.priceType == "lth") {
-          return productArray.sort((a, b) => {
+          return products.sort((a, b) => {
             if (a.price < b.price) {
               return -1;
             }
@@ -169,7 +178,7 @@ export default {
           });
         }
         if (this.filterData.priceType == "htl") {
-          return productArray.sort((a, b) => {
+          return products.sort((a, b) => {
             if (a.price > b.price) {
               return -1;
             }
@@ -180,7 +189,7 @@ export default {
           });
         }
       }
-      return productArray;
+      return products;
     },
   },
 
@@ -196,19 +205,47 @@ export default {
   data() {
     return {
       filterData: null,
-      cartItems:[]
+      cartItems: [],
+      current_page: 1,
+      products: [],
+      last_page:null
     };
   },
+  watch: {
+    current_page: "getproducts",
+  },
+  created() {
+    this.getproducts();
+  },
   mounted() {
-     this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     this.emitter.on("sendFilterInfo", (data) => {
       this.filterData = data;
     });
-      this.emitter.on("updatecart", () => {
-    this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    this.emitter.on("updatecart", () => {
+      this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     });
   },
   methods: {
+    getproducts() {
+      axios
+        .get(`/products?page=${this.current_page}`)
+        .then((res) => {
+          if (res.status === 200) {
+
+            this.products = res.data.data;
+            this.last_page = res.data.last_page;
+          }
+        });
+    },
+    next() {
+      if (this.current_page == this.last_page) return;
+      this.current_page++;
+    },
+    prev() {
+      if (this.current_page == 1) return;
+      this.current_page--;
+    },
     addtocart(product) {
       this.emitter.emit("addtocart", product);
       this.cartItems = JSON.parse(localStorage.getItem("cartItems"));

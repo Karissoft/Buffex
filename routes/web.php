@@ -35,13 +35,11 @@ Route::get('/product/{id}', function () {
 Route::get('/marketplace', function () {
     return Inertia::render('MarketPlace', [
         'categories' => Category::get(['id', 'name']),
-        'products' => Product::with('user')->inRandomOrder()->get(),
+        'products' => Product::with('user')->inRandomOrder()->paginate(20),
         'stores' => User::where('role_id', 2)->get(['id', 'name'])
     ]);
 });
-Route::get('/checkout', function () {
-    return Inertia::render('Checkout', []);
-});
+
 Route::get('/blog', function () {
     return Inertia::render('Blog', []);
 });
@@ -106,6 +104,16 @@ Route::group(['middleware' => 'auth'], function () {
         })->name('reports');
     });
 
+    Route::group(['middleware' => 'checkrole:user'], function () {
+        Route::get('/checkout', function () {
+            return Inertia::render('Checkout', []);
+        });
+    });
+
+
+
 });
+
+Route::get('/products', [ProductController::class,'allproducts']);
 
 require __DIR__ . '/auth.php';
