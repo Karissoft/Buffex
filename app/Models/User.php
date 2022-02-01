@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'state', 'city', 'country'
     ];
 
     /**
@@ -52,6 +53,14 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+    public function storeorder()
+    {
+        return $this->hasMany(StoreOrder::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
 }

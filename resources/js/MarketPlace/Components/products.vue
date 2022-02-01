@@ -229,7 +229,7 @@ export default {
   methods: {
     getproducts() {
       axios
-        .get(`/products?page=${this.current_page}`)
+        .get(`get-products?page=${this.current_page}`)
         .then((res) => {
           if (res.status === 200) {
 

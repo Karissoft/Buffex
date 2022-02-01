@@ -103,7 +103,7 @@
                                   <a :href="product.href">
                                     {{ product.name }}
                                   </a>
-                                 
+
                                 </h3>
 
                                 <p class="ml-4">
@@ -286,10 +286,18 @@ export default {
   },
   computed:{
     total(){
+      if(!this.cartItems.length) return 0
      return this.cartItems.map(item=>item.price).reduce((a,b)=> a+b)
     }
   },
+  watch:{
+ open:'getcart'
+  },
   methods:{
+    getcart(){
+
+        this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    },
     removefromcart(id){
       this.cartItems= this.cartItems.filter(item=>item.id !==id)
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems.length?this.cartItems:[]))

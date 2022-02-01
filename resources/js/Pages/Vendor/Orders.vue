@@ -8,7 +8,7 @@
 
         <h1
           class="text-xl md:text-3xl font-bold text-gray-900"
-          v-if="$page.url === '/orders'"
+         
         >
           Orders
         </h1>

@@ -105,7 +105,7 @@
                   Instock
                 </th>
                 <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only" >Edit</span>
+                  <span class="sr-only">Edit</span>
                 </th>
               </tr>
             </thead>
@@ -163,10 +163,14 @@
                     font-medium
                   "
                 >
-                  <span @click="toggleModal('edit',product)" class="mr-3 text-indigo-600 hover:text-indigo-900"
+                  <span
+                    @click="toggleModal('edit', product)"
+                    class="mr-3 text-indigo-600 hover:text-indigo-900"
                     >Edit</span
                   >
-                    <span @click="dropProduct(product.id)" class="text-red-600 hover:text-red-900"
+                  <span
+                    @click="dropProduct(product.id)"
+                    class="text-red-600 hover:text-red-900"
                     >Delete</span
                   >
                 </td>
@@ -243,7 +247,11 @@
           >
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <CreateProduct @updatepage="updatepage" v-if="type == 'create'" />
-              <EditProduct :product="product" @updatepage="updatepage" v-if="type == 'edit'" />
+              <EditProduct
+                :product="product"
+                @updatepage="updatepage"
+                v-if="type == 'edit'"
+              />
             </div>
             <div
               class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
@@ -285,7 +293,6 @@
 </template>
 
 <script>
-
 import {
   Dialog,
   DialogOverlay,
@@ -310,31 +317,30 @@ export default {
     TransitionRoot,
     ExclamationIcon,
     CreateProduct,
-    EditProduct
+    EditProduct,
   },
   data() {
     return {
-      open:false,
-      type:'',
-      product:{}
-    }
+      open: false,
+      type: "",
+      product: {},
+    };
   },
   methods: {
-    toggleModal(val,product) {
+    toggleModal(val, product) {
       this.open = !this.open;
       this.type = val;
-      this.product = product
+      this.product = product;
     },
     updatepage() {
       this.open = false;
     },
-    dropProduct(id){
-     var res = confirm('Are you sure')
-     if(res){
- this.$inertia.delete(`/products/${id}`)
-     }
-
-    }
+    dropProduct(id) {
+      var res = confirm("Are you sure");
+      if (res) {
+        this.$inertia.delete(`/products/${id}`);
+      }
+    },
   },
 };
 </script>

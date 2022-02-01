@@ -15,12 +15,12 @@ class CreateOrderHistoriesTable extends Migration
     {
         Schema::create('order_histories', function (Blueprint $table) {
             $table->id();
-            $table->integer('subtotal');
+
             $table->integer('quantity');
             $table->integer('price');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('product_id')->constrained('orders')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('product_id')->constrained('product')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

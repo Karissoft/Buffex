@@ -2,7 +2,8 @@
 <template>
   <TopBar />
   <div class="container mx-auto py-10">
-    <form action="#" method="POST" class="mt-10 sm:mt-0">
+    <BreezeValidationErrors class="mb-4" />
+    <form @submit.prevent="submit" class="mt-10 sm:mt-0">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="mt-5 md:mt-0 md:col-span-2">
           <div class="shadow overflow-hidden sm:rounded-md">
@@ -23,6 +24,8 @@
                     >First name</label
                   >
                   <input
+                  required
+                    v-model="form.firstName"
                     type="text"
                     name="first-name"
                     id="first-name"
@@ -47,6 +50,8 @@
                     >Last name</label
                   >
                   <input
+                  required
+                    v-model="form.lastName"
                     type="text"
                     name="last-name"
                     id="last-name"
@@ -71,7 +76,9 @@
                     >Email address</label
                   >
                   <input
+                  required
                     type="text"
+                    v-model="form.email"
                     name="email-address"
                     id="email-address"
                     autocomplete="email"
@@ -94,10 +101,11 @@
                     >Phone number</label
                   >
                   <input
+                  required
+                    v-model="form.phone"
                     type="tel"
                     name="phone"
                     id="phone"
-
                     class="
                       mt-1
                       focus:ring-purple-500 focus:border-purple-500
@@ -118,6 +126,7 @@
                     >Country</label
                   >
                   <select
+                    v-model="form.country"
                     id="country"
                     name="country"
                     autocomplete="country-name"
@@ -138,8 +147,8 @@
                     "
                   >
                     <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
+                    <option>Nigeria</option>
+                    <option>South africa</option>
                   </select>
                 </div>
 
@@ -150,6 +159,8 @@
                     >Delivery address</label
                   >
                   <input
+                  required
+                    v-model="form.address"
                     type="text"
                     name="street-address"
                     id="street-address"
@@ -174,6 +185,8 @@
                     >City</label
                   >
                   <input
+                  required
+                    v-model="form.city"
                     type="text"
                     name="city"
                     id="city"
@@ -198,6 +211,8 @@
                     >State / Province</label
                   >
                   <input
+                  required
+                    v-model="form.state"
                     type="text"
                     name="region"
                     id="region"
@@ -222,10 +237,12 @@
                     >ZIP / Postal code</label
                   >
                   <input
+                  required
                     type="text"
                     name="postal-code"
                     id="postal-code"
                     autocomplete="postal-code"
+                    v-model="form.zipcode"
                     class="
                       mt-1
                       focus:ring-purple-500 focus:border-purple-500
@@ -251,12 +268,10 @@
             <div class="px-4 py-5 bg-white sm:p-6">
               <div class="grid grid-cols-1 gap-6">
                 <div class="col-span-6 sm:col-span-6">
-                
-                <textarea
-
+                  <textarea
                     name="first-name"
                     id="information"
-
+                    v-model="form.extra_instruction"
                     class="
                       mt-1
                       focus:ring-purple-500 focus:border-purple-500
@@ -269,8 +284,6 @@
                     "
                   ></textarea>
                 </div>
-
-
               </div>
             </div>
           </div>
@@ -394,11 +407,11 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
+
 import { StarIcon } from "@heroicons/vue/solid";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 import TopBar from "../layout/topbar.vue";
-
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 const breadcrumbs = [
   { id: 1, name: "Home", href: "/home" },
   { id: 2, name: "Marketplace", href: "/" },
@@ -412,6 +425,7 @@ export default {
     RadioGroupOption,
     StarIcon,
     TopBar,
+    BreezeValidationErrors
   },
   setup() {
     const cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -421,12 +435,42 @@ export default {
       breadcrumbs,
     };
   },
+  data() {
+    return {
+      form: this.$inertia.form({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        country: "",
+        address: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        extra_instruction: "",
+        email: "",
+        total: null,
+        cartItems: [],
+      }),
+    };
+  },
   computed: {
     total() {
-      if(!this.cartItems.length) return 0;
-      return this.cartItems.map((item) => item.price).reduce((a, b) => {
-       return a + b
-      },0);
+      if (!this.cartItems.length) return 0;
+      return this.cartItems
+        .map((item) => item.price)
+        .reduce((a, b) => {
+          return a + b;
+        }, 0);
+    },
+  },
+
+  methods: {
+    submit() {
+      this.form.total = this.total;
+      this.form.cartItems = this.cartItems;
+      this.form.post("/orders", {
+        onFinish: () => this.form.reset("password"),
+      });
     },
   },
 };

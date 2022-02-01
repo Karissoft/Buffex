@@ -21,45 +21,61 @@
         autocomplete="name"
       />
     </div>
-     <div class="mt-4">
-
-
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="category_id" class="block text-sm font-medium text-gray-700">Category</label>
-                  <select id="category_id" v-model="form.category_id" name="category" autocomplete="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    <option value="1">United States</option>
-                    <option value="2">Canada</option>
-
-                  </select>
-                </div>
-
-    </div>
-  <div class="grid grid-cols-2 gap-5">
-      <div class="mt-4">
-      <BreezeLabel for="price" value="Price" />
-      <BreezeInput
-        id="price"
-        type="number"
-        class="mt-1 block w-full"
-        v-model="form.price"
-        required
-        autocomplete="price"
-      />
-    </div>
     <div class="mt-4">
-      <BreezeLabel for="in_stock" value="In Stock" />
-      <BreezeInput
-        id="in_stock"
-        type="number"
-        class="mt-1 block w-full"
-        v-model="form.in_stock"
-        required
-        autocomplete="in_stock"
-      />
+      <div class="col-span-6 sm:col-span-3">
+        <label for="category_id" class="block text-sm font-medium text-gray-700"
+          >Category</label
+        >
+        <select
+          id="category_id"
+          v-model="form.category_id"
+          name="category"
+          autocomplete="category"
+          class="
+            mt-1
+            block
+            w-full
+            py-2
+            px-3
+            border border-gray-300
+            bg-white
+            rounded-md
+            shadow-sm
+            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+            sm:text-sm
+          "
+        >
+          <option value="">Select category </option>
+          <option :value="category.id" v-for="(category,id) in categories" :key="id">{{category.name}}</option>
+        </select>
+      </div>
     </div>
-  </div>
+    <div class="grid grid-cols-2 gap-5">
+      <div class="mt-4">
+        <BreezeLabel for="price" value="Price" />
+        <BreezeInput
+          id="price"
+          type="number"
+          class="mt-1 block w-full"
+          v-model="form.price"
+          required
+          autocomplete="price"
+        />
+      </div>
+      <div class="mt-4">
+        <BreezeLabel for="in_stock" value="In Stock" />
+        <BreezeInput
+          id="in_stock"
+          type="number"
+          class="mt-1 block w-full"
+          v-model="form.in_stock"
+          required
+          autocomplete="in_stock"
+        />
+      </div>
+    </div>
 
-     <div class="mt-4">
+    <div class="mt-4">
       <BreezeLabel for="description" value="Description" />
       <BreezeTextarea
         id="description"
@@ -70,28 +86,75 @@
         autocomplete="description"
       />
     </div>
- <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700">
-                  Cover photo
-                </label>
-                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                  <div class="space-y-1 text-center">
-                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                      <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <div class="flex text-sm text-gray-600">
-                      <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                        <span>Upload a file</span>
-                        <input id="file-upload" @change="handleFileUpload($event)" name="file-upload" type="file" multiple class="sr-only" />
-                      </label>
-                      <p class="pl-1">or drag and drop</p>
-                    </div>
-                    <p class="text-xs text-gray-500">
-                      PNG, JPG, GIF up to 10MB
-                    </p>
-                  </div>
-                </div>
+    <div class="mt-4">
+      <div
+        class="
+          mt-1
+          flex
+          justify-center
+          px-6
+          pt-5
+          pb-6
+          border-2 border-gray-300 border-dashed
+          rounded-md
+        "
+      >
+        <div class="space-y-1 text-center">
+           <label
+              for="file-upload"
+              class="
+                relative
+                cursor-pointer
+                bg-white
+                rounded-md
+                font-medium
+                text-indigo-600
+                hover:text-indigo-500
+                focus-within:outline-none
+                focus-within:ring-2
+                focus-within:ring-offset-2
+                focus-within:ring-indigo-500
+              "
+            >
+          <svg
+            class="mx-auto h-12 w-12 text-gray-400"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 48 48"
+            aria-hidden="true"
+          >
+            <path
+              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          </label>
+          <div class="flex text-sm text-gray-600 text-center ">
+
+              <div>
+
+              <input
+                id="file-upload"
+                @change="handleFileUpload($event)"
+                name="file-upload"
+                type="file"
+                multiple
+                class="sr-only"
+              />
               </div>
+
+
+          </div>
+          <span>Upload product images</span>
+        </div>
+      </div>
+
+    </div>
+     <div v-if="form.images.length" class="grid grid-cols-4 span-2 my-6">
+    <img v-for="item in form.images" :key="item" :src="item" class="h-16 w-16" alt="image"/>
+      </div>
 
     <div class="mt-4">
       <button
@@ -136,7 +199,8 @@ import BreezeLabel from "@/Components/Label.vue";
 
 import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-import axios from 'axios'
+import axios from "axios";
+import { usePage } from "@inertiajs/inertia-vue3";
 export default {
   layout: BreezeGuestLayout,
 
@@ -149,15 +213,13 @@ export default {
     BreezeValidationErrors,
     Head,
     Link,
-
   },
 
   props: {
     canResetPassword: Boolean,
     status: String,
-
   },
- emits: ['updatepage'],
+  emits: ["updatepage"],
   data() {
     return {
       form: this.$inertia.form({
@@ -166,62 +228,69 @@ export default {
         description: "",
         images: [],
         in_stock: null,
-        price:null,
-
+        price: null,
       }),
-       cloudinary: {
-        uploadPreset: "nzukoor_preset",
-        cloudName: "nzukoor",
+      cloudinary: {
+        uploadPreset: "arudovwen_preset",
+        cloudName: "dv6hfpky1",
       },
       start: false,
-      files:[]
+      files: [],
     };
   },
 
   methods: {
     handleFileUpload(e) {
-
       this.start = true;
       var cloudName = this.cloudinary.cloudName;
       var upload_preset = this.cloudinary.uploadPreset;
       var url = "https://api.cloudinary.com/v1_1/" + cloudName + "/upload";
 
-   var files= e.target.files
-       const uploads = Array.from(Array(e.target.files.length).keys()).map((i) => {
-
+      var files = e.target.files;
+      const uploads = Array.from(Array(e.target.files.length).keys()).map(
+        (i) => {
           const formData = new FormData();
           formData.append("file", files[i]);
           formData.append("upload_preset", upload_preset); // Replace the preset name with your own
-          formData.append("api_key",''); // Replace API key with your own Cloudinary API key
+          formData.append("api_key", "843343413274745"); // Replace API key with your own Cloudinary API key
           formData.append("timestamp", (Date.now() / 1000) | 0);
 
           return axios
             .post(`${url}`, formData, {
               headers: { "X-Requested-With": "XMLHttpRequest" },
             })
-            .then((response) =>
-              this.form.images.push(response.data.secure_url)
-            )
+            .then((response) => this.form.images.push(response.data.secure_url))
             .catch((err) => {
               this.start = false;
-             });
-       });
+            });
+        }
+      );
 
-        axios.all(uploads).then(() => {
-
-          this.start = false;
-        });
-
+      axios.all(uploads).then(() => {
+        this.start = false;
+      });
     },
     submit() {
       this.form.post(this.route("products.store"), {
         onFinish: () => {
-          this.files = []
-          this.$emit('updatepage')
-         return this.form.reset('name','category_id','description','in_stock','price','images')
+          this.files = [];
+          this.$emit("updatepage");
+          return this.form.reset(
+            "name",
+            "category_id",
+            "description",
+            "in_stock",
+            "price",
+            "images"
+          );
         },
       });
     },
   },
+  computed:{
+    categories(){
+      return this.$page.props.categories
+    }
+  }
 };
 </script>

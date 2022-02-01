@@ -13,6 +13,9 @@ const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
 const emitter = mitt();
+function currencyFormat(val){
+
+}
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

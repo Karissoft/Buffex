@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use auth;
 use Inertia\Inertia;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,8 @@ class ProductController extends Controller
     public function index()
     {
         return Inertia::render('Vendor/Products', [
-            'products' => auth()->user()->products()->get(['name','id','description','status','images','price', 'in_stock'])
+            'products' => auth()->user()->products()->get(['name','id','description','status','images','price', 'in_stock']),
+            'categories' => Category::all()
         ]);
     }
 
@@ -37,6 +39,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'in_stock' => $request->in_stock,
             'category_id' => $request->category_id,
+            'status'=> false
 
         ]);
 

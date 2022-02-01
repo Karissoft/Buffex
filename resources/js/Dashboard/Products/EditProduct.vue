@@ -1,5 +1,5 @@
 <template>
-  <Head title="Log in" />
+  <Head title="Products" />
 
   <BreezeValidationErrors class="mb-4" />
 
@@ -44,9 +44,8 @@
             sm:text-sm
           "
         >
-          <option>United States</option>
-          <option>Canada</option>
-          <option>Mexico</option>
+           <option value="">Select category </option>
+          <option :value="category.id" v-for="(category,id) in categories" :key="id">{{category.name}}</option>
         </select>
       </div>
     </div>
@@ -86,10 +85,7 @@
         autocomplete="description"
       />
     </div>
-    <div class="mt-4">
-      <label class="block text-sm font-medium text-gray-700">
-        Cover photo
-      </label>
+   <div class="mt-4">
       <div
         class="
           mt-1
@@ -103,22 +99,7 @@
         "
       >
         <div class="space-y-1 text-center">
-          <svg
-            class="mx-auto h-12 w-12 text-gray-400"
-            stroke="currentColor"
-            fill="none"
-            viewBox="0 0 48 48"
-            aria-hidden="true"
-          >
-            <path
-              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <div class="flex text-sm text-gray-600">
-            <label
+           <label
               for="file-upload"
               class="
                 relative
@@ -134,7 +115,25 @@
                 focus-within:ring-indigo-500
               "
             >
-              <span>Upload a file</span>
+          <svg
+            class="mx-auto h-12 w-12 text-gray-400"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 48 48"
+            aria-hidden="true"
+          >
+            <path
+              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          </label>
+          <div class="flex text-sm text-gray-600 text-center ">
+
+              <div>
+
               <input
                 id="file-upload"
                 @change="handleFileUpload($event)"
@@ -143,13 +142,18 @@
                 multiple
                 class="sr-only"
               />
-            </label>
-            <p class="pl-1">or drag and drop</p>
+              </div>
+
+
           </div>
-          <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+          <span>Upload product images</span>
         </div>
       </div>
+
     </div>
+     <div v-if="form.images.length" class="grid grid-cols-3 span-3 my-4">
+    <img v-for="item in form.images" :key="item" :src="item" class="h-8 w-8" alt="image"/>
+      </div>
 
     <div class="mt-4">
       <button
@@ -225,8 +229,8 @@ export default {
         price: null,
       }),
       cloudinary: {
-        uploadPreset: "nzukoor_preset",
-        cloudName: "nzukoor",
+         uploadPreset: "arudovwen_preset",
+        cloudName: "dv6hfpky1",
       },
       start: false,
       files: [],
@@ -249,7 +253,7 @@ export default {
           const formData = new FormData();
           formData.append("file", files[i]);
           formData.append("upload_preset", upload_preset); // Replace the preset name with your own
-          formData.append("api_key", ""); // Replace API key with your own Cloudinary API key
+          formData.append("api_key", "843343413274745"); // Replace API key with your own Cloudinary API key
           formData.append("timestamp", (Date.now() / 1000) | 0);
 
           return axios
@@ -275,5 +279,10 @@ export default {
       });
     },
   },
+   computed:{
+    categories(){
+      return this.$page.props.categories
+    }
+  }
 };
 </script>

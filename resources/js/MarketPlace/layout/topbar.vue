@@ -58,7 +58,7 @@
         </div>
         <PopoverGroup
           as="nav"
-          class="hidden md:flex justiy-between items-center w-[40%]"
+          class="hidden md:flex justiy-between items-center w-[45%]"
         >
           <a
             href="/marketplace"
@@ -344,6 +344,7 @@
           <span class="px-4 py-2 relative" @click="open = !open"
             ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
             <span
+              v-if="cartItems.length"
               class="
                 px-1
                 absolute

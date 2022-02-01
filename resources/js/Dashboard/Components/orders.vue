@@ -7,7 +7,7 @@
         <div
           class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
         >
-          <table class="min-w-full divide-y divide-gray-200">
+            <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
                 <th
@@ -22,7 +22,7 @@
                     tracking-wider
                   "
                 >
-                  Name
+                  Order no
                 </th>
                 <th
                   scope="col"
@@ -36,7 +36,7 @@
                     tracking-wider
                   "
                 >
-                  Title
+                  Product name
                 </th>
                 <th
                   scope="col"
@@ -50,7 +50,7 @@
                     tracking-wider
                   "
                 >
-                  Status
+                  Quantity
                 </th>
                 <th
                   scope="col"
@@ -64,58 +64,53 @@
                     tracking-wider
                   "
                 >
-                  Role
+                  Price
+                </th>
+                 <th
+                  scope="col"
+                  class="
+                    px-6
+                    py-3
+                    text-left text-xs
+                    font-medium
+                    text-gray-500
+                    uppercase
+                    tracking-wider
+                  "
+                >
+                  Total
                 </th>
                 <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only">Edit</span>
+                   <span class="sr-only ">Action</span>
+
                 </th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="person in people" :key="person.email">
+              <tr v-for="order in orders" :key="order.order_no">
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                      <img
-                        class="h-10 w-10 rounded-full"
-                        :src="person.image"
-                        alt=""
-                      />
-                    </div>
+
                     <div class="ml-4">
                       <div class="text-sm font-medium text-gray-900">
-                        {{ person.name }}
+                        {{ order.order_no }}
                       </div>
-                      <div class="text-sm text-gray-500">
-                        {{ person.email }}
-                      </div>
+
                     </div>
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ person.title }}</div>
-                  <div class="text-sm text-gray-500">
-                    {{ person.department }}
-                  </div>
+                  <div class="text-sm text-gray-900">{{ order.product.name }}</div>
+
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span
-                    class="
-                      px-2
-                      inline-flex
-                      text-xs
-                      leading-5
-                      font-semibold
-                      rounded-full
-                      bg-green-100
-                      text-green-800
-                    "
-                  >
-                    Active
-                  </span>
+                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {{ order.quantity }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ person.role }}
+                  {{ order.price }}
+                </td>
+                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {{ order.price * order.quantity}}
                 </td>
                 <td
                   class="
@@ -127,7 +122,7 @@
                   "
                 >
                   <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Edit</a
+                    >View</a
                   >
                 </td>
               </tr>
@@ -138,7 +133,7 @@
     </div>
   </div>
   <div class="text-right">
-    <Link href="/orders"><span class="flex justify-end">View all <ArrowNarrowRightIcon class="w-6 h-6 ml-1"/></span></Link>
+    <Link href="/store/orders"><span class="flex justify-end">View all <ArrowNarrowRightIcon class="w-6 h-6 ml-1"/></span></Link>
   </div>
   <!-- This example requires Tailwind CSS v2.0+ -->
 
@@ -315,98 +310,18 @@ import { ExclamationIcon,ArrowNarrowRightIcon } from '@heroicons/vue/solid'
 import {
 PlusCircleIcon
 } from "@heroicons/vue/outline";
-const people = [
-  {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-   {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  }, {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  // More people...
-]
 
 export default {
-  setup() {
-    const open = ref(false)
+ data() {
     return {
-      people,
-      open
+      open: false,
+      type: "",
+      order: {},
+    };
+  },
+   computed:{
+    orders(){
+      return this.$page.props.orders
     }
   },
   components:{
@@ -418,6 +333,13 @@ export default {
     TransitionChild,
     TransitionRoot,
     ExclamationIcon,
+  },
+  methods: {
+    toggleModal(val) {
+      this.open = !this.open;
+      
+
+    },
   }
 }
 </script>

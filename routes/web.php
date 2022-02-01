@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUserController;
@@ -91,12 +92,16 @@ Route::group(['middleware' => 'auth'], function () {
             ]
         ]);
         Route::get('/dashboard', function () {
-            return Inertia::render('Vendor/Dashboard');
+            return Inertia::render('Vendor/Dashboard', [
+                'orders' => auth()->user()->storeorder()->with('product')->get()
+            ]);
         })->name('dashboard');
 
 
-        Route::get('/orders', function () {
-            return Inertia::render('Vendor/Orders');
+        Route::get('store/orders', function () {
+            return Inertia::render('Vendor/Orders', [
+                'orders' => auth()->user()->storeorder()->with('product')->get()
+            ]);
         })->name('orders');
 
         Route::get('/reports', function () {
@@ -108,12 +113,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/checkout', function () {
             return Inertia::render('Checkout', []);
         });
+        Route::resource('orders', OrderController::class);
     });
 
 
 
 });
 
-Route::get('/products', [ProductController::class,'allproducts']);
+Route::get('/get-products', [ProductController::class,'allproducts']);
 
 require __DIR__ . '/auth.php';
