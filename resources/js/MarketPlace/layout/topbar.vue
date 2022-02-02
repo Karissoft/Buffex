@@ -98,6 +98,7 @@
           </a>
           <a
             href="https://buffex.co/instant-payout/"
+            target="_blank"
             class="
               w-[20%]
               text-base

@@ -32,12 +32,9 @@ Leave a message and we will get back to you shortly.
 
          <div class="mt-4">
 
-            <BreezeInput id="complaint" type="text" class="mt-1 block w-full" placeholder="Complaint"  v-model="form.complaint" required autocomplete="complaints" />
+            <BreezeTextarea id="complaint" type="text" class="mt-1 block w-full" placeholder="Message"  v-model="form.message" required autocomplete="complaints" > </BreezeTextarea>
         </div>
-         <div class="mt-4">
 
-            <BreezeInput id="message" type="text" class="mt-1 block w-full" placeholder="Message" v-model="form.message" required autocomplete="message" />
-        </div>
 
         <div class="flex justify-center mt-4">
 
@@ -82,6 +79,7 @@ Leave a message and we will get back to you shortly.
 <script>
 import BreezeButton from '@/Components/Button.vue'
 import BreezeInput from '@/Components/Input.vue'
+import BreezeTextarea from '@/Components/Textarea.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import { Head, Link } from '@inertiajs/inertia-vue3';
@@ -91,6 +89,7 @@ export default {
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,
+        BreezeTextarea,
         Head,
         Link,
   },
@@ -101,7 +100,7 @@ export default {
                 email: '',
                 phone: '',
                 message: '',
-                complaint: '',
+               
             })
         }
     },

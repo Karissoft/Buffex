@@ -13,10 +13,15 @@ const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
 const emitter = mitt();
-function currencyFormat(val){
 
-}
-
+ const currencyFormat = (numb)=> {
+    var num = Number(numb);
+    if (num) {
+        return "₦" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    } else {
+        return "₦0.00";
+    }
+};
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => require(`./Pages/${name}.vue`),
@@ -24,6 +29,7 @@ createInertiaApp({
         return createApp({
             provide: {
                 emitter: emitter,
+                currency:currencyFormat
             },
             render: () => h(app, props),
         })

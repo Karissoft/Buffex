@@ -28,6 +28,10 @@
             <BreezeLabel for="password_confirmation" value="Confirm Password" />
             <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
         </div>
+         <div class="mt-4">
+            <BreezeLabel for="store_image" value="Store Image" />
+            <input id="store_image" type="file" class="mt-1 block w-full" @change="handleUpload($event)" />
+        </div>
 
          <div class="flex items-center justify-end mt-4">
             <Link :href="route('vendorlogin')" class="underline text-sm text-gray-600 hover:text-gray-900">
@@ -70,12 +74,39 @@ export default {
                 password_confirmation: '',
                 address:'',
                 terms: false,
-                role_id:2
-            })
+                role_id:2,
+                image:''
+            }),
+            cloudinary: {
+        uploadPreset: "arudovwen_preset",
+        cloudName: "dv6hfpky1",
+      },
         }
     },
 
     methods: {
+        handleUpload(e){
+             var cloudName = this.cloudinary.cloudName;
+      var upload_preset = this.cloudinary.uploadPreset;
+      var url = "https://api.cloudinary.com/v1_1/" + cloudName + "/upload";
+
+           let file = e.target.files[0]
+             const formData = new FormData();
+          formData.append("file", file);
+          formData.append("upload_preset", upload_preset); // Replace the preset name with your own
+          formData.append("api_key", "843343413274745"); // Replace API key with your own Cloudinary API key
+          formData.append("timestamp", (Date.now() / 1000) | 0);
+
+           axios
+            .post(`${url}`, formData, {
+              headers: { "X-Requested-With": "XMLHttpRequest" },
+            })
+            .then((response) => this.form.image=response.data.secure_url)
+            .catch((err) => {
+            console.log("🚀 ~ file: Register.vue ~ line 106 ~ handleUpload ~ err", err)
+
+            });
+        },
         submit() {
             this.form.post(this.route('vendorregister'), {
                 onFinish: () => this.form.reset('password', 'password_confirmation'),

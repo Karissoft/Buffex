@@ -4,6 +4,7 @@
     <Dialog
       as="div"
       class="fixed inset-0 overflow-hidden"
+      style="z-index:999"
       @close="open = false"
     >
       <div class="absolute inset-0 overflow-hidden">
@@ -107,7 +108,7 @@
                                 </h3>
 
                                 <p class="ml-4">
-                                  {{ product.price }}
+                                  {{ currency(product.price) }}
                                 </p>
                               </div>
                                <p class="mt-1 text-sm text-gray-500">
@@ -167,11 +168,14 @@
                           </div>
                         </li>
                       </ul>
+                      <div v-if="!cartItems.length" class="text-center py-40">
+                        <p>Your cart is empty!</p>
+                         </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                <div class="border-t border-gray-200 py-6 px-4 sm:px-6" v-if="cartItems.length">
                   <div
                     class="
                       flex
@@ -182,12 +186,12 @@
                     "
                   >
                     <p>Subtotal</p>
-                    <p>{{total}}</p>
+                    <p>{{currency(total)}}</p>
                   </div>
                   <p class="mt-0.5 text-sm text-gray-500">
                     Shipping and taxes calculated at checkout.
                   </p>
-                  <div class="mt-6">
+                  <div class="mt-6" >
                     <a
                       href="/checkout"
                       class="
@@ -264,7 +268,7 @@ export default {
     PlusCircleIcon,
     MinusCircleIcon,
   },
-  inject: ["emitter"],
+ inject: ["emitter","currency"],
   props: ["open"],
   setup() {
     const open = ref(false);
@@ -287,7 +291,7 @@ export default {
   computed:{
     total(){
       if(!this.cartItems.length) return 0
-     return this.cartItems.map(item=>item.price).reduce((a,b)=> a+b)
+     return this.cartItems.map(item => item.price * item.quantity).reduce((a,b)=> a+b)
     }
   },
   watch:{

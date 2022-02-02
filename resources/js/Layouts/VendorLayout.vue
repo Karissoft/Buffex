@@ -7,7 +7,7 @@
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img class="h-8 w-auto" src="/images/buffex2.png" alt="Workflow" />
+              <img class="h-8 w-auto"   :src="$page.props.auth.user.image" alt="store image" />
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">

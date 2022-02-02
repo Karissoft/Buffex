@@ -104,7 +104,7 @@
                   {{ order.quantity }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ order.price }}
+                  {{ currency(order.price) }}
                 </td>
                 <td
                   class="
@@ -115,7 +115,7 @@
                     font-medium
                   "
                 >
-                  {{ order.price * order.quantity }}
+                  {{ currency(order.price * order.quantity) }}
                 </td>
                 <td class="
 
@@ -317,6 +317,7 @@ export default {
       open,
     };
   },
+   inject: ["emitter","currency"],
   computed: {
     orders() {
       return this.$page.props.orders;

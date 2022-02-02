@@ -149,7 +149,7 @@
                   </span>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ product.price }}
+                  {{ currency(product.price)}}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {{ product.in_stock }}
@@ -307,7 +307,7 @@ import { PlusCircleIcon } from "@heroicons/vue/solid";
 
 export default {
   props: ["products"],
-
+  inject: ["emitter","currency"],
   components: {
     PlusCircleIcon,
     Dialog,

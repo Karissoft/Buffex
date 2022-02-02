@@ -360,7 +360,7 @@
                 class="flex justify-between text-base font-medium text-gray-900"
               >
                 <p>Subtotal</p>
-                <p>{{ total }}</p>
+                <p>{{ currency(total) }}</p>
               </div>
               <div
                 class="flex justify-between text-base font-medium text-gray-900"
@@ -427,6 +427,7 @@ export default {
     TopBar,
     BreezeValidationErrors
   },
+   inject: ["emitter","currency"],
   setup() {
     const cartItems = JSON.parse(localStorage.getItem("cartItems"));
     return {

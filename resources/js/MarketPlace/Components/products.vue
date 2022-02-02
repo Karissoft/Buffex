@@ -12,10 +12,32 @@
         overflow-auto
       "
     >
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">
+      <div class="flex flex-col md:flex-row justify-between mb-4">
+        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 mb-4 md:mb-0">
           Products
         </h2>
+
+          <div class="w-full md:w-[300px]" >
+            <input
+              placeholder="Search product name"
+               type="search"
+               v-model="search"
+              class="
+                form-input
+                px-3
+                py-1
+                rounded-md
+                mt-1
+                focus:ring-purple-100 focus:border-purple-100
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
+            />
+          </div>
       </div>
 
       <div
@@ -44,7 +66,7 @@
               lg:h-72 lg:aspect-none
             "
           >
-            <Link href="/product/1">
+            <Link :href="`/product/${product.id}`">
               <img
                 :src="product.images[0]"
                 :alt="product.images[0]"
@@ -61,15 +83,15 @@
           <div class="mt-4 flex justify-between mb-3">
             <div>
               <h3 class="text-sm text-gray-700">
-                <a :href="product.href">
+ <Link :href="`/product/${product.id}`">
                   <span aria-hidden="true" class="" />
                   {{ product.name }}
-                </a>
+ </Link>
               </h3>
 
               <p class="mt-1 text-sm text-gray-500">{{ product.user.name }}</p>
             </div>
-            <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+            <p class="text-sm font-medium text-gray-900">{{ currency(product.price) }}</p>
           </div>
 
           <button
@@ -149,11 +171,11 @@ import { SortAscendingIcon, SortDescendingIcon } from "@heroicons/vue/solid";
 import { usePage } from "@inertiajs/inertia-vue3";
 import axios from "axios";
 export default {
-  inject: ["emitter"],
+  inject: ["emitter","currency"],
   computed: {
 
     filteredproducts() {
-         var products = this.products;
+        var products = this.products.filter(item=>item.name.toLowerCase().includes(this.search.toLowerCase()));
       if (this.filterData) {
         if (
           this.filterData.storeIds.length ||
@@ -208,7 +230,8 @@ export default {
       cartItems: [],
       current_page: 1,
       products: [],
-      last_page:null
+      last_page:null,
+      search:''
     };
   },
   watch: {

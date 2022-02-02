@@ -17,6 +17,7 @@ class AddCityStateToUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
+            $table->string('image')->nullable();
         });
     }
 
@@ -28,7 +29,7 @@ class AddCityStateToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('state','city','country');
+            $table->dropColumn('state','city','country','image');
         });
     }
 }

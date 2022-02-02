@@ -30,13 +30,14 @@ Route::get('/', function () {
 
     ]);
 });
-Route::get('/product/{id}', function () {
-    return Inertia::render('Product', []);
+Route::get('/product/{id}', function ($id) {
+    return Inertia::render('Product', [
+        'product'=> Product::where('id', $id)->with('user','category')->first()
+    ]);
 });
 Route::get('/marketplace', function () {
     return Inertia::render('MarketPlace', [
         'categories' => Category::get(['id', 'name']),
-        'products' => Product::with('user')->inRandomOrder()->paginate(20),
         'stores' => User::where('role_id', 2)->get(['id', 'name'])
     ]);
 });
@@ -93,7 +94,9 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
         Route::get('/dashboard', function () {
             return Inertia::render('Vendor/Dashboard', [
-                'orders' => auth()->user()->storeorder()->with('product')->get()
+                'orders' => auth()->user()->storeorder()->with('product')->get(),
+                'total_orders' => auth()->user()->storeorder()->count(),
+                'total_products' => auth()->user()->products()->count(),
             ]);
         })->name('dashboard');
 

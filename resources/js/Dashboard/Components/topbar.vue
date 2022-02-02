@@ -4,7 +4,7 @@
       <div class="h-full w-full  flex  items-center">
         <ShoppingBagIcon class="w-16 md:w-20 h-16 md:h-20 px-3 py-4 bg-purple-600 text-white rounded-full mr-5" />
         <div class=" text-left">
-           <span class="font-bold text-xl md:text-3xl text-slate-800">8</span> <br>
+           <span class="font-bold text-xl md:text-3xl text-slate-800">{{$page.props.total_products}}</span> <br>
       <span class="font-bold text-sm md:text-xl text-slate-400">Available Products</span>
 
     </div>
@@ -14,7 +14,7 @@
       <div class="h-full w-full  flex  items-center">
          <ShoppingCartIcon class="w-16 md:w-20 h-16 md:h-20 px-3 py-4 bg-pink-600 text-white rounded-full mr-5" />
         <div class="text-left">
-           <span class="font-bold text-xl md:text-3xl text-slate-800">8</span> <br>
+           <span class="font-bold text-xl md:text-3xl text-slate-800">{{$page.props.total_orders}}</span> <br>
       <span class="font-bold text-sm md:text-xl text-slate-400">Total Orders</span>
 
     </div>

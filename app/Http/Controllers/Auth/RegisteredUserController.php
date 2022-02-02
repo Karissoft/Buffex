@@ -75,6 +75,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'image' => $request->image,
             'role_id' => 2,
             'password' => Hash::make($request->password),
         ]);
@@ -105,5 +106,8 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+    public function update(Request $request, User $user){
+        
     }
 }

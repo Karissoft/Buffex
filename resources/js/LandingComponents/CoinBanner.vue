@@ -5,13 +5,13 @@
         <img src="/images/onecoin.png" alt="" class="w-8 md:w-16 mb-3 md:mb-0 mb-3 md:mr-3" />
         <span>
           <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">BTC/USDT</span>
+            <span class="text-slate-100 pr-3">BTC/USDT</span>
             <span class="text-green-300">17.8%</span>
           </span>
 
-          <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">$43,0000</span>
-            <span class="text-slate-200">Last 1hr</span>
+          <span class="flex justify-between text-sm">
+            <span class="text-slate-100 pr-3">$43,0000</span>
+            <span class="text-slate-100">Last 1hr</span>
           </span>
         </span>
       </span>
@@ -19,13 +19,13 @@
         <img src="/images/ethereum.png" alt="" class="w-8 md:w-16 md:mr-3 mb-3 md:mb-0" />
          <span>
           <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">BTC/USDT</span>
+            <span class="text-slate-100 pr-3">BTC/USDT</span>
             <span class="text-green-300">17.8%</span>
           </span>
 
-          <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">$43,0000</span>
-            <span class="text-slate-200">Last 1hr</span>
+          <span class="flex justify-between text-sm">
+            <span class="text-slate-100 pr-3">$43,0000</span>
+            <span class="text-slate-100">Last 1hr</span>
           </span>
         </span>
       </span>
@@ -33,13 +33,13 @@
         <img src="/images/btccoin.png" alt="" class="w-8 md:w-16 md:mr-3 mb-3 md:mb-0" />
          <span>
           <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">BTC/USDT</span>
+            <span class="text-slate-100 pr-3">BTC/USDT</span>
             <span class="text-green-300">17.8%</span>
           </span>
 
-          <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">$43,0000</span>
-            <span class="text-slate-200">Last 1hr</span>
+          <span class="flex justify-between text-sm">
+            <span class="text-slate-100 pr-3">$43,0000</span>
+            <span class="text-slate-100">Last 1hr</span>
           </span>
         </span>
       </span>
@@ -47,13 +47,13 @@
         <img src="/images/adacoin.png" alt="" class="w-8 md:w-16 md:mr-3 mb-3 md:mb-0" />
          <span>
           <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">BTC/USDT</span>
+            <span class="text-slate-100 pr-3">BTC/USDT</span>
             <span class="text-green-300">17.8%</span>
           </span>
 
-          <span class="flex justify-between ">
-            <span class="text-slate-200 pr-3">$43,0000</span>
-            <span class="text-slate-200">Last 1hr</span>
+          <span class="flex justify-between text-sm">
+            <span class="text-slate-100 pr-3">$43,0000</span>
+            <span class="text-slate-100">Last 1hr</span>
           </span>
         </span>
       </span>
