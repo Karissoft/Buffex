@@ -18,7 +18,7 @@
                   or<span class="text-purple-500"> Business Owner</span>
                 </p>
                 <div class="banner_b text-center">
-                  <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
+                  <BreezeButton class="bg-purple-800 text-white"> Get started</BreezeButton>
                 </div>
               </div>
               <div class="flex justify-center md:w-3/6">
@@ -49,7 +49,7 @@
               bank accounts in the currency of your choosing.
             </p>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
+              <BreezeButton class="bg-purple-800 text-white"> Get started</BreezeButton>
             </div>
           </div>
         </slide>
@@ -68,7 +68,7 @@
               lifestyle services with cryptocurrencies.
             </p>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
+              <BreezeButton class="bg-purple-800 text-white"> Get started</BreezeButton>
             </div>
 
             <span class="absolute bottom-0 right-0">
@@ -91,7 +91,7 @@
               (buy, sell and swap) cryptocurrencies and receive payouts in fiat.
             </p>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-purple-800 tetx-white"> Get started</BreezeButton>
+              <BreezeButton class="bg-purple-800 text-white"> Get started</BreezeButton>
             </div>
           </div>
         </slide>
@@ -122,6 +122,7 @@
                   md:absolute md:top-0
                   mb-3
                   md:mb-0 md:left-28
+                  w-[80%] md:w-auto mx-auto
                 "
               >
                 <span class="text-purple-500">Multi-digital Asset Wallet</span>
@@ -139,6 +140,7 @@
                   md:absolute
                   mb-3
                   md:mb-0 md:top-36
+                   w-[80%] md:w-auto mx-auto
                 "
               >
                 <span class="text-purple-500">Multi-digital Asset Wallet</span>
@@ -156,6 +158,7 @@
                   md:absolute md:top-72
                   mb-3
                   md:mb-0 md:left-72
+                   w-[80%] md:w-auto mx-auto
                 "
               >
                 <span class="text-purple-500">Multi-digital Asset Wallet</span>

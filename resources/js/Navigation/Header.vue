@@ -2,7 +2,7 @@
 <template>
   <Popover
     class="h-16 w-full top-0 z-30 transition ease-in-out duration-300"
-    :class="active ? ' fixed shadow  bg-[#F5F2FF]' : ' bg-transparent absolute'"
+    :class="active ? ' fixed shadow  bg-white' : ' bg-transparent absolute'"
   >
     <div class="px-4 sm:px-6 max-w-screen-xl mx-auto h-full">
       <div class="flex justify-between items-center h-full">
@@ -91,7 +91,7 @@
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/marketplace',
                 'bg-transparent': !active,
-                'bg-[#F5F2FF]': active,
+                'bg-white': active,
               }"
             >
               Marketplace
@@ -166,7 +166,7 @@
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/#about',
                 'bg-transparent': !active,
-                'bg-[#F5F2FF]': active,
+                'bg-white': active,
               }"
             >
               About
@@ -205,7 +205,7 @@
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/blog',
                 'bg-transparent': !active,
-                'bg-[#F5F2FF]': active,
+                'bg-white': active,
               }"
             >
               Blog
@@ -243,7 +243,7 @@
                 'text-purple-100 bg-purple-700 border-purple-500':
                   $page.url === '/#contact',
                 'bg-transparent': !active,
-                'bg-[#F5F2FF]': active,
+                'bg-white': active,
               }"
             >
               Contact

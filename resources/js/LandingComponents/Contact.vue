@@ -11,7 +11,7 @@ We appreciate you and would love to hear from you.
 Leave a message and we will get back to you shortly.
 </p>
     <div class="mb-5 relative flex flex-col md:flex-row w-full ">
-      <div class="md:w-3/6 md:p-16 mb-5">
+      <div class="md:w-3/6 md:p-16 mb-10 md:mb-5">
  <BreezeValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
@@ -77,39 +77,37 @@ Leave a message and we will get back to you shortly.
  </section>
 </template>
 <script>
-import BreezeButton from '@/Components/Button.vue'
-import BreezeInput from '@/Components/Input.vue'
-import BreezeTextarea from '@/Components/Textarea.vue'
-import BreezeLabel from '@/Components/Label.vue'
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import { Head, Link } from '@inertiajs/inertia-vue3';
+import BreezeButton from "@/Components/Button.vue";
+import BreezeInput from "@/Components/Input.vue";
+import BreezeTextarea from "@/Components/Textarea.vue";
+import BreezeLabel from "@/Components/Label.vue";
+import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 export default {
   components: {
-     BreezeButton,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-        BreezeTextarea,
-        Head,
-        Link,
+    BreezeButton,
+    BreezeInput,
+    BreezeLabel,
+    BreezeValidationErrors,
+    BreezeTextarea,
+    Head,
+    Link,
   },
-    data() {
-        return {
-            form: this.$inertia.form({
-                name: '',
-                email: '',
-                phone: '',
-                message: '',
-               
-            })
-        }
-    },
+  data() {
+    return {
+      form: this.$inertia.form({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      }),
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>
 section {
   background: #f5f2ff;
-
 
   .container {
     background-image: url("/images/b.png");
@@ -121,32 +119,32 @@ section {
 .banner_b {
   transform: translateX(-50%);
 }
-.line_1{
+.line_1 {
   position: absolute;
-    top: 23rem;
-    left: 8rem;
+  top: 23rem;
+  left: 8rem;
 }
-.line_2{
+.line_2 {
   position: absolute;
-    left: 38%;
-    top: 15rem;
+  left: 38%;
+  top: 15rem;
 }
-.line_3{
+.line_3 {
   position: absolute;
-       top: 15rem;
-    right: 7rem;
-    transform: rotate(27deg);
+  top: 15rem;
+  right: 7rem;
+  transform: rotate(27deg);
 }
-.plane{
-  position:absolute;
+.plane {
+  position: absolute;
   right: 5px;
-   top: 14rem;
+  top: 14rem;
 }
-.chatter{
-  background-image:url('/images/chat.png');
- background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    min-height:300px;
+.chatter {
+  background-image: url("/images/chat.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  min-height: 300px;
 }
 </style>

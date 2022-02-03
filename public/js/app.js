@@ -26964,10 +26964,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: this.$inertia.form({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        message: ""
       })
     };
   }
@@ -32341,7 +32341,7 @@ var _hoisted_1 = {
   "class": "p-4 md:p-8"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bgi grid grid-cols-2 md:grid-cols-4 rounded-3xl flex justify-between md:justify-around items-center p-3\" data-v-a65f07c6><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2\" data-v-a65f07c6><img src=\"/images/onecoin.png\" alt=\"\" class=\"w-8 md:w-16 mb-3 md:mb-0 mb-3 md:mr-3\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>BTC/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2\" data-v-a65f07c6><img src=\"/images/ethereum.png\" alt=\"\" class=\"w-8 md:w-16 md:mr-3 mb-3 md:mb-0\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>BTC/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2\" data-v-a65f07c6><img src=\"/images/btccoin.png\" alt=\"\" class=\"w-8 md:w-16 md:mr-3 mb-3 md:mb-0\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>BTC/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2\" data-v-a65f07c6><img src=\"/images/adacoin.png\" alt=\"\" class=\"w-8 md:w-16 md:mr-3 mb-3 md:mb-0\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>BTC/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bgi grid grid-cols-2 md:grid-cols-4 rounded-3xl flex justify-between md:justify-around items-center p-3\" data-v-a65f07c6><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2 mb-5 md:mb-0\" data-v-a65f07c6><img src=\"/images/onecoin.png\" alt=\"\" class=\"w-8 md:w-16 mb-3 md:mb-0 mb-3 md:mr-3\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between text-sm md:text-base\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>ONE/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2 mb-5 md:mb-0\" data-v-a65f07c6><img src=\"/images/ethereum.png\" alt=\"\" class=\"w-8 md:w-16 md:mr-3 mb-3 md:mb-0\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between\" data-v-a65f07c6><span class=\"text-slate-100 pr-3 text-sm md:text-base\" data-v-a65f07c6>ETH/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2\" data-v-a65f07c6><img src=\"/images/btccoin.png\" alt=\"\" class=\"w-8 md:w-16 md:mr-3 mb-3 md:mb-0\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between text-sm md:text-base\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>BTC/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span><span class=\"flex flex-col md:flex-row items-center justify-center text-center md:text-left p-2\" data-v-a65f07c6><img src=\"/images/adacoin.png\" alt=\"\" class=\"w-8 md:w-16 md:mr-3 mb-3 md:mb-0\" data-v-a65f07c6><span data-v-a65f07c6><span class=\"flex justify-between text-sm md:text-base\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>ADA/USDT</span><span class=\"text-green-300\" data-v-a65f07c6>17.8%</span></span><span class=\"flex justify-between text-sm\" data-v-a65f07c6><span class=\"text-slate-100 pr-3\" data-v-a65f07c6>$43,0000</span><span class=\"text-slate-100\" data-v-a65f07c6>Last 1hr</span></span></span></span></div>", 1);
 
 var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -32404,7 +32404,7 @@ var _hoisted_6 = {
   "class": "mb-5 relative flex flex-col md:flex-row w-full"
 };
 var _hoisted_7 = {
-  "class": "md:w-3/6 md:p-16 mb-5"
+  "class": "md:w-3/6 md:p-16 mb-10 md:mb-5"
 };
 var _hoisted_8 = {
   "class": "mt-4"
@@ -32770,15 +32770,15 @@ var _hoisted_30 = /*#__PURE__*/_withScopeId(function () {
     "class": "ml-auto object-contain",
     alt: ""
   })]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "text-center p-5 bg-blue shadow rounded-lg bg-blue-50 md:absolute md:top-0 mb-3 md:mb-0 md:left-28"
+    "class": "text-center p-5 bg-blue shadow rounded-lg bg-blue-50 md:absolute md:top-0 mb-3 md:mb-0 md:left-28 w-[80%] md:w-auto mx-auto"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-purple-500"
   }, "Multi-digital Asset Wallet"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Learn more")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "text-center p-5 bg-blue shadow rounded-lg bg-blue-50 md:absolute mb-3 md:mb-0 md:top-36"
+    "class": "text-center p-5 bg-blue shadow rounded-lg bg-blue-50 md:absolute mb-3 md:mb-0 md:top-36 w-[80%] md:w-auto mx-auto"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-purple-500"
   }, "Multi-digital Asset Wallet"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Learn more")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "text-center p-5 bg-blue shadow rounded-lg bg-blue-50 md:absolute md:top-72 mb-3 md:mb-0 md:left-72"
+    "class": "text-center p-5 bg-blue shadow rounded-lg bg-blue-50 md:absolute md:top-72 mb-3 md:mb-0 md:left-72 w-[80%] md:w-auto mx-auto"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-purple-500"
   }, "Multi-digital Asset Wallet"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Learn more")])], -1
@@ -32817,7 +32817,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
-            "class": "bg-purple-800 tetx-white"
+            "class": "bg-purple-800 text-white"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [_hoisted_10];
@@ -32835,7 +32835,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
-            "class": "bg-purple-800 tetx-white"
+            "class": "bg-purple-800 text-white"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [_hoisted_16];
@@ -32853,7 +32853,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
-            "class": "bg-purple-800 tetx-white"
+            "class": "bg-purple-800 text-white"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [_hoisted_21];
@@ -32871,7 +32871,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
-            "class": "bg-purple-800 tetx-white"
+            "class": "bg-purple-800 text-white"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [_hoisted_27];
@@ -36219,7 +36219,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Cart = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Cart");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Popover, {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["h-16 w-full top-0 z-30 transition ease-in-out duration-300", $data.active ? ' fixed shadow  bg-[#F5F2FF]' : ' bg-transparent absolute'])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["h-16 w-full top-0 z-30 transition ease-in-out duration-300", $data.active ? ' fixed shadow  bg-white' : ' bg-transparent absolute'])
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -36252,7 +36252,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-full hover:bg-purple-500 text-sm h-full flex items-center justify-center text-purple-700 hover:text-purple-100 border-b-4 border-transparent hover:border-purple-300 font-bold", {
               'text-purple-100 bg-purple-700 border-purple-500': _ctx.$page.url === '/marketplace',
               'bg-transparent': !$data.active,
-              'bg-[#F5F2FF]': $data.active
+              'bg-white': $data.active
             }])
           }, " Marketplace ", 2
           /* CLASS */
@@ -36266,7 +36266,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-full hover:bg-purple-500 text-sm h-full flex items-center justify-center text-purple-700 hover:text-purple-100 border-b-4 border-transparent hover:border-purple-300 font-bold", {
               'text-purple-100 bg-purple-700 border-purple-500': _ctx.$page.url === '/#about',
               'bg-transparent': !$data.active,
-              'bg-[#F5F2FF]': $data.active
+              'bg-white': $data.active
             }])
           }, " About ", 2
           /* CLASS */
@@ -36274,7 +36274,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-full hover:bg-purple-500 text-sm h-full flex items-center justify-center text-purple-700 hover:text-purple-100 border-b-4 border-transparent hover:border-purple-300 font-bold", {
               'text-purple-100 bg-purple-700 border-purple-500': _ctx.$page.url === '/blog',
               'bg-transparent': !$data.active,
-              'bg-[#F5F2FF]': $data.active
+              'bg-white': $data.active
             }])
           }, " Blog ", 2
           /* CLASS */
@@ -36282,7 +36282,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-full hover:bg-purple-500 text-sm h-full flex items-center justify-center text-purple-700 hover:text-purple-100 border-b-4 border-transparent hover:border-purple-300 font-bold", {
               'text-purple-100 bg-purple-700 border-purple-500': _ctx.$page.url === '/#contact',
               'bg-transparent': !$data.active,
-              'bg-[#F5F2FF]': $data.active
+              'bg-white': $data.active
             }])
           }, " Contact ", 2
           /* CLASS */
@@ -40141,7 +40141,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#coinbanner div.bgi[data-v-a65f07c6] {\n  background-image: url(\"/images/coinbanner.png\");\n  height: 200px;\n  background-size: cover;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#coinbanner div.bgi[data-v-a65f07c6] {\n  background-image: url(\"/images/coinbanner.png\");\n  min-height: 200px;\n  background-size: cover;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
