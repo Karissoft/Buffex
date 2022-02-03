@@ -1,6 +1,7 @@
 
 
 <template>
+<Head title="Products" />
   <div class="min-h-screen bg-purple-50">
     <Navigation />
     <header class="bg-white shadow">
@@ -38,7 +39,7 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, Head } from "@inertiajs/inertia-vue3";
 
 import Products from "@/Dashboard/Products/index";
 import Navigation from './Navigation.vue'
@@ -76,6 +77,7 @@ export default {
     Navigation,
     Products,
     Link,
+    Head
   },
   setup() {
     return {

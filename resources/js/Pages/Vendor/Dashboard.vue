@@ -1,6 +1,7 @@
 
 
 <template>
+<Head title="Dashboard" />
   <div class="min-h-screen bg-purple-50">
 <Navigation />
 
@@ -39,7 +40,7 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link ,Head} from "@inertiajs/inertia-vue3";
 import Index from "@/Dashboard/index";
 
 
@@ -71,6 +72,7 @@ export default {
     Index,
     Navigation,
     Link,
+    Head
   },
   setup() {
     return {

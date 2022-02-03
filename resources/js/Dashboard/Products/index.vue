@@ -128,7 +128,7 @@
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">
+                  <div class="text-sm text-gray-900 text-ellipsis overflow-hidden ... w-[160px]">
                     {{ product.description }}
                   </div>
                 </td>

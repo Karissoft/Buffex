@@ -69,7 +69,7 @@
                     <span class="sr-only">Open user menu</span>
                     <img
                       class="h-8 w-8 rounded-full"
-                      :src="user.image"
+                      :src="$page.props.auth.user.image"
                       alt=""
                     />
                   </MenuButton>
@@ -241,12 +241,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import Index from "@/Dashboard/index";
 import Products from "@/Dashboard/Products/index";
 import Orders from "@/Dashboard/orders";
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  image:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: true },
   { name: "Products", href: "/products", current: false },
@@ -279,7 +274,7 @@ export default {
   },
   setup() {
     return {
-      user,
+
       navigation,
       userNavigation,
     };

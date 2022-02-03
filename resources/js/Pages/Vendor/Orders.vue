@@ -1,6 +1,7 @@
 
 
 <template>
+<Head title="Orders" />
   <div class="min-h-screen bg-purple-50">
    <Navigation />
     <header class="bg-white shadow">
@@ -8,7 +9,7 @@
 
         <h1
           class="text-xl md:text-3xl font-bold text-gray-900"
-         
+
         >
           Orders
         </h1>
@@ -38,7 +39,7 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link,Head } from "@inertiajs/inertia-vue3";
 
 import Orders from "@/Dashboard/orders";
 
@@ -70,6 +71,7 @@ export default {
   Navigation,
     Orders,
     Link,
+    Head
   },
   setup() {
     return {
