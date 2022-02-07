@@ -3,7 +3,7 @@
     <div >
 <TopBar :auth="auth"/>
   </div>
-  <div class="flex flex-col md:flex-row">
+  <div class="flex flex-col md:flex-row main_body">
    <div class="md:w-1/6"> <SideBar/></div>
     <div class="md:w-5/6"> <MainPage/></div>
   </div>
@@ -23,5 +23,7 @@ components: {
 }
 </script>
 <style lang="">
-
+.main_body{
+  height:calc(100vh - 64px);
+}
 </style>

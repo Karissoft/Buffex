@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="px-8 py-10 hidden md:block h-[90vh] overflow-auto">
+  <div class="px-8 py-10 hidden md:block h-full overflow-auto">
 
    <div class="flex justify-between py-2 border-b-2 border-purple-500 mb-4">
     <span class="font-bold text-sm text-purple-900" >Filter</span>
