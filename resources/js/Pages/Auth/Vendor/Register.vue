@@ -14,11 +14,14 @@
             <BreezeLabel for="email" value="Email" />
             <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
         </div>
-          <div>
+       <div class="mt-4">
             <BreezeLabel for="address" value="Address" />
             <BreezeInput id="address" type="text" class="mt-1 block w-full" v-model="form.address" required autofocus autocomplete="address" />
         </div>
-
+<div class="mt-4">
+            <BreezeLabel for="phone" value="Phone number" />
+            <BreezeInput id="phone" type="number" class="mt-1 block w-full" v-model="form.phone_no" required autofocus autocomplete="phone" />
+        </div>
         <div class="mt-4">
             <BreezeLabel for="password" value="Password" />
             <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
@@ -75,7 +78,8 @@ export default {
                 address:'',
                 terms: false,
                 role_id:2,
-                image:''
+                image:'',
+                phone_no:''
             }),
             cloudinary: {
         uploadPreset: "arudovwen_preset",

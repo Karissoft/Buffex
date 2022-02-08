@@ -9,6 +9,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUserController;
 
 /*
@@ -124,5 +125,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/get-products', [ProductController::class,'allproducts']);
+
+Route::get('/get-users', [RegisteredUserController::class, 'getusers']);
+Route::get('/get-vendors', [RegisteredUserController::class, 'getvendors']);
+
 
 require __DIR__ . '/auth.php';

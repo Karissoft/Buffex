@@ -22,7 +22,7 @@ components: {
 }
 }
 </script>
-<style lang="">
+<style lang="scss" scoped>
 .main_body{
   height:calc(100vh - 64px);
 }

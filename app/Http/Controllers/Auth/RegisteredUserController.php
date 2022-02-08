@@ -76,6 +76,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'image' => $request->image,
+            'address' => $request->address,
+            'phone_no' => $request->phone_no,
             'role_id' => 2,
             'password' => Hash::make($request->password),
         ]);
@@ -108,6 +110,14 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::HOME);
     }
     public function update(Request $request, User $user){
-        
+
+    }
+    public function getusers()
+    {
+        return User::where('role_id',3)->paginate(15);
+    }
+    public function getvendors()
+    {
+        return User::where('role_id', 2)->paginate(15);
     }
 }
