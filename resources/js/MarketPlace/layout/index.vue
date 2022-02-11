@@ -1,8 +1,9 @@
 <template lang="">
-<div  class="w-screen h-screen bg-purple-50 overflow-auto">
+<div  class="w-screen h-screen bg-purple-100 overflow-auto">
     <div >
 <TopBar :auth="auth"/>
   </div>
+  
   <div class="flex flex-col md:flex-row main_body">
    <div class="md:w-1/6"> <SideBar/></div>
     <div class="md:w-5/6"> <MainPage/></div>

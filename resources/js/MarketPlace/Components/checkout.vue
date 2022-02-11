@@ -21,41 +21,15 @@
                   <label
                     for="first-name"
                     class="block text-sm font-medium text-gray-700"
-                    >First name</label
+                    >Full name</label
                   >
                   <input
-                  required
-                    v-model="form.firstName"
+                    required
+                    v-model="form.name"
                     type="text"
                     name="first-name"
                     id="first-name"
                     autocomplete="given-name"
-                    class="
-                      mt-1
-                      focus:ring-purple-500 focus:border-purple-500
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
-                  />
-                </div>
-
-                <div class="col-span-6 sm:col-span-3">
-                  <label
-                    for="last-name"
-                    class="block text-sm font-medium text-gray-700"
-                    >Last name</label
-                  >
-                  <input
-                  required
-                    v-model="form.lastName"
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autocomplete="family-name"
                     class="
                       mt-1
                       focus:ring-purple-500 focus:border-purple-500
@@ -76,7 +50,8 @@
                     >Email address</label
                   >
                   <input
-                  required
+                    readonly
+                    required
                     type="text"
                     v-model="form.email"
                     name="email-address"
@@ -101,7 +76,7 @@
                     >Phone number</label
                   >
                   <input
-                  required
+                    required
                     v-model="form.phone"
                     type="tel"
                     name="phone"
@@ -159,7 +134,7 @@
                     >Delivery address</label
                   >
                   <input
-                  required
+                    required
                     v-model="form.address"
                     type="text"
                     name="street-address"
@@ -185,7 +160,7 @@
                     >City</label
                   >
                   <input
-                  required
+                    required
                     v-model="form.city"
                     type="text"
                     name="city"
@@ -211,7 +186,7 @@
                     >State / Province</label
                   >
                   <input
-                  required
+                    required
                     v-model="form.state"
                     type="text"
                     name="region"
@@ -237,7 +212,7 @@
                     >ZIP / Postal code</label
                   >
                   <input
-                  required
+                    required
                     type="text"
                     name="postal-code"
                     id="postal-code"
@@ -295,7 +270,7 @@
                 Order Information
               </h3>
             </div>
-            <div class="mt-8">
+            <div class="mt-8 overflow-y-auto h-[50vh]">
               <div class="flow-root">
                 <ul role="list" class="-my-6 divide-y divide-gray-200">
                   <li
@@ -306,8 +281,8 @@
                     <div
                       class="
                         flex-shrink-0
-                        w-24
-                        h-24
+                        w-20
+                        h-20
                         border border-gray-200
                         rounded-md
                         overflow-hidden
@@ -362,18 +337,32 @@
                 <p>Subtotal</p>
                 <p>{{ currency(total) }}</p>
               </div>
-              <div
-                class="flex justify-between text-base font-medium text-gray-900"
+            </div>
+            <div class="col-span-3 mb-4">
+              <select
+                v-model="form.currency"
+                id="currency"
+                name="currency"
+                autocomplete="country-name"
+                class="
+                  mt-1
+                  py-2
+                  px-3
+                  border border-gray-300
+                  bg-white
+                  rounded-md
+                  shadow-sm
+                  focus:outline-none
+                  focus:ring-purple-500
+                  focus:border-purple-500
+                  sm:text-sm
+                "
               >
-                <p>Shipping</p>
-                <p>$262.00</p>
-              </div>
-              <div
-                class="flex justify-between text-base font-medium text-gray-900"
-              >
-                <p>Taxes</p>
-                <p>$262.00</p>
-              </div>
+                <option value="" disabled>-Select Cryptocurrency-</option>
+                <option :value="item" v-for="item in currencies" :key="item">
+                  {{ item }}
+                </option>
+              </select>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
               <button
@@ -396,6 +385,7 @@
                   focus:ring-offset-2
                   focus:ring-purple-500
                 "
+                :disabled="!form.currency"
               >
                 Proceed to payment
               </button>
@@ -407,17 +397,16 @@
   </div>
 </template>
 <script>
-
 import { StarIcon } from "@heroicons/vue/solid";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 import TopBar from "../layout/topbar.vue";
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
 const breadcrumbs = [
   { id: 1, name: "Home", href: "/home" },
   { id: 2, name: "Marketplace", href: "/" },
 ];
 const reviews = { href: "#", average: 4, totalCount: 117 };
-
+const currencies = ["BTC", "ETH"];
 export default {
   components: {
     RadioGroup,
@@ -425,22 +414,23 @@ export default {
     RadioGroupOption,
     StarIcon,
     TopBar,
-    BreezeValidationErrors
+    BreezeValidationErrors,
   },
-   inject: ["emitter","currency"],
+  inject: ["emitter", "currency"],
   setup() {
     const cartItems = JSON.parse(localStorage.getItem("cartItems"));
     return {
       cartItems,
       reviews,
       breadcrumbs,
+      currencies,
     };
   },
   data() {
     return {
       form: this.$inertia.form({
-        firstName: "",
-        lastName: "",
+        name: "",
+        currency: "",
         phone: "",
         country: "",
         address: "",
@@ -453,6 +443,10 @@ export default {
         cartItems: [],
       }),
     };
+  },
+  mounted() {
+    this.form.email = this.$page.props.auth.user.email;
+    this.form.name = this.$page.props.auth.user.name;
   },
   computed: {
     total() {
@@ -469,8 +463,11 @@ export default {
     submit() {
       this.form.total = this.total;
       this.form.cartItems = this.cartItems;
-      this.form.post("/orders", {
-        onFinish: () => this.form.reset("password"),
+
+      axios.post("/orders", this.form).then((res) => {
+        if (res.status == 200) {
+         window.location.href = res.data.url;
+        }
       });
     },
   },

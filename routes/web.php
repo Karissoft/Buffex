@@ -55,6 +55,7 @@ Route::get('/contact', function () {
 Route::get('/transaction', function () {
     return Inertia::render('Transaction', []);
 });
+Route::get('verify-transaction/{txn_id}', [OrderController::class, 'verify']);
 Route::get('/category', function () {
     return Inertia::render('Categories', []);
 });

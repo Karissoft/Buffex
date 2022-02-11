@@ -10,7 +10,7 @@
       transition
       ease-in-out
       duration-300
-      bg-purple-100
+      bg-purple-50
     "
   >
     <div class="px-4 sm:px-6 mx-auto h-full">
