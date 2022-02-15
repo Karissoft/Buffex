@@ -4,7 +4,7 @@
     <Dialog
       as="div"
       class="fixed inset-0 overflow-hidden"
-      style="z-index:999"
+      style="z-index: 999"
       @close="open = false"
     >
       <div class="absolute inset-0 overflow-hidden">
@@ -104,14 +104,40 @@
                                   <a :href="product.href">
                                     {{ product.name }}
                                   </a>
-
                                 </h3>
+                                <small class=" text-gray-400 mb-0 leading-3 text-center">
+                                  <span class="text-xs text-muted">Unit price</span> <br>
+                                <span class="text-xs">  {{ currency(product.price) }}</span> <br>
+                                  <span class="text-xs"  v-if="rate">  ${{(product.price/rate).toFixed(2) }}</span>
+                                </small>
 
-                                <p class="ml-4">
-                                  {{ currency(product.price) }}
-                                </p>
+                                <div class="leading-3 ml-3">
+                                    <span class="text-xs text-muted">Subtotal</span>
+                                  <p
+                                    class="
+                                      text-sm
+                                      font-medium
+                                      text-gray-900
+                                      mb-0
+                                    "
+                                  >
+                                    {{
+                                      currency(product.price * product.quantity)
+                                    }}
+                                  </p>
+                                  <small
+                                    class="text-muted text-xs dollar"
+                                    v-if="rate"
+                                    >${{
+                                      (
+                                        (product.price * product.quantity) /
+                                        rate
+                                      ).toFixed(2)
+                                    }}</small
+                                  >
+                                </div>
                               </div>
-                               <p class="mt-1 text-sm text-gray-500">
+                              <p class="mt-1 text-sm text-gray-500">
                                 {{ product.user.name }}
                               </p>
                             </div>
@@ -126,8 +152,7 @@
                               <p class="text-gray-500">Qty</p>
 
                               <span class="flex justify-center items-center">
-                                <span
-                                 @click="reducecart(product.id)"
+                                <span @click="reducecart(product.id)"
                                   ><MinusCircleIcon
                                     class="
                                       cursor-pointe
@@ -140,8 +165,7 @@
                                   {{ product.quantity }}</span
                                 >
 
-                                <span
-                                @click="addcart(product.id)"
+                                <span @click="addcart(product.id)"
                                   ><PlusCircleIcon
                                     class="
                                       w-5
@@ -153,7 +177,7 @@
 
                               <div class="flex">
                                 <button
-                                 @click="removefromcart(product.id)"
+                                  @click="removefromcart(product.id)"
                                   type="button"
                                   class="
                                     font-medium
@@ -170,12 +194,15 @@
                       </ul>
                       <div v-if="!cartItems.length" class="text-center py-40">
                         <p>Your cart is empty!</p>
-                         </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="border-t border-gray-200 py-6 px-4 sm:px-6" v-if="cartItems.length">
+                <div
+                  class="border-t border-gray-200 py-6 px-4 sm:px-6"
+                  v-if="cartItems.length"
+                >
                   <div
                     class="
                       flex
@@ -186,12 +213,19 @@
                     "
                   >
                     <p>Subtotal</p>
-                    <p>{{currency(total)}}</p>
+                    <div class="leading-3">
+                      <p class="text-sm font-medium text-gray-900 mb-0">
+                        {{ currency(total) }}
+                      </p>
+                      <small class="text-muted text-xs dollar" v-if="rate"
+                        >${{ (total / rate).toFixed(2) }}</small
+                      >
+                    </div>
                   </div>
                   <p class="mt-0.5 text-sm text-gray-500">
                     Shipping and taxes calculated at checkout.
                   </p>
-                  <div class="mt-6" >
+                  <div class="mt-6">
                     <a
                       href="/checkout"
                       class="
@@ -268,63 +302,79 @@ export default {
     PlusCircleIcon,
     MinusCircleIcon,
   },
- inject: ["emitter","currency"],
+  inject: ["emitter", "currency"],
   props: ["open"],
   setup() {
     const open = ref(false);
 
-    return {
-
-    };
+    return {};
   },
   data() {
     return {
       cartItems: [],
+      rate: null,
     };
   },
   created() {
-     this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
-    this.emitter.on("addtocart", () => {
     this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    this.emitter.on("addtocart", () => {
+      this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     });
+    this.convertCurrency("USD", "NGN");
   },
-  computed:{
-    total(){
-      if(!this.cartItems.length) return 0
-     return this.cartItems.map(item => item.price * item.quantity).reduce((a,b)=> a+b)
-    }
-  },
-  watch:{
- open:'getcart'
-  },
-  methods:{
-    getcart(){
-
-        this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  computed: {
+    total() {
+      if (!this.cartItems.length) return 0;
+      return this.cartItems
+        .map((item) => item.price * item.quantity)
+        .reduce((a, b) => a + b);
     },
-    removefromcart(id){
-      this.cartItems= this.cartItems.filter(item=>item.id !==id)
-      localStorage.setItem('cartItems', JSON.stringify(this.cartItems.length?this.cartItems:[]))
-       this.emitter.emit('updatecart')
+  },
+  watch: {
+    open: "getcart",
+  },
+  methods: {
+    convertCurrency(fromCurrency, toCurrency) {
+      var apiKey = "53f033dd7da6dbc5695d";
+      var query = fromCurrency + "_" + toCurrency;
+      var url =
+        "https://free.currconv.com/api/v7/convert?q=" +
+        query +
+        "&compact=ultra&apiKey=" +
+        apiKey;
+      axios.get(url).then((res) => {
+        this.rate = res.data.USD_NGN;
+      });
     },
-    reducecart(id){
-      this.cartItems= this.cartItems.map(item=>{
-        if(item.id == id && item.quanity > 1){
-          item.quanity = item.quantity--
+    getcart() {
+      this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    },
+    removefromcart(id) {
+      this.cartItems = this.cartItems.filter((item) => item.id !== id);
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(this.cartItems.length ? this.cartItems : [])
+      );
+      this.emitter.emit("updatecart");
+    },
+    reducecart(id) {
+      this.cartItems = this.cartItems.map((item) => {
+        if (item.id == id && item.quanity > 1) {
+          item.quanity = item.quantity--;
         }
-         return item
-      })
-      localStorage.setItem('cartItems', JSON.stringify(this.cartItems))
+        return item;
+      });
+      localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
     },
-    addcart(id){
-       this.cartItems= this.cartItems.map(item=>{
-        if(item.id ==id){
-          item.quanity = item.quantity++
+    addcart(id) {
+      this.cartItems = this.cartItems.map((item) => {
+        if (item.id == id) {
+          item.quanity = item.quantity++;
         }
-        return item
-      })
-       localStorage.setItem('cartItems', JSON.stringify(this.cartItems))
-    }
-  }
+        return item;
+      });
+      localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
+    },
+  },
 };
 </script>

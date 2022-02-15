@@ -51,7 +51,7 @@ class ProductController extends Controller
     public function allproducts()
     {
 
-        return Product::with('user')->inRandomOrder()->paginate(20);
+        return Product::with('user')->inRandomOrder()->paginate(50);
     }
 
     public function getstoreproducts()
@@ -105,5 +105,20 @@ class ProductController extends Controller
             'products' => $products,
             'flash'=> ['message'=>'success']
         ]);
+    }
+
+    public function searchproducts(Request $request){
+        $query = $request->query('query');
+
+        if($request->has('query') && $query){
+
+            return Product::query()->with('user')->whereLike('name', $query)->paginate(50);
+
+        }
+        return response()->json([
+            'status' => 'success',
+            'message' => 'no product found'
+        ]);
+
     }
 }

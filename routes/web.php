@@ -129,6 +129,6 @@ Route::get('/get-products', [ProductController::class,'allproducts']);
 
 Route::get('/get-users', [RegisteredUserController::class, 'getusers']);
 Route::get('/get-vendors', [RegisteredUserController::class, 'getvendors']);
-
+Route::get('/searchproducts', [ProductController::class, 'searchproducts']);
 
 require __DIR__ . '/auth.php';

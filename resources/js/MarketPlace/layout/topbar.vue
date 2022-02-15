@@ -548,18 +548,20 @@ const callsToAction = [
 ];
 const resources = [
   {
-    name: "Help Center",
-    description:
-      "Get all of your questions answered in our forums or contact support.",
-    href: "#",
-    icon: SupportIcon,
+    name: "Instant Pay",
+    href: "https://buffex.co/instant-payout",
   },
-
   {
-    name: "Security",
-    description: "Understand how we take your privacy seriously.",
-    href: "#",
-    icon: ShieldCheckIcon,
+    name: "About",
+    href: "/#about",
+  },
+  {
+    name: "Blog",
+    href: "https://blog.buffex.co",
+  },
+  {
+    name: "Contact",
+    href: "/#contact",
   },
 ];
 const recentPosts = [

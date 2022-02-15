@@ -4,7 +4,8 @@
       class="
         max-w-2xl
         mx-auto
-        py-12
+        py-8
+        md:py-12
         px-4
         sm:py-12 sm:px-6
         lg:max-w-7xl lg:px-8
@@ -13,31 +14,62 @@
       "
     >
       <div class="flex flex-col md:flex-row justify-between mb-4">
-        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 mb-4 md:mb-0">
+        <h2
+          class="
+            text-2xl
+            font-extrabold
+            tracking-tight
+            text-gray-900
+            mb-4
+            md:mb-0
+          "
+        >
           Products
         </h2>
 
-          <div class="w-full md:w-[300px]" >
-            <input
-              placeholder="Search product name"
-               type="search"
-               v-model="search"
-              class="
-                form-input
-                px-3
-                py-1
-                rounded-md
-                mt-1
-                focus:ring-purple-100 focus:border-purple-100
-                block
-                w-full
-                shadow-sm
-                sm:text-sm
-                border-gray-300
-                rounded-md
-              "
-            />
-          </div>
+        <div
+          class="
+            w-full
+            md:w-[300px]
+            h-[40px]
+            flex
+            rounded-md
+            shadow-sm
+            overflow-hidden
+          "
+        >
+          <input
+            placeholder="Search product name"
+            type="search"
+            v-model="query"
+            class="
+              form-input
+              px-3
+              py-1
+              w-[86%]
+              focus:ring-purple-100 focus:border-purple-100
+              block
+              w-full
+              sm:text-sm
+              border-gray-300
+            "
+          />
+          <button
+            @click="searchproducts"
+            class="
+              bg-purple-500
+              text-white
+              py-4
+              px-1
+              w-[14%]
+              flex
+              items-center
+              justify-center
+            "
+          >
+            <SearchIcon class="w-5 h-5 text-white" />
+          </button>
+        </div>
       </div>
 
       <div
@@ -49,6 +81,7 @@
           lg:grid-cols-4
           xl:gap-x-8
         "
+        v-if="filteredproducts.length"
       >
         <div
           v-for="product in filteredproducts"
@@ -83,15 +116,22 @@
           <div class="mt-4 flex justify-between mb-3">
             <div>
               <h3 class="text-sm text-gray-700">
- <Link :href="`/product/${product.id}`">
+                <Link :href="`/product/${product.id}`">
                   <span aria-hidden="true" class="" />
                   {{ product.name }}
- </Link>
+                </Link>
               </h3>
 
               <p class="mt-1 text-sm text-gray-500">{{ product.user.name }}</p>
             </div>
-            <p class="text-sm font-medium text-gray-900">{{ currency(product.price) }}</p>
+            <div class="leading-3">
+              <p class="text-sm font-medium text-gray-900 mb-0">
+                {{ currency(product.price) }}
+              </p>
+              <small class="text-muted text-xs dollar" v-if="rate"
+                >${{ (product.price / rate).toFixed(2) }}</small
+              >
+            </div>
           </div>
 
           <button
@@ -125,7 +165,8 @@
           </button>
         </div>
       </div>
-      <div class="pagination text-center mt-8" v-show="last_page > 1 ">
+
+      <div class="pagination text-center mt-8" v-show="last_page > 1">
         <span class="flex justify-center items-center">
           <span
             ><ArrowCircleLeftIcon
@@ -166,22 +207,26 @@ import {
   ArrowCircleLeftIcon,
   ArrowCircleRightIcon,
 } from "@heroicons/vue/solid";
-import { SortAscendingIcon, SortDescendingIcon } from "@heroicons/vue/solid";
-
-import { usePage } from "@inertiajs/inertia-vue3";
+import {
+  SortAscendingIcon,
+  SortDescendingIcon,
+  SearchIcon,
+} from "@heroicons/vue/solid";
 import axios from "axios";
+import _ from "lodash";
+import { ref, onMounted, computed, watch } from "vue";
 export default {
-  inject: ["emitter","currency"],
+  inject: ["emitter", "currency"],
   computed: {
-
     filteredproducts() {
-        var products = this.products.filter(item=>item.name.toLowerCase().includes(this.search.toLowerCase()));
+      var products = this.products;
+
       if (this.filterData) {
         if (
           this.filterData.storeIds.length ||
           this.filterData.categoryIds.length
         ) {
-         return products.filter(
+          return products.filter(
             (item) =>
               this.filterData.storeIds.includes(item.user_id) ||
               this.filterData.categoryIds.includes(item.category_id)
@@ -221,24 +266,24 @@ export default {
     ArrowCircleRightIcon,
     SortAscendingIcon,
     SortDescendingIcon,
-
+    SearchIcon,
     Link,
   },
   data() {
     return {
       filterData: null,
       cartItems: [],
-      current_page: 1,
-      products: [],
-      last_page:null,
-      search:''
+      // current_page: 1,
+      // products: [],
+      // last_page: null,
+      // query: "",
+      search: "",
+      rate: null,
     };
   },
-  watch: {
-    current_page: "getproducts",
-  },
+
   created() {
-    this.getproducts();
+    this.convertCurrency("USD", "NGN");
   },
   mounted() {
     this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -249,26 +294,79 @@ export default {
       this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     });
   },
-  methods: {
-    getproducts() {
-      axios
-        .get(`get-products?page=${this.current_page}`)
-        .then((res) => {
-          if (res.status === 200) {
+  setup() {
+    const products = ref([]);
+    const current_page = ref(1);
+    const last_page = ref(1);
+    const query = ref("");
+    onMounted(() => {
+      axios.get(`get-products?page=${current_page}`).then((res) => {
+        if (res.status === 200) {
+          products.value = res.data.data;
+          last_page.value = res.data.last_page;
+        }
+      });
+    });
 
-            this.products = res.data.data;
-            this.last_page = res.data.last_page;
-          }
-        });
+    function next() {
+      if (current_page == last_page) return;
+      current_page.value++;
+    }
+    function prev() {
+      if (current_page == 1) return;
+      current_page.value--;
+    }
+
+    function searchproducts() {
+      axios.get(`searchproducts?query=${query.value}`).then((res) => {
+        if (res.status === 200) {
+          products.value = res.data.data;
+          last_page.value = res.data.last_page;
+        }
+      });
+    }
+    function getproducts(page) {
+      axios.get(`get-products?page=${page}`).then((res) => {
+        if (res.status === 200) {
+          products.value = res.data.data;
+          last_page.value = res.data.last_page;
+        }
+      });
+    }
+
+    watch(current_page, (current_page, prevCurrent_page) => {
+      getproducts(current_page);
+    });
+    watch(query, (query, prevQuery) => {
+      if (query === "") {
+        getproducts(1);
+      }
+    });
+
+    return {
+      products,
+      last_page,
+      next,
+      prev,
+      query,
+      current_page,
+      searchproducts,
+    };
+  },
+  methods: {
+    convertCurrency(fromCurrency, toCurrency) {
+      var apiKey = "53f033dd7da6dbc5695d";
+      var query = fromCurrency + "_" + toCurrency;
+      var url =
+        "https://free.currconv.com/api/v7/convert?q=" +
+        query +
+        "&compact=ultra&apiKey=" +
+        apiKey;
+      axios.get(url).then((res) => {
+        this.rate = res.data.USD_NGN;
+      });
     },
-    next() {
-      if (this.current_page == this.last_page) return;
-      this.current_page++;
-    },
-    prev() {
-      if (this.current_page == 1) return;
-      this.current_page--;
-    },
+
     addtocart(product) {
       this.emitter.emit("addtocart", product);
       this.cartItems = JSON.parse(localStorage.getItem("cartItems"));

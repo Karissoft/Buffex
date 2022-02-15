@@ -311,9 +311,37 @@
                               {{ product.name }}
                             </a>
                           </h3>
-                          <p class="ml-4">
-                            {{ product.price }}
-                          </p>
+                          <small class=" text-gray-400 mb-0 leading-3 text-center">
+                                  <span class="text-xs text-muted">Unit price</span> <br>
+                                <span class="text-xs">  {{ currency(product.price) }}</span> <br>
+                                 <span class="text-xs"  v-if="rate">  ${{(product.price/rate).toFixed(2) }}</span>
+                                </small>
+
+                                <div class="leading-3 ml-3">
+                                    <span class="text-xs text-muted">Subtotal</span>
+                                  <p
+                                    class="
+                                      text-sm
+                                      font-medium
+                                      text-gray-900
+                                      mb-0
+                                    "
+                                  >
+                                    {{
+                                      currency(product.price * product.quantity)
+                                    }}
+                                  </p>
+                                  <small
+                                    class="text-muted text-xs dollar"
+                                    v-if="rate"
+                                    >${{
+                                      (
+                                        (product.price * product.quantity) /
+                                        rate
+                                      ).toFixed(2)
+                                    }}</small
+                                  >
+                                </div>
                         </div>
                         <p class="mt-1 text-sm text-gray-500">
                           {{ product.user.name }}
@@ -335,7 +363,12 @@
                 class="flex justify-between text-base font-medium text-gray-900"
               >
                 <p>Subtotal</p>
-                <p>{{ currency(total) }}</p>
+                <div class="leading-3">
+              <p class="text-sm font-medium text-gray-900 mb-0">
+                {{ currency(total) }}
+              </p>
+              <small class="text-muted text-xs dollar" v-if="rate">${{(total/rate).toFixed(2)}}</small>
+            </div>
               </div>
             </div>
             <div class="col-span-3 mb-4">
@@ -401,6 +434,7 @@ import { StarIcon } from "@heroicons/vue/solid";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 import TopBar from "../layout/topbar.vue";
 import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
+import axios from 'axios';
 const breadcrumbs = [
   { id: 1, name: "Home", href: "/home" },
   { id: 2, name: "Marketplace", href: "/" },
@@ -441,8 +475,14 @@ export default {
         email: "",
         total: null,
         cartItems: [],
+
       }),
+
+        rate:null,
     };
+  },
+  created(){
+     this.convertCurrency("USD", "NGN");
   },
   mounted() {
     this.form.email = this.$page.props.auth.user.email;
@@ -452,16 +492,25 @@ export default {
     total() {
       if (!this.cartItems.length) return 0;
       return this.cartItems
-        .map((item) => item.price)
-        .reduce((a, b) => {
-          return a + b;
-        }, 0);
+        .map((item) => item.price * item.quantity)
+        .reduce((a, b) => a + b);
     },
   },
-
   methods: {
+     convertCurrency(fromCurrency, toCurrency) {
+      var apiKey = "53f033dd7da6dbc5695d";
+      var query = fromCurrency + "_" + toCurrency;
+      var url =
+        "https://free.currconv.com/api/v7/convert?q=" +
+        query +
+        "&compact=ultra&apiKey=" +
+        apiKey;
+      axios.get(url).then((res) => {
+        this.rate = res.data.USD_NGN;
+      });
+    },
     submit() {
-      this.form.total = this.total;
+      this.form.total = this.total/this.rate;
       this.form.cartItems = this.cartItems;
 
       axios.post("/orders", this.form).then((res) => {
