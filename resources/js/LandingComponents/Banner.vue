@@ -13,8 +13,8 @@
             <BreezeButton class="bg-purple-800 text-white">Register now</BreezeButton>
           </div>
       </div>
-        <div class="right_banner hidden md:block md:w-3/6 h-full p-5 md:pt-16 pl-14 relative flex items-center">
-       <div class="">
+        <div class="right_banner hidden md:flex md:w-3/6 h-full p-5 md:pt-16 pl-14 relative flex items-center ">
+       <div class=" w-100">
           <!-- <div class="search flex items-center">
 
             <BreezeInput id="search" type="text" placeholder="Type in search" class="mt-1 block w-full mr-5 " required  autocomplete="search" />
@@ -38,6 +38,7 @@
                                     </template>
                                 </BreezeDropdown>
         </div> -->
+
                 <div class="flex justify-between items-center w-3/6">
                   <span>
                     <img  src="/images/banner1.png" class="w-28 hover:motion-safe:animate-wiggle"/>

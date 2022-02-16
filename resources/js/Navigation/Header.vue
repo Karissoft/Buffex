@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <div class="-mr-2 -my-2 md:hidden flex">
+        <div class="-mr-2 -my-2 lg:hidden flex">
           <span class="px-4 py-2 relative" @click="open = !open"
             ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
             <span
@@ -57,7 +57,7 @@
         </div>
         <PopoverGroup
           as="nav"
-          class="hidden md:flex justiy-between items-center w-[45%]"
+          class="hidden lg:flex justiy-between items-center w-[50%]"
         >
           <a
             href="/marketplace"
@@ -250,7 +250,7 @@
             </div>
           </a>
         </PopoverGroup>
-        <div class="hidden md:flex items-center justify-end">
+        <div class="hidden lg:flex items-center justify-end">
           <a
             v-if="!$page.props.auth.user"
             href="/login"
@@ -386,7 +386,7 @@
           transition
           transform
           origin-top-right
-          md:hidden
+          lg:hidden
           z-40
         "
       >
@@ -501,7 +501,7 @@
               </p>
             </div>
             <div
-              class="md:hidden pt-4 pb-1 border-t border-gray-200"
+              class="lg:hidden pt-4 pb-1 border-t border-gray-200"
               v-if="$page.props.auth.user"
             >
               <div class="">
