@@ -9,12 +9,14 @@ use App\Models\Payment;
 use App\Models\OrderHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
     public function generateUniqueCode()
     {
+        $code = null;
         do {
             $code = random_int(10000000, 99999999);
         } while (Order::where("order_no", "=", $code)->first());
@@ -28,7 +30,22 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         return  DB::transaction(function () use ($request) {
-            $user = auth()->user();
+            $user = User::firstOrNew(
+                ['email', $request->email],
+                [
+                    'name' => $request->name,
+                    'address' => $request->address,
+                    'city' => $request->city,
+                    'state' =>  $request->state,
+                    'phone_no' =>  $request->phone,
+                    'country' =>  $request->country,
+                    'password' =>Hash::make('default'),
+                    'role_id'=>3
+                ]
+
+            );
+            $user->save();
+            
             $usercart = $request->cartItems;
 
             $order = new Order();
@@ -90,7 +107,7 @@ class OrderController extends Controller
             //   &api_key=SECRET_KEY
             $amount = $request->total;
             $apikey = '3EED-2398-ADK';
-              $response =   Http::get('https://buffex.co/api/create-invoice', [
+            $response =   Http::get('https://buffex.co/api/create-invoice', [
                 'source_amount' => $amount,
                 'order_number' => $order->order_no,
                 'currency' => $request->currency,
@@ -126,18 +143,18 @@ class OrderController extends Controller
     {
     }
 
-    public function verify( $txn_id)
+    public function verify($txn_id)
     {
         $payment = Payment::where('transactionRef', $txn_id)->first();
         $payment->status = 'paid';
-        $payment->message= 'successful';
+        $payment->message = 'successful';
         $payment->save();
         $order = Order::where('order_no', $payment->reference)->first();
         $items = OrderHistory::where('order_id', $order->id)->count();
         return  [
             'order' => $order,
             'payment' => $payment,
-            'items'=>$items
+            'items' => $items
         ];
     }
 }

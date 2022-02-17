@@ -50,7 +50,7 @@
                     >Email address</label
                   >
                   <input
-                    readonly
+                    
                     required
                     type="text"
                     v-model="form.email"
@@ -311,37 +311,34 @@
                               {{ product.name }}
                             </a>
                           </h3>
-                          <small class=" text-gray-400 mb-0 leading-3 text-center">
-                                  <span class="text-xs text-muted">Unit price</span> <br>
-                                <span class="text-xs">  {{ currency(product.price) }}</span> <br>
-                                 <span class="text-xs"  v-if="rate">  ${{(product.price/rate).toFixed(2) }}</span>
-                                </small>
+                          <small
+                            class="text-gray-400 mb-0 leading-3 text-center"
+                          >
+                            <span class="text-xs text-muted">Unit price</span>
+                            <br />
+                            <span class="text-xs">
+                              {{ currency(product.price) }}</span
+                            >
+                            <br />
+                            <span class="text-xs" v-if="rate">
+                              ${{ (product.price / rate).toFixed(2) }}</span
+                            >
+                          </small>
 
-                                <div class="leading-3 ml-3">
-                                    <span class="text-xs text-muted">Subtotal</span>
-                                  <p
-                                    class="
-                                      text-sm
-                                      font-medium
-                                      text-gray-900
-                                      mb-0
-                                    "
-                                  >
-                                    {{
-                                      currency(product.price * product.quantity)
-                                    }}
-                                  </p>
-                                  <small
-                                    class="text-muted text-xs dollar"
-                                    v-if="rate"
-                                    >${{
-                                      (
-                                        (product.price * product.quantity) /
-                                        rate
-                                      ).toFixed(2)
-                                    }}</small
-                                  >
-                                </div>
+                          <div class="leading-3 ml-3">
+                            <span class="text-xs text-muted">Subtotal</span>
+                            <p class="text-sm font-medium text-gray-900 mb-0">
+                              {{ currency(product.price * product.quantity) }}
+                            </p>
+                            <small class="text-muted text-xs dollar" v-if="rate"
+                              >${{
+                                (
+                                  (product.price * product.quantity) /
+                                  rate
+                                ).toFixed(2)
+                              }}</small
+                            >
+                          </div>
                         </div>
                         <p class="mt-1 text-sm text-gray-500">
                           {{ product.user.name }}
@@ -364,11 +361,13 @@
               >
                 <p>Subtotal</p>
                 <div class="leading-3">
-              <p class="text-sm font-medium text-gray-900 mb-0">
-                {{ currency(total) }}
-              </p>
-              <small class="text-muted text-xs dollar" v-if="rate">${{(total/rate).toFixed(2)}}</small>
-            </div>
+                  <p class="text-sm font-medium text-gray-900 mb-0">
+                    {{ currency(total) }}
+                  </p>
+                  <small class="text-muted text-xs dollar" v-if="rate"
+                    >${{ (total / rate).toFixed(2) }}</small
+                  >
+                </div>
               </div>
             </div>
             <div class="col-span-3 mb-4">
@@ -434,7 +433,7 @@ import { StarIcon } from "@heroicons/vue/solid";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 import TopBar from "../layout/topbar.vue";
 import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
-import axios from 'axios';
+import axios from "axios";
 const breadcrumbs = [
   { id: 1, name: "Home", href: "/home" },
   { id: 2, name: "Marketplace", href: "/" },
@@ -475,18 +474,19 @@ export default {
         email: "",
         total: null,
         cartItems: [],
-
       }),
 
-        rate:null,
+      rate: null,
     };
   },
-  created(){
-     this.convertCurrency("USD", "NGN");
+  created() {
+    this.convertCurrency("USD", "NGN");
   },
   mounted() {
-    this.form.email = this.$page.props.auth.user.email;
-    this.form.name = this.$page.props.auth.user.name;
+    if (this.$page.props.auth) {
+      this.form.email = this.$page.props.auth.user.email;
+      this.form.name = this.$page.props.auth.user.name;
+    }
   },
   computed: {
     total() {
@@ -497,7 +497,7 @@ export default {
     },
   },
   methods: {
-     convertCurrency(fromCurrency, toCurrency) {
+    convertCurrency(fromCurrency, toCurrency) {
       var apiKey = "53f033dd7da6dbc5695d";
       var query = fromCurrency + "_" + toCurrency;
       var url =
@@ -510,12 +510,12 @@ export default {
       });
     },
     submit() {
-      this.form.total = this.total/this.rate;
+      this.form.total = this.total / this.rate;
       this.form.cartItems = this.cartItems;
 
       axios.post("/orders", this.form).then((res) => {
         if (res.status == 200) {
-         window.location.href = res.data.url;
+          window.location.href = res.data.url;
         }
       });
     },

@@ -115,10 +115,11 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => 'checkrole:user'], function () {
-        Route::get('/checkout', function () {
-            return Inertia::render('Checkout', []);
-        });
+
         Route::resource('orders', OrderController::class);
+    });
+    Route::get('/checkout', function () {
+        return Inertia::render('Checkout', []);
     });
 
 
