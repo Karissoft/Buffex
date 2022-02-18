@@ -244,8 +244,9 @@
             </div>
           </a>
         </PopoverGroup>
+
         <div class="hidden md:flex items-center justify-end">
-          <a
+          <!-- <a
             v-if="!$page.props.auth.user"
             href="/login"
             class="
@@ -286,7 +287,7 @@
             class="hidden sm:flex sm:items-center sm:ml-6"
             v-if="$page.props.auth.user"
           >
-            <!-- Settings Dropdown -->
+
             <div class="ml-3 relative">
               <BreezeDropdown align="right" width="48">
                 <template #trigger>
@@ -341,7 +342,7 @@
                 </template>
               </BreezeDropdown>
             </div>
-          </div>
+          </div> -->
           <span class="px-4 py-2 relative" @click="open = !open"
             ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
             <span

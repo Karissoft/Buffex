@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use auth;
+use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Order;
 use App\Models\Payment;
@@ -31,7 +32,7 @@ class OrderController extends Controller
     {
         return  DB::transaction(function () use ($request) {
             $user = User::firstOrNew(
-                ['email', $request->email],
+                ['email'=> $request->email],
                 [
                     'name' => $request->name,
                     'address' => $request->address,
@@ -45,7 +46,7 @@ class OrderController extends Controller
 
             );
             $user->save();
-            
+
             $usercart = $request->cartItems;
 
             $order = new Order();

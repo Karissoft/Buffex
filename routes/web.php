@@ -33,7 +33,7 @@ Route::get('/', function () {
 });
 Route::get('/product/{id}', function ($id) {
     return Inertia::render('Product', [
-        'product'=> Product::where('id', $id)->with('user','category')->first()
+        'product' => Product::where('id', $id)->with('user', 'category')->first()
     ]);
 });
 Route::get('/marketplace', function () {
@@ -63,8 +63,7 @@ Route::get('/stores', function () {
     return Inertia::render('Stores', []);
 });
 
-
-
+Route::resource('orders', OrderController::class);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/redirectAuthenticatedUser', [RedirectAuthenticatedUserController::class, 'home']);
@@ -86,7 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::group(['middleware' => 'checkrole:vendor'], function () {
         Route::resource('products', ProductController::class, [
-            'names'=>[
+            'names' => [
                 'index' => 'products.index',
                 'store' => 'products.store',
                 'destroy' => 'products.destroy',
@@ -116,17 +115,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'checkrole:user'], function () {
 
-        Route::resource('orders', OrderController::class);
+      //  Route::resource('orders', OrderController::class);
     });
-    Route::get('/checkout', function () {
-        return Inertia::render('Checkout', []);
-    });
-
-
-
+});
+Route::get('/checkout', function () {
+    return Inertia::render('Checkout', []);
 });
 
-Route::get('/get-products', [ProductController::class,'allproducts']);
+Route::get('/get-products', [ProductController::class, 'allproducts']);
 
 Route::get('/get-users', [RegisteredUserController::class, 'getusers']);
 Route::get('/get-vendors', [RegisteredUserController::class, 'getvendors']);

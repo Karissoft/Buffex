@@ -50,7 +50,7 @@
                     >Email address</label
                   >
                   <input
-                    
+
                     required
                     type="text"
                     v-model="form.email"
@@ -390,9 +390,9 @@
                   sm:text-sm
                 "
               >
-                <option value="" disabled>-Select Cryptocurrency-</option>
-                <option :value="item" v-for="item in currencies" :key="item">
-                  {{ item }}
+                <option value="" disabled>Select Crypto -</option>
+                <option :value="item.value" v-for="item in currencies" :key="item">
+                  {{ item.name }}
                 </option>
               </select>
             </div>
@@ -439,7 +439,16 @@ const breadcrumbs = [
   { id: 2, name: "Marketplace", href: "/" },
 ];
 const reviews = { href: "#", average: 4, totalCount: 117 };
-const currencies = ["BTC", "ETH"];
+const currencies = [
+  {
+    value:"BTC",
+    name:'Bitcoin'
+  },
+  {
+    value: "ETH",
+    name:'Ethereum'
+  }
+   ];
 export default {
   components: {
     RadioGroup,

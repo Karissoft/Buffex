@@ -1,6 +1,6 @@
 <template >
  <Head title="Checkout" />
- <div class="bg-purple-50">
+ <div class="bg-purple-100">
     <Checkout />
  </div>
 </template>
