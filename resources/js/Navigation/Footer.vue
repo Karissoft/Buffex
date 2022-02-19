@@ -1,6 +1,6 @@
 <template>
  <section class="bg-purple-800 py-10 px-10 md:px-0">
-    <div class="container mx-auto flex flex-col-reverse md:flex-row justify-between text-white md:w-10/12">
+    <div class="container mx-auto flex flex-col-reverse lg:flex-row justify-between text-white lg:w-10/12">
 
       <div class="basis-1/4 p-3">
         <h3 class="text-3xl font-bold mb-3 text-slate-100">Buffex Letters</h3>
@@ -41,7 +41,7 @@ Subscribe today and stay up-to-date with the latest news
       </div>
          <div  class="basis-1/4 p-3 text-center">
         <h3 class="mb-3  text-slate-100"> Community</h3>
-        <div class="flex flex-row md:flex-col">
+        <div class="flex flex-row lg:flex-col">
           <p class=" w-12 mb-1 mx-auto"><img src="/images/fb.png"/></p>
         <p class="w-12 mb-1 mx-auto"><img src="/images/insta.png"/></p>
         <p class="w-12 mb-1 mx-auto"><img src="/images/gram.png"/></p>

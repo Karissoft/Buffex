@@ -1,5 +1,5 @@
 <template>
- <section id="banner" class="relative">
+ <section id="banner" class="relative h-[95vh] md:h[60vh] lg:h[85vh]">
     <div class="container mx-auto flex h-full w-full">
       <div class="left_banner w-full md:w-3/6 h-full flex flex-col justify-center py-5 px-14">
 
@@ -7,14 +7,14 @@
         <img src="/images/topb.png" alt="freedom" class="mx-auto">
       </div>
         <div class="banner_m  text-center md:text-left">
-          <p class="font-bold"><span class="text-purple-500 font-bold">Buffex</span> provides unique consumer-centric <br> <span  class="text-purple-500 font-bold">Digital Financial Services</span> built around <br>  <span  class="text-purple-500 font-bold">blockchain</span> and <span  class="text-purple-500 font-bold">digital currencies</span>.</p>
+          <p class="font-bold"><span class="text-purple-500 font-bold">Adspot</span> provides unique consumer-centric <br> <span  class="text-purple-500 font-bold">Digital Financial Services</span> built around <br>  <span  class="text-purple-500 font-bold">blockchain</span> and <span  class="text-purple-500 font-bold">digital currencies</span>.</p>
         </div>
           <div class="banner_b text-center ">
             <BreezeButton class="bg-purple-800 text-white">Register now</BreezeButton>
           </div>
       </div>
         <div class="right_banner hidden md:flex md:w-3/6 h-full p-5 md:pt-16 pl-14 relative flex items-center ">
-       <div class=" w-100">
+       <div class=" w-full">
           <!-- <div class="search flex items-center">
 
             <BreezeInput id="search" type="text" placeholder="Type in search" class="mt-1 block w-full mr-5 " required  autocomplete="search" />
