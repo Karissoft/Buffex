@@ -10,7 +10,8 @@
       transition
       ease-in-out
       duration-300
-      bg-purple-50
+      bg-white
+      shadow-sm
     "
   >
     <div class="px-4 sm:px-6 mx-auto h-full">
@@ -34,7 +35,9 @@
 
               class="w-6 h-6 text-purple-700"
           />
-          <span class="px-1 absolute top-[0px] right-[8px] rounded-md bg-white text-sm">{{cartItems.length}}</span>
+          <span class="px-1 absolute top-[0px] right-[8px] rounded-md   bg-black
+                text-xs
+                text-white">{{cartItems.length}}</span>
           </span>
           <PopoverButton
             class="
@@ -353,8 +356,9 @@
                 top-[0px]
                 right-[8px]
                 rounded-md
-                bg-white
-                text-sm
+                 bg-black
+                text-xs
+                text-white
               "
               >{{ cartItems.length }}</span
             >

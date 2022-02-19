@@ -1,5 +1,5 @@
 <template>
- <section class="bg-purple-500 py-10 px-10 md:px-0">
+ <section class="bg-purple-800 py-10 px-10 md:px-0">
     <div class="container mx-auto flex flex-col-reverse md:flex-row justify-between text-white md:w-10/12">
 
       <div class="basis-1/4 p-3">
@@ -12,7 +12,7 @@ Subscribe today and stay up-to-date with the latest news
            <div class="mt-4 relative">
 
             <BreezeInput id="text" type="text" class="mt-1 block w-full rounded-full" placeholder="Your email"   autocomplete="email" />
-           <BreezeButtonSmall class="footer absolute  text-slate-100 top-[10%] right-[7px] bg-purple-500 rounded-full" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+           <BreezeButtonSmall class="footer absolute  text-slate-100 top-[10%] right-[7px] bg-purple-800 rounded-full" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Subscribe
             </BreezeButtonSmall>
         </div>
@@ -50,10 +50,10 @@ Subscribe today and stay up-to-date with the latest news
       </div>
     </div>
     <hr>
-    <div class="text-center text-slate py-2">
+    <div class="text-center text-slate pt-2">
       <span class="text-purple-50">Made with love by Buffex Nigeria Limited</span>
     </div>
-    <div class="text-center py-2">
+    <div class="text-center pt-1">
       <small class="text-purple-50"> Copyright &#169;{{new Date().getFullYear()}} buffex.co. All rights reserved  </small>
 
     </div>

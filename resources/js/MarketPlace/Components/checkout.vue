@@ -270,7 +270,7 @@
                 Order Information
               </h3>
             </div>
-            <div class="mt-8 overflow-y-auto h-[50vh]">
+            <div class="mt-8 overflow-y-auto h-[45vh]">
               <div class="flow-root">
                 <ul role="list" class="-my-6 divide-y divide-gray-200">
                   <li
@@ -380,6 +380,7 @@
                   mt-1
                   py-2
                   px-3
+                  mr-4
                   border border-gray-300
                   bg-white
                   rounded-md
@@ -395,6 +396,7 @@
                   {{ item.name }}
                 </option>
               </select>
+              <span class="font-bolder" v-if="form.currency">{{form.currency}}</span>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
               <button
@@ -492,10 +494,10 @@ export default {
     this.convertCurrency("USD", "NGN");
   },
   mounted() {
-    if (this.$page.props.auth) {
-      this.form.email = this.$page.props.auth.user.email;
-      this.form.name = this.$page.props.auth.user.name;
-    }
+    // if (this.$page.props.auth) {
+    //   this.form.email = this.$page.props.auth.user.email;
+    //   this.form.name = this.$page.props.auth.user.name;
+    // }
   },
   computed: {
     total() {

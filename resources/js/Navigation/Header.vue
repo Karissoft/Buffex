@@ -1,8 +1,8 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <Popover
-    class="h-16 w-full top-0 z-30 transition ease-in-out duration-300"
-    :class="active ? ' fixed shadow  bg-white' : ' bg-transparent absolute'"
+    class="h-16 w-full top-0 z-30 transition ease-in-out duration-300 bg-white shadow-sm"
+    :class="active ? ' fixed   ' : ' absolute'"
   >
     <div class="px-4 sm:px-6 max-w-screen-xl mx-auto h-full">
       <div class="flex justify-between items-center h-full">
@@ -29,8 +29,9 @@
                 top-[0px]
                 right-[8px]
                 rounded-md
-                bg-white
-                text-sm
+                 bg-black
+                text-xs
+                text-white
               "
               >{{ cartItems.length }}</span
             >
@@ -358,13 +359,14 @@
                 top-[0px]
                 right-[8px]
                 rounded-md
-                bg-white
-                text-sm
+                bg-black
+                text-xs
+                text-white
               "
               >{{ cartItems.length }}</span
             >
           </span>
-        </div> 
+        </div>
       </div>
     </div>
 
