@@ -41,7 +41,7 @@ Subscribe today and stay up-to-date with the latest news
       </div>
          <div  class=" p-3 text-center">
         <h3 class="mb-3  text-slate-100"> Community</h3>
-        <div class="flex flex-row lg:flex-col justify-center">
+        <div class="flex flex-row lg:flex-col justify-center items-center">
           <p class=" w-12 mb-1 mr-2 lg:mr-0"><img src="/images/fb.png"/></p>
         <p class="w-12 mb-1 mr-2 lg:mr-0"><img src="/images/insta.png"/></p>
         <p class="w-12 mb-1 mr-2 lg:mr-0"><img src="/images/gram.png"/></p>
@@ -51,7 +51,11 @@ Subscribe today and stay up-to-date with the latest news
     </div>
     <hr>
     <div class="text-center text-slate pt-2">
-      <span class="text-purple-50">Made with love by Buffex Nigeria Limited</span>
+      <span class="text-purple-50"> Buffex Nigeria Limited</span>
+    </div>
+     <div class="text-center pt-1">
+      <small class="text-purple-50"> No 20 Hilary Avenue, Jubrin Estate, Lekki Epe Expressway, Lagos state, Nigeria  </small>
+
     </div>
     <div class="text-center pt-1">
       <small class="text-purple-50"> Copyright &#169;{{new Date().getFullYear()}} buffex.co. All rights reserved  </small>
