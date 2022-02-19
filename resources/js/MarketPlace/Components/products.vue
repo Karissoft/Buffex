@@ -113,8 +113,8 @@
             </Link>
           </div>
 
-          <div class="mt-4 flex justify-between mb-3">
-            <div>
+          <div class="mt-4 flex-col md:flex justify-between mb-3">
+            <div class="mb-2 md:mb-0">
               <h3 class="text-sm text-gray-700">
                 <Link :href="`/product/${product.id}`">
                   <span aria-hidden="true" class="" />
@@ -122,7 +122,7 @@
                 </Link>
               </h3>
 
-              <p class="mt-1 text-sm text-gray-500">{{ product.user.name }}</p>
+              <p class="mt-1 text-xs md:text-sm text-gray-500">{{ product.user.name }}</p>
             </div>
             <div class="leading-3">
               <p class="text-sm font-medium text-gray-900 mb-0">
