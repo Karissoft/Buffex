@@ -5,7 +5,7 @@
         max-w-2xl
         mx-auto
         py-8
-        md:py-12
+        lg:py-12
         px-4
         sm:py-12 sm:px-6
         lg:max-w-7xl lg:px-8
@@ -13,7 +13,7 @@
         overflow-auto
       "
     >
-      <div class="flex flex-col md:flex-row justify-between mb-4">
+      <div class="flex flex-col lg:flex-row justify-between mb-4">
         <h2
           class="
             text-2xl
@@ -21,7 +21,7 @@
             tracking-tight
             text-gray-900
             mb-4
-            md:mb-0
+            lg:mb-0
           "
         >
           Products
@@ -30,7 +30,7 @@
         <div
           class="
             w-full
-            md:w-[300px]
+            lg:w-[300px]
             h-[40px]
             flex
             rounded-md
@@ -113,8 +113,8 @@
             </Link>
           </div>
 
-          <div class="mt-4 flex-col md:flex justify-between mb-3">
-            <div class="mb-2 md:mb-0">
+          <div class="mt-4 flex-col lg:flex justify-between mb-3">
+            <div class="mb-2 lg:mb-0">
               <h3 class="text-sm text-gray-700">
                 <Link :href="`/product/${product.id}`">
                   <span aria-hidden="true" class="" />
@@ -122,7 +122,7 @@
                 </Link>
               </h3>
 
-              <p class="mt-1 text-xs md:text-sm text-gray-500">{{ product.user.name }}</p>
+              <p class="mt-1 text-xs lg:text-sm text-gray-500">{{ product.user.name }}</p>
             </div>
             <div class="leading-3">
               <p class="text-sm font-medium text-gray-900 mb-0">

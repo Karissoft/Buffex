@@ -1,8 +1,8 @@
 <template>
  <section class="bg-purple-800 py-10 px-10 md:px-0">
-    <div class="container mx-auto flex flex-col-reverse lg:flex-row justify-between text-white lg:w-10/12">
+    <div class="container mx-auto grid grid-cols-1 md-grid-cols-2 lg:grid-cols-4 justify-between text-white md:w-10/12">
 
-      <div class="basis-1/4 p-3">
+      <div class=" p-3">
         <h3 class="text-3xl font-bold mb-3 text-slate-100">Buffex Letters</h3>
         <p class="text-purple-50 mb-5 text-sm">
           Join over 25000 subscribers receiving our newslwtters!
@@ -19,7 +19,7 @@ Subscribe today and stay up-to-date with the latest news
 
 
       </div>
-       <div  class="basis-1/4 p-3 text-center">
+       <div  class=" p-3 text-center">
         <h3 class="mb-3  text-slate-100">About us</h3>
        <ul>
 
@@ -32,20 +32,20 @@ Subscribe today and stay up-to-date with the latest news
                 <Link  href="/#contact">      <li class="text-purple-50 text-sm">Contact</li></Link>
        </ul>
       </div >
-        <div  class="basis-1/4 p-3 text-center">
+        <div  class=" p-3 text-center">
         <h3 class="mb-3  text-slate-100"> Legal</h3>
         <p class="text-purple-50 text-sm">Terms of use</p>
         <p class="text-purple-50 text-sm">Terms and Conditions</p>
         <p class="text-purple-50 text-sm">Privacy policy</p>
         <p class="text-purple-50 text-sm">Cookie policy</p>
       </div>
-         <div  class="basis-1/4 p-3 text-center">
+         <div  class=" p-3 text-center">
         <h3 class="mb-3  text-slate-100"> Community</h3>
-        <div class="flex flex-row lg:flex-col">
-          <p class=" w-12 mb-1 mx-auto"><img src="/images/fb.png"/></p>
-        <p class="w-12 mb-1 mx-auto"><img src="/images/insta.png"/></p>
-        <p class="w-12 mb-1 mx-auto"><img src="/images/gram.png"/></p>
-        <p class="w-12 h-auto mx-auto"><img src="/images/twitter.png"/></p>
+        <div class="flex flex-row lg:flex-col justify-center">
+          <p class=" w-12 mb-1 mr-2 lg:mr-0"><img src="/images/fb.png"/></p>
+        <p class="w-12 mb-1 mr-2 lg:mr-0"><img src="/images/insta.png"/></p>
+        <p class="w-12 mb-1 mr-2 lg:mr-0"><img src="/images/gram.png"/></p>
+        <p class="w-12 h-auto "><img src="/images/twitter.png"/></p>
         </div>
       </div>
     </div>

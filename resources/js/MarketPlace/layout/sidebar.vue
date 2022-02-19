@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="px-8 py-10 hidden md:block h-full overflow-auto">
+  <div class="px-8 py-10 hidden lg:block h-full overflow-auto">
 
    <div class="flex justify-between py-2 border-b-2 border-purple-500 mb-4">
     <span class="font-bold text-sm text-purple-900" >Filter</span>
@@ -98,7 +98,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full h-full">
       <div class="flex justify-between items-center h-full">
 
-        <div class="-mr-2 -my-2 md:hidden flex">
+        <div class="-mr-2 -my-2 lg:hidden flex">
 
           <PopoverButton
             class="
@@ -144,7 +144,7 @@
           transition
           transform
           origin-top-right
-          md:hidden
+          lg:hidden
           z-40
         "
       >

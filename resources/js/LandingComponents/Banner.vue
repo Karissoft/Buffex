@@ -96,7 +96,7 @@ components:{
 </script>
 <style scoped lang="scss">
 #banner{
-  height: 85vh;
+ 
   background: #F5F2FF;
   .container .left_banner{
 

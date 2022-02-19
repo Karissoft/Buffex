@@ -3,10 +3,10 @@
     <div >
 <TopBar :auth="auth"/>
   </div>
-  
-  <div class="flex flex-col md:flex-row main_body">
-   <div class="md:w-1/6"> <SideBar/></div>
-    <div class="md:w-5/6"> <MainPage/></div>
+
+  <div class="flex flex-col lg:flex-row main_body">
+   <div class="lg:w-1/6"> <SideBar/></div>
+    <div class="lg:w-5/6"> <MainPage/></div>
   </div>
 </div>
 </template>
