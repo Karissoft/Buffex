@@ -1,7 +1,7 @@
 
 <template>
   <TopBar />
-  <div class="container mx-auto py-10">
+  <div class="container mx-auto pt-5 pb-12 md:py-10">
     <BreezeValidationErrors class="mb-4" />
     <form @submit.prevent="submit" class="mt-10 sm:mt-0">
       <div class="md:grid md:grid-cols-3 md:gap-6">
