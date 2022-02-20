@@ -20,7 +20,7 @@
         <ul>
           <li><img src="/images/star.png" class="w-6 h-6 mr-3"> Who can use Buffex?</li>
            <li><img src="/images/star.png" class="w-6 h-6 mr-3"> How can I access my Buffex Wallet?</li>
-            <li> <img src="/images/star.png" class="w-6 h-8 mr-3"> How long does it take for a transaction to be completed on Buffex? </li>
+            <li> <img src="/images/star.png" class="w-6 h-6 mr-3"> How long does it take for a transaction to be completed on Buffex? </li>
              <li><img src="/images/star.png" class="w-6 h-6 mr-3"> What currencies does Buffex support?</li>
               <li><img src="/images/star.png" class="w-6 h-6 mr-3"> What currencies does Buffex support?</li>
                <li><img src="/images/star.png" class="w-6 h-6 mr-3"> What currencies does Buffex support?</li>
