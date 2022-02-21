@@ -7,7 +7,7 @@
         {{ status }}
     </div>
 
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="mb-5">
          <legend class="text-center mb-4">Customer Login</legend>
         <div>
             <BreezeLabel for="email" value="Email" />
@@ -35,11 +35,14 @@
                 Forgot your password?
             </Link>
 
-            <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <BreezeButton class="ml-4 bg-purple-800  text-white" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Log in
             </BreezeButton>
         </div>
     </form>
+    <div>
+        <p class="text-sm">Are you a vendor? <span class="text-purple-800"> <a href="/vendor-register">Sign up here</a></span></p>
+    </div>
 </template>
 
 <script>

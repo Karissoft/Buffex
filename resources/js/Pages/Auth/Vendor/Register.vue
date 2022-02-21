@@ -41,7 +41,7 @@
                 Already registered?
             </Link>
 
-            <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <BreezeButton class="ml-4 bg-purple-800 text-white" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Register
             </BreezeButton>
         </div>

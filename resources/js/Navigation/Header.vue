@@ -252,23 +252,28 @@
           </a>
         </PopoverGroup>
        <div class="hidden lg:flex items-center justify-end">
-          <!-- <a
+       
+
+          <span class="px-3 py-2 relative " @click="open = !open"
+            ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
+            <span
+            v-if="cartItems.length"
+              class="
+                px-1
+                absolute
+                top-[0px]
+                right-[8px]
+                rounded-md
+                bg-black
+                text-xs
+                text-white
+              "
+              >{{ cartItems.length }}</span
+            >
+          </span>
+           <a
             v-if="!$page.props.auth.user"
             href="/login"
-            class="
-              whitespace-nowrap
-              text-base
-              font-medium
-              text-gray-500
-              hover:text-gray-700
-              text-sm
-            "
-          >
-            Sign in
-          </a>
-          <a
-            v-if="!$page.props.auth.user"
-            href="/register"
             class="
               ml-8
               whitespace-nowrap
@@ -287,8 +292,9 @@
               hover:bg-purple-600
             "
           >
-            Sign up
+            Sign in
           </a>
+
           <div
             class="hidden sm:flex sm:items-center sm:ml-6"
             v-if="$page.props.auth.user"
@@ -348,24 +354,7 @@
                 </template>
               </BreezeDropdown>
             </div>
-          </div> -->
-          <span class="px-4 py-2 relative" @click="open = !open"
-            ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
-            <span
-            v-if="cartItems.length"
-              class="
-                px-1
-                absolute
-                top-[0px]
-                right-[8px]
-                rounded-md
-                bg-black
-                text-xs
-                text-white
-              "
-              >{{ cartItems.length }}</span
-            >
-          </span>
+          </div>
         </div>
       </div>
     </div>
