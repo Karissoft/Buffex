@@ -7,7 +7,7 @@
         <img src="/images/topb.png" alt="freedom" class="mx-auto">
       </div>
         <div class="banner_m  text-center md:text-left">
-          <p class="font-bold"><span class="text-purple-500 font-bold">Adspot</span> provides unique consumer-centric <br> <span  class="text-purple-500 font-bold">Digital Financial Services</span> built around <br>  <span  class="text-purple-500 font-bold">blockchain</span> and <span  class="text-purple-500 font-bold">digital currencies</span>.</p>
+          <p class="font-bold"><span class="text-purple-500 font-bold">Buffex</span> provides unique consumer-centric <br> <span  class="text-purple-500 font-bold">Digital Financial Services</span> built around <br>  <span  class="text-purple-500 font-bold">blockchain</span> and <span  class="text-purple-500 font-bold">digital currencies</span>.</p>
         </div>
           <div class="banner_b text-center ">
             <BreezeButton class="bg-purple-800 text-white">Register now</BreezeButton>
@@ -96,7 +96,7 @@ components:{
 </script>
 <style scoped lang="scss">
 #banner{
- 
+
   background: #F5F2FF;
   .container .left_banner{
 

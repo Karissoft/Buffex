@@ -4,6 +4,8 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\OrderController;
@@ -22,6 +24,9 @@ use App\Http\Controllers\Auth\RedirectAuthenticatedUserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

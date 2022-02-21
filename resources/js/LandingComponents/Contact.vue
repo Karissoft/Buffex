@@ -49,8 +49,8 @@ Leave a message and we will get back to you shortly.
        <div class="mb-3">
          <h2 class="font-bold">Talk to us on:</h2>
        <ul>
-         <li>Call: +233 54 380 6578</li>
-<li>Text:+233 54 380 6578</li>
+         <!-- <li>Call: +233 54 380 6578</li>
+<li>Text:+233 54 380 6578</li> -->
 <li>Email: info@buffex.co</li>
        </ul>
        </div>
@@ -58,13 +58,13 @@ Leave a message and we will get back to you shortly.
         <div>
          <h2 class="font-bold">Connect on socials:</h2>
        <ul>
-         <li>Facebook: buffex
+         <li>Facebook: mybuffex
 </li>
-<li>Instagram: buffe.x
+<li>Instagram: mybuffex
 </li>
-<li>Twitter: @buffex_
+<!-- <li>Twitter: @buffex_
 </li>
-<li>Telegram: @buffex</li>
+<li>Telegram: @buffex</li> -->
        </ul>
        </div>
 

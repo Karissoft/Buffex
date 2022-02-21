@@ -5,7 +5,7 @@
       <div class=" p-3">
         <h3 class="text-3xl font-bold mb-3 text-slate-100">Buffex Letters</h3>
         <p class="text-purple-50 mb-5 text-sm">
-          Join over 25000 subscribers receiving our newslwtters!
+          Join over 25000 subscribers receiving our newsletters!
   <br>
 Subscribe today and stay up-to-date with the latest news
         </p>
@@ -53,10 +53,10 @@ Subscribe today and stay up-to-date with the latest news
     <div class="text-center text-slate pt-2">
       <span class="text-purple-50"> Buffex Nigeria Limited</span>
     </div>
-     <div class="text-center pt-1">
+     <!-- <div class="text-center pt-1">
       <small class="text-purple-50"> No 20 Hilary Avenue, Jubrin Estate, Lekki Epe Expressway, Lagos state, Nigeria  </small>
 
-    </div>
+    </div> -->
     <div class="text-center pt-1">
       <small class="text-purple-50"> Copyright &#169;{{new Date().getFullYear()}} buffex.co. All rights reserved  </small>
 
