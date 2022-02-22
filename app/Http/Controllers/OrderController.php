@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
+
+    public function getorders(){
+     return   auth()->user()->storeorder()->with('product')->latest()->paginate(15);
+    }
     public function generateUniqueCode()
     {
         $code = null;
@@ -108,15 +112,16 @@ class OrderController extends Controller
             //   &api_key=SECRET_KEY
             $amount = $request->total;
             $apikey = '3EED-2398-ADK';
-            $response =   Http::get('https://buffex.co/api/create-invoice', [
+        return    $response =   Http::get('https://app.buffex.co/api/create-invoice', [
                 'source_amount' => $amount,
                 'order_number' => $order->order_no,
                 'currency' => $request->currency,
                 'email' => $user->email,
                 'order_name' => 'order_name',
                 'api_key' => $apikey,
-                'callback_url' => 'http://localhost:3000/transaction'
+                'callback_url' => 'https://buffex.co/transaction'
             ]);
+
             if ($response['status'] === 'success') {
                 $txn_id = $response['data']['txn_id'];
                 $url = $response['data']['invoice_url'];

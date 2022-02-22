@@ -9,6 +9,20 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
+                 <th
+                  scope="col"
+                  class="
+                    px-6
+                    py-3
+                    text-left text-xs
+                    font-medium
+                    text-gray-500
+                    uppercase
+                    tracking-wider
+                  "
+                >
+                  Date
+                </th>
                 <th
                   scope="col"
                   class="
@@ -86,6 +100,15 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               <tr v-for="order in orders" :key="order.order_no">
+                 <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        {{ order.created_at }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="ml-4">
@@ -120,7 +143,7 @@
                 <td class="
 
                   ">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                  <a :href="`/store/order/${order.id}`" class="text-indigo-600 hover:text-indigo-900"
                     >View</a
                   >
                 </td>
@@ -131,6 +154,37 @@
       </div>
     </div>
   </div>
+
+   <div class="pagination text-center mt-8" v-show="last_page > 1">
+        <span class="flex justify-center items-center">
+          <span
+            ><ArrowCircleLeftIcon
+              :class="current_page > 1 ? '' : 'opacity-70 text-slate-300'"
+              @click="prev"
+              class="cursor-pointe w-8 h-8 text-purple-700 mr-2"
+          /></span>
+          <input
+            class="
+              form-input
+              w-12
+              py-1
+              px-3
+              text-center
+              border border-purple-700
+              rounded
+            "
+            :disabled="current_page == last_page"
+            v-model="current_page" />
+          <span class="font-bold ml-2 text-sm">of {{ last_page }}</span>
+          <span
+            ><ArrowCircleRightIcon
+              :class="
+                current_page < last_page ? '' : 'opacity-70 text-slate-300'
+              "
+              @click="next"
+              class="w-8 h-8 text-purple-700 ml-2 cursor-pointer" /></span
+        ></span>
+      </div>
   <!-- This example requires Tailwind CSS v2.0+ -->
 
   <TransitionRoot as="template" :show="open">
@@ -298,7 +352,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+
 import {
   Dialog,
   DialogOverlay,
@@ -307,22 +361,65 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { ExclamationIcon } from "@heroicons/vue/outline";
-
+import {
+  ShoppingCartIcon,
+  ArrowCircleLeftIcon,
+  ArrowCircleRightIcon,
+} from "@heroicons/vue/solid";
 import { PlusCircleIcon } from "@heroicons/vue/solid";
-
+import { ref, onMounted, computed, watch } from "vue";
 export default {
+
   setup() {
     const open = ref(false);
+    const orders = ref([]);
+    const current_page = ref(1);
+    const last_page = ref(1);
+
+    onMounted(() => {
+      axios.get(`/get-orders`).then((res) => {
+        if (res.status === 200) {
+          orders.value = res.data.data;
+          last_page.value = res.data.last_page;
+        }
+      });
+    });
+
+    function next() {
+      if (current_page == last_page) return;
+      current_page.value++;
+    }
+    function prev() {
+      if (current_page == 1) return;
+      current_page.value--;
+    }
+
+
+    function getorders(page) {
+      axios.get(`/get-orders?page=${page}`).then((res) => {
+        if (res.status === 200) {
+          orders.value = res.data.data;
+          last_page.value = res.data.last_page;
+        }
+      });
+    }
+
+    watch(current_page, (current_page, prevCurrent_page) => {
+      getorders(current_page);
+    });
+
+
     return {
-      open,
+      orders,
+      last_page,
+      next,
+      prev,
+      current_page,
+        open,
     };
   },
    inject: ["emitter","currency"],
-  computed: {
-    orders() {
-      return this.$page.props.orders;
-    },
-  },
+
   components: {
     PlusCircleIcon,
     Dialog,
@@ -331,6 +428,9 @@ export default {
     TransitionChild,
     TransitionRoot,
     ExclamationIcon,
+     ShoppingCartIcon,
+  ArrowCircleLeftIcon,
+  ArrowCircleRightIcon,
   },
 };
 </script>

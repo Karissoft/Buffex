@@ -2,12 +2,15 @@
 
 use App\Models\User;
 use Inertia\Inertia;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\StoreOrder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -24,6 +27,7 @@ use App\Http\Controllers\Auth\RedirectAuthenticatedUserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 if (App::environment('production')) {
     URL::forceScheme('https');
 }
@@ -100,7 +104,7 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
         Route::get('/dashboard', function () {
             return Inertia::render('Vendor/Dashboard', [
-                'orders' => auth()->user()->storeorder()->with('product')->get(),
+                'orders' => auth()->user()->storeorder()->with('product')->latest()->limit(10)->get(),
                 'total_orders' => auth()->user()->storeorder()->count(),
                 'total_products' => auth()->user()->products()->count(),
             ]);
@@ -109,18 +113,28 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('store/orders', function () {
             return Inertia::render('Vendor/Orders', [
-                'orders' => auth()->user()->storeorder()->with('product')->get()
+                'orders' => auth()->user()->storeorder()->with('product')->latest()->get()
             ]);
         })->name('orders');
+
+        Route::get('store/order/{id}', function ( $id) {
+            $order  = StoreOrder::find($id);
+            return Inertia::render('Vendor/Order', [
+                'order' => $order->load('product', 'orderinfo','order')
+            ]);
+        })->name('order');
 
         Route::get('/reports', function () {
             return Inertia::render('Vendor/Reports');
         })->name('reports');
+
+        Route::get('/get-orders', [OrderController::class, 'getorders']);
+
     });
 
     Route::group(['middleware' => 'checkrole:user'], function () {
 
-      //  Route::resource('orders', OrderController::class);
+        //  Route::resource('orders', OrderController::class);
     });
 });
 Route::get('/checkout', function () {
@@ -132,5 +146,8 @@ Route::get('/get-products', [ProductController::class, 'allproducts']);
 Route::get('/get-users', [RegisteredUserController::class, 'getusers']);
 Route::get('/get-vendors', [RegisteredUserController::class, 'getvendors']);
 Route::get('/searchproducts', [ProductController::class, 'searchproducts']);
+
+
+Route::post('/contact-us', [MailController::class, 'contact']);
 
 require __DIR__ . '/auth.php';

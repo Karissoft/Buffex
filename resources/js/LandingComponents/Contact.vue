@@ -13,6 +13,7 @@ Leave a message and we will get back to you shortly.
     <div class="mb-5 relative flex flex-col md:flex-row w-full ">
       <div class="md:w-3/6 md:p-16 mb-10 md:mb-5">
  <BreezeValidationErrors class="mb-4" />
+ <div v-if="setNotify" class="text-xs text-black bg-green-200 py-2 px-5 rounded ">Message sent !</div>
 
     <form @submit.prevent="submit">
         <div>
@@ -62,9 +63,9 @@ Leave a message and we will get back to you shortly.
 </li>
 <li>Instagram: mybuffex
 </li>
-<!-- <li>Twitter: @buffex_
+<li>Twitter: @buffex_
 </li>
-<li>Telegram: @buffex</li> -->
+<li>Telegram: @buffex</li>
        </ul>
        </div>
 
@@ -83,6 +84,7 @@ import BreezeTextarea from "@/Components/Textarea.vue";
 import BreezeLabel from "@/Components/Label.vue";
 import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
+
 export default {
   components: {
     BreezeButton,
@@ -101,7 +103,28 @@ export default {
         phone: "",
         message: "",
       }),
+      showNotify:false
     };
+  },
+  methods: {
+    submit() {
+
+      axios.post("/contact-us", this.form).then((res) => {
+        if (res.status ==200) {
+           this.setNotify= true
+         setTimeout(()=>{
+           this.setNotify = false
+         },3000)
+
+          this.form = this.$inertia.form({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+          });
+        }
+      });
+    },
   },
 };
 </script>

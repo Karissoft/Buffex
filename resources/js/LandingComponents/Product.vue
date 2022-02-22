@@ -111,7 +111,7 @@
                   alt=""
                 />
               </div>
-              <div
+              <!-- <div
                 class="
                   text-center
                   p-5
@@ -164,7 +164,7 @@
                 <span class="text-purple-500">Multi-digital Asset Wallet</span>
                 <br />
                 <span>Learn more</span>
-              </div>
+              </div> -->
             </div>
             <div class="banner_b text-center">
               <BreezeButton class="bg-purple-800 text-white">Register Now</BreezeButton>

@@ -99,7 +99,7 @@
             </div>
           </a>
           <a
-            href="https://buffex.co/instant-payout/"
+            href="https://instantpay.buffex.co/"
             class="
               w-[20%]
               text-base
@@ -252,7 +252,7 @@
           </a>
         </PopoverGroup>
        <div class="hidden lg:flex items-center justify-end">
-       
+
 
           <span class="px-3 py-2 relative " @click="open = !open"
             ><ShoppingCartIcon class="w-6 h-6 text-purple-700" />
@@ -546,7 +546,7 @@ const callsToAction = [
 const resources = [
   {
     name: "Instant Pay",
-    href: "https://buffex.co/instant-payout",
+    href: "https://instantpay.buffex.co/",
   },
   {
     name: "About",

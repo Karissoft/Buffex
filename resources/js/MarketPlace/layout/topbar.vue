@@ -100,7 +100,7 @@
             </div>
           </a>
           <a
-            href="https://buffex.co/instant-payout/"
+            href="https://instantpay.buffex.co/"
             target="_blank"
             class="
               w-[20%]
@@ -542,7 +542,7 @@ const callsToAction = [
 const resources = [
   {
     name: "Instant Pay",
-    href: "https://buffex.co/instant-payout",
+    href: "https://instantpay.buffex.co/",
   },
   {
     name: "About",
