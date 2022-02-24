@@ -18,7 +18,8 @@ class Order extends Model
         'promo',
         'discount',
         'grand_total',
-        'user_id'
+        'user_id',
+        
     ];
     public function user()
     {
