@@ -50,7 +50,6 @@
                     >Email address</label
                   >
                   <input
-
                     required
                     type="text"
                     v-model="form.email"
@@ -121,9 +120,9 @@
                       sm:text-sm
                     "
                   >
-                    <option>United States</option>
                     <option>Nigeria</option>
                     <option>South africa</option>
+                    <option>United States</option>
                   </select>
                 </div>
 
@@ -319,10 +318,7 @@
                             <span class="text-xs">
                               {{ currency(product.price) }}</span
                             >
-                            <br />
-                            <span class="text-xs" v-if="rate">
-                              ${{ (product.price / rate).toFixed(2) }}</span
-                            >
+
                           </small>
 
                           <div class="leading-3 ml-3">
@@ -330,14 +326,7 @@
                             <p class="text-sm font-medium text-gray-900 mb-0">
                               {{ currency(product.price * product.quantity) }}
                             </p>
-                            <small class="text-muted text-xs dollar" v-if="rate"
-                              >${{
-                                (
-                                  (product.price * product.quantity) /
-                                  rate
-                                ).toFixed(2)
-                              }}</small
-                            >
+
                           </div>
                         </div>
                         <p class="mt-1 text-sm text-gray-500">
@@ -364,18 +353,18 @@
                   <p class="text-sm font-medium text-gray-900 mb-0">
                     {{ currency(total) }}
                   </p>
-                  <small class="text-muted text-xs dollar" v-if="rate"
-                    >${{ (total / rate).toFixed(2) }}</small
+                  <small class="text-muted text-xs dollar"
+                    >${{ currency_price}}</small
                   >
                 </div>
               </div>
             </div>
-            <div class="col-span-3 mb-4">
+            <div class="mb-4 px-3">
               <select
                 v-model="form.currency"
                 id="currency"
                 name="currency"
-                autocomplete="country-name"
+                autocomplete="currency"
                 class="
                   mt-1
                   py-2
@@ -389,14 +378,21 @@
                   focus:ring-purple-500
                   focus:border-purple-500
                   sm:text-sm
+                  w-full
                 "
               >
-                <option value="" disabled>Select Crypto -</option>
-                <option :value="item.value" v-for="item in currencies" :key="item">
+                <option value="" disabled>Select Crypto</option>
+                <option
+                  :value="item.value"
+                  v-for="item in currencies"
+                  :key="item"
+                >
                   {{ item.name }}
                 </option>
               </select>
-              <span class="font-bolder" v-if="form.currency">{{form.currency}}</span>
+              <!-- <span class="font-bolder" v-if="form.currency">{{
+                form.currency
+              }}</span> -->
             </div>
             <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
               <button
@@ -443,14 +439,14 @@ const breadcrumbs = [
 const reviews = { href: "#", average: 4, totalCount: 117 };
 const currencies = [
   {
-    value:"BTC",
-    name:'Bitcoin'
+    value: "BTC",
+    name: "Bitcoin",
   },
   {
     value: "ETH",
-    name:'Ethereum'
-  }
-   ];
+    name: "Ethereum",
+  },
+];
 export default {
   components: {
     RadioGroup,
@@ -488,16 +484,18 @@ export default {
       }),
 
       rate: null,
+      currency_price: null,
     };
   },
   created() {
-    this.convertCurrency("USD", "NGN");
+    //this.convertCurrency("USD", "NGN");
   },
   mounted() {
-    // if (this.$page.props.auth) {
-    //   this.form.email = this.$page.props.auth.user.email;
-    //   this.form.name = this.$page.props.auth.user.name;
-    // }
+
+    this.convert()
+  },
+  watch: {
+    'total': 'convert',
   },
   computed: {
     total() {
@@ -508,6 +506,14 @@ export default {
     },
   },
   methods: {
+    convert() {
+      if (!this.total) return;
+      axios
+        .get(`https://app.buffex.co/api/ngn_to_usd?nairaamount=${this.total}`)
+        .then((res) => {
+          return (this.currency_price = res.data.usd_amount);
+        });
+    },
     convertCurrency(fromCurrency, toCurrency) {
       var apiKey = "53f033dd7da6dbc5695d";
       var query = fromCurrency + "_" + toCurrency;
@@ -521,7 +527,8 @@ export default {
       });
     },
     submit() {
-      this.form.total = this.total / this.rate;
+      if(!this.currency_price) return;
+      this.form.total = this.currency_price;
       this.form.cartItems = this.cartItems;
 
       axios.post("/orders", this.form).then((res) => {
