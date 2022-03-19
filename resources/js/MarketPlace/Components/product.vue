@@ -313,7 +313,9 @@ export default {
   },
   mounted() {
     this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
-
+ this.emitter.on("updatecart", () => {
+      this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    });
   },
   methods: {
     addtocart(product) {

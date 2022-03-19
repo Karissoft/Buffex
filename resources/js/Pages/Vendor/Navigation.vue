@@ -17,8 +17,8 @@
                   :href="item.href"
                   :class="[
                     $page.url === item.href
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      ? 'bg-purple-900 text-white'
+                      : 'text-gray-300 hover:bg-purple-700 hover:text-white',
                     'px-3 py-2 rounded-md text-sm font-medium',
                   ]"
                   :aria-current="item.current ? 'page' : undefined"
@@ -154,7 +154,7 @@
             :href="item.href"
             :class="[
               $page.url === item.href
-                ? 'bg-gray-900 text-white'
+                ? 'bg-purple-900 text-white'
                 : 'text-gray-300 hover:bg-gray-700 hover:text-white',
               'block px-3 py-2 rounded-md text-base font-medium',
             ]"
@@ -169,10 +169,10 @@
             </div>
             <div class="ml-3">
               <div class="text-base font-medium leading-none text-white">
-                {{ auth.user.name }}
+                {{ $page.props.auth.user.name }}
               </div>
               <div class="text-sm font-medium leading-none text-gray-400">
-                {{ auth.user.email }}
+                {{ $page.props.auth.user.email }}
               </div>
             </div>
             <button

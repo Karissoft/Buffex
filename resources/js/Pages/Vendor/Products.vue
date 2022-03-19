@@ -5,10 +5,10 @@
   <div class="min-h-screen bg-purple-50">
     <Navigation />
     <header class="bg-white shadow">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
 
         <h1
-          class="text-xl md:text-3xl font-bold text-gray-900"
+          class="text-sm md:text-base font-bold text-gray-900"
           v-if="$page.url === '/products'"
         >
           Products

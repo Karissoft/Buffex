@@ -103,7 +103,7 @@ export default {
         phone: "",
         message: "",
       }),
-      showNotify:false
+      setNotify:false
     };
   },
   methods: {

@@ -15,7 +15,9 @@ class Product extends Model
         'in_stock',
         'category_id',
         'price',
-        'status'
+        'status',
+        'size',
+        'colors'
 
     ];
     public function category()
@@ -28,6 +30,7 @@ class Product extends Model
     }
 
     protected $casts = [
-        'images' => 'array'
+        'images' => 'array',
+      
     ];
 }

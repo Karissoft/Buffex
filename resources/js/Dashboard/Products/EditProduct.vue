@@ -73,6 +73,31 @@
         />
       </div>
     </div>
+       <div class="grid grid-cols-2 gap-5">
+      <div class="mt-4">
+        <BreezeLabel for="size" value="Size" />
+        <BreezeInput
+          id="size"
+          type="number"
+          class="mt-1 block w-full"
+          v-model="form.size"
+          required
+          autocomplete="size"
+        />
+      </div>
+      <div class="mt-4">
+        <BreezeLabel for="colors" value="Colors" />
+        <BreezeInput
+          id="colors"
+
+          class="mt-1 block w-full"
+          v-model="form.colors"
+          required
+          placeholder="Seperate each with a comma"
+          autocomplete="colors"
+        />
+      </div>
+    </div>
 
     <div class="mt-4">
       <BreezeLabel for="description" value="Description" />
@@ -227,6 +252,8 @@ export default {
         images: [],
         in_stock: null,
         price: null,
+        size:null,
+        colors:''
       }),
       cloudinary: {
          uploadPreset: "arudovwen_preset",

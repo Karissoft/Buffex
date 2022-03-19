@@ -617,7 +617,9 @@ export default {
   },
   methods: {
     addtocart(product) {
+
       this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
+       if(this.cartItems.some((item) => item.id == product.id)) return;
       product.quantity = 1;
       this.cartItems.push(product);
       localStorage.setItem("cartItems", JSON.stringify(this.cartItems));

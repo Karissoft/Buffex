@@ -4,7 +4,7 @@
     <BreezeValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
-        <legend class="text-center mb-4">Vendor Registration</legend>
+        <legend class="text-center mb-4 font-bold">Create A Vendor Account</legend>
         <div>
             <BreezeLabel for="name" value="Store Name" />
             <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
@@ -24,26 +24,27 @@
         </div>
         <div class="mt-4">
             <BreezeLabel for="password" value="Password" />
-            <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+            <BreezeInputPassword id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
         </div>
 
         <div class="mt-4">
             <BreezeLabel for="password_confirmation" value="Confirm Password" />
-            <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+            <BreezeInputPassword id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
         </div>
          <div class="mt-4">
             <BreezeLabel for="store_image" value="Store Image" />
             <input id="store_image" type="file" class="mt-1 block w-full" @change="handleUpload($event)" />
         </div>
 
-         <div class="flex items-center justify-end mt-4">
-            <Link :href="route('vendorlogin')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                Already registered?
-            </Link>
+         <div class="mt-4  text-center">
 
-            <BreezeButton class="ml-4 bg-purple-800 text-white" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <BreezeButton class="mb-4 bg-purple-800 text-white text-center w-full justify-center" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Register
             </BreezeButton>
+             <Link :href="route('vendorlogin')" class=" text-sm text-gray-600 hover:text-gray-900">
+                Already registered? <span class="text-purple-700"> Log in</span>
+            </Link>
+
         </div>
     </form>
 </template>
@@ -52,6 +53,7 @@
 import BreezeButton from '@/Components/Button.vue'
 import BreezeGuestLayout from '@/Layouts/Guest.vue'
 import BreezeInput from '@/Components/Input.vue'
+import BreezeInputPassword from "@/Components/InputPassword.vue";
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import { Head, Link } from '@inertiajs/inertia-vue3';
@@ -62,6 +64,7 @@ export default {
     components: {
         BreezeButton,
         BreezeInput,
+        BreezeInputPassword,
         BreezeLabel,
         BreezeValidationErrors,
         Head,

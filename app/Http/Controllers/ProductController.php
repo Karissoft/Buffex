@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         return Inertia::render('Vendor/Products', [
-            'products' => auth()->user()->products()->get(['name','id','description','status','images','price', 'in_stock']),
+            'products' => auth()->user()->products()->get(),
             'categories' => Category::all()
         ]);
     }
@@ -25,7 +25,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-           // 'images' => 'required',
+            'images' => 'required',
             'in_stock' => 'required',
             'price' => 'required',
             'category_id' => 'required'
@@ -39,11 +39,13 @@ class ProductController extends Controller
             'price' => $request->price,
             'in_stock' => $request->in_stock,
             'category_id' => $request->category_id,
-            'status'=> false
+            'status'=> false,
+            'size' => $request->size,
+            'status' => $request->colors,
 
         ]);
 
-        $products = $user->products()->get(['name', 'id', 'description', 'status', 'images', 'price', 'in_stock']);
+        $products = $user->products()->get();
         return Inertia::render('Vendor/Products', [
             'products'=> $products
         ]);
@@ -85,10 +87,16 @@ class ProductController extends Controller
         if ($request->has('status') && $request->filled('status')) {
             $product->status = $request->status;
         }
+        if ($request->has('size') && $request->filled('size')) {
+            $product->size = $request->size;
+        }
+        if ($request->has('colors') && $request->filled('colors')) {
+            $product->colors = $request->colors;
+        }
 
         $product->save();
         $user  = auth()->user();
-        $products = $user->products()->get(['name', 'id', 'description', 'status', 'images', 'price', 'in_stock']);
+        $products = $user->products()->get();
         return Inertia::render('Vendor/Products', [
             'products' => $products,
             'flash' => ['message' => 'success']
@@ -100,7 +108,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $user  = auth()->user();
         $product->delete();
-        $products = $user->products()->get(['name', 'id', 'description', 'status', 'images', 'price', 'in_stock']);
+        $products = $user->products()->get();
         return Inertia::render('Vendor/Products', [
             'products' => $products,
             'flash'=> ['message'=>'success']

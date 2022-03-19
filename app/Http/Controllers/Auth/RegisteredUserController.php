@@ -46,8 +46,8 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => 'required|string|email:rfc,dns|max:255|unique:users',
+            'password' => ['required', 'confirmed', 'alpha_dash', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
@@ -68,8 +68,10 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => 'required|string|email:rfc,dns|max:255|unique:users',
+            'password' => ['required', 'confirmed', 'alpha_dash', Rules\Password::defaults()],
+            'phone_no'=> 'required|numeric|unique:users|min:11',
+            'image' => 'required'
         ]);
 
         $user = User::create([
@@ -92,8 +94,8 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => 'required|string|email:rfc,dns|max:255|unique:users',
+            'password' => ['required', 'confirmed', 'alpha_dash', Rules\Password::defaults()],
         ]);
 
         $user = User::create([

@@ -169,10 +169,10 @@
             </div>
             <div class="ml-3">
               <div class="text-base font-medium leading-none text-white">
-                {{ auth.user.name }}
+                {{$page.props.auth.user.name }}
               </div>
               <div class="text-sm font-medium leading-none text-gray-400">
-                {{ auth.user.email }}
+                {{ $page.props.auth.user.email }}
               </div>
             </div>
             <button
@@ -225,9 +225,9 @@
     </Disclosure>
 
     <header class="bg-white shadow">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
         <h1
-          class="text-xl md:text-3xl font-bold text-gray-900"
+          class="text-sm md:text-base font-bold text-gray-900"
 
         >
           <slot name="title"></slot>

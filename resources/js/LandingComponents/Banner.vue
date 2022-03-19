@@ -10,7 +10,7 @@
           <p class="font-bold"><span class="text-purple-500 font-bold">Buffex</span> provides unique consumer-centric <br> <span  class="text-purple-500 font-bold">Digital Financial Services</span> built around <br>  <span  class="text-purple-500 font-bold">blockchain</span> and <span  class="text-purple-500 font-bold">digital currencies</span>.</p>
         </div>
           <div class="banner_b text-center ">
-            <BreezeButton class="bg-purple-800 text-white">Register now</BreezeButton>
+           <Link href="/register"> <BreezeButton class="bg-purple-800 text-white">Register now</BreezeButton> </Link>
           </div>
       </div>
         <div class="right_banner hidden md:flex md:w-3/6 h-full p-5 md:pt-16 pl-14 relative flex items-center ">

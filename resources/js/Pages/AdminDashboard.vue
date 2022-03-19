@@ -7,7 +7,7 @@
       Dashboard
     </template>
     <template #default>
-        <div class="grid grid-cols-2 gap-5">
+        <div class="grid grid-cols-2 gap-6">
           <Users/>
           <Vendors />
         </div>

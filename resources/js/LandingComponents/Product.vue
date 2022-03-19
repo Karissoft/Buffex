@@ -167,7 +167,7 @@
               </div> -->
             </div>
             <div class="banner_b text-center">
-              <BreezeButton class="bg-purple-800 text-white">Register Now</BreezeButton>
+             <Link href="/register"> <BreezeButton class="bg-purple-800 text-white">Register Now</BreezeButton> </Link>
             </div>
           </div>
         </slide>
@@ -182,6 +182,7 @@
 </template>
 <script>
 import BreezeButton from "@/Components/Button.vue";
+import { Link } from "@inertiajs/inertia-vue3";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 export default {
@@ -191,6 +192,7 @@ export default {
     Slide,
     Pagination,
     Navigation,
+    Link
   },
 };
 </script>

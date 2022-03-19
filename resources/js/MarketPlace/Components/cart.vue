@@ -152,7 +152,7 @@
                               <p class="text-gray-500">Qty</p>
 
                               <span class="flex justify-center items-center">
-                                <span @click="reducecart(product.id)"
+                                <span @click="reducecart(product.id, product.quantity)"
                                   ><MinusCircleIcon
                                     class="
                                       cursor-pointe
@@ -350,6 +350,7 @@ export default {
       this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
     },
     removefromcart(id) {
+
       this.cartItems = this.cartItems.filter((item) => item.id !== id);
       localStorage.setItem(
         "cartItems",
@@ -357,7 +358,8 @@ export default {
       );
       this.emitter.emit("updatecart");
     },
-    reducecart(id) {
+    reducecart(id,qty) {
+       if(qty==1) return;
       this.cartItems = this.cartItems.map((item) => {
         if (item.id == id && item.quanity > 1) {
           item.quanity = item.quantity--;
@@ -365,6 +367,7 @@ export default {
         return item;
       });
       localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
+      this.emitter.emiy('updatecart')
     },
     addcart(id) {
       this.cartItems = this.cartItems.map((item) => {
