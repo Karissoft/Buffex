@@ -39,7 +39,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'in_stock' => $request->in_stock,
             'category_id' => $request->category_id,
-            'status'=> false,
+            'status' => false,
             'size' => $request->size,
             'status' => $request->colors,
 
@@ -47,13 +47,13 @@ class ProductController extends Controller
 
         $products = $user->products()->get();
         return Inertia::render('Vendor/Products', [
-            'products'=> $products
+            'products' => $products
         ]);
     }
     public function allproducts()
     {
 
-        return Product::with('user')->inRandomOrder()->paginate(50);
+        return Product::with('user', 'category')->paginate(20);
     }
 
     public function getstoreproducts()
@@ -61,7 +61,7 @@ class ProductController extends Controller
         $user  = auth()->user();
         return $user->products()->with('store')->get();
     }
-      public function show(Product $product)
+    public function show(Product $product)
     {
         return $product;
     }
@@ -81,7 +81,7 @@ class ProductController extends Controller
         if ($request->has('images') && $request->filled('images')) {
             $product->images = $request->images;
         }
-          if ($request->has('price') && $request->filled('price')) {
+        if ($request->has('price') && $request->filled('price')) {
             $product->price = $request->price;
         }
         if ($request->has('status') && $request->filled('status')) {
@@ -103,7 +103,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function destroy( $id)
+    public function destroy($id)
     {
         $product = Product::find($id);
         $user  = auth()->user();
@@ -111,22 +111,23 @@ class ProductController extends Controller
         $products = $user->products()->get();
         return Inertia::render('Vendor/Products', [
             'products' => $products,
-            'flash'=> ['message'=>'success']
+            'flash' => ['message' => 'success']
         ]);
     }
 
-    public function searchproducts(Request $request){
+    public function searchproducts(Request $request)
+    {
         $query = $request->query('query');
 
-        if($request->has('query') && $query){
+        if ($request->has('query') && $query) {
 
-            return Product::query()->with('user')->whereLike('name', $query)->paginate(50);
-
+            return Product::query()->with('user', 'category')->whereLike('name', $query)->orWhereHas('category', function ($a) use ($query) {
+                return $a->where('name',  $query);
+            })->paginate(20);
         }
         return response()->json([
             'status' => 'success',
             'message' => 'no product found'
         ]);
-
     }
 }

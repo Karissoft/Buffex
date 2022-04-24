@@ -19,7 +19,7 @@ class Order extends Model
         'discount',
         'grand_total',
         'user_id',
-        
+
     ];
     public function user()
     {
@@ -27,14 +27,16 @@ class Order extends Model
     }
     public function orderhistories()
     {
-        return $this->hasMany(OrderHistory::class)->with('store');
+        return $this->hasMany(OrderHistory::class)->with('product');
     }
+
+
     public function orderinfo()
     {
-        return $this->hasOne(OrderInformation::class);
+        return $this->hasOne(OrderInformation::class, 'order_id', 'order_id');
     }
-    public function storeorder()
+    public function product()
     {
-        return $this->hasMany(StoreOrder::class);
+        return $this->belongsTo(Product::class);
     }
 }

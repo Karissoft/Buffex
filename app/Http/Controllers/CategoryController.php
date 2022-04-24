@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function getcategories(){
+        return Category::get(['id', 'name', 'image']);
+    }
+    
     public function index()
     {
         return Inertia::render('Admin/Categories', [

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -79,7 +81,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'checkrole:admin'], function () {
         Route::get('/admin-dashboard', function () {
-            return Inertia::render('AdminDashboard');
+            return Inertia::render('AdminDashboard', [
+                'products' => Product::get()->count(),
+                'customers' => User::where('role_id', 3)->get()->count(),
+                'orders' => Order::get()->count(),
+                'stores' => User::where('role_id', 3)->get()->count(),
+            ]);
         })->name('AdminDashboard');
 
         Route::resource('categories', CategoryController::class, [
@@ -91,7 +98,39 @@ Route::group(['middleware' => 'auth'], function () {
 
             ]
         ]);
+        Route::get('/all-stores', function () {
+            return Inertia::render('Admin/Stores');
+        })->name('AllStores');
+        Route::get('/all-products', function () {
+            return Inertia::render('Admin/Products');
+        })->name('AllProducts');
+        Route::get('/all-customers', function () {
+            return Inertia::render('Admin/Customers', [
+                'customers' => User::where('role_id', 3)->get()
+            ]);
+        })->name('AllCustomers');
+        Route::get('/all-orders', function () {
+            return Inertia::render('Admin/Orders');
+        })->name('AllOrders');
+        Route::get('/all-payments', function () {
+            return Inertia::render('Admin/Payments');
+        })->name('AllPayments');
+
+
+        Route::get('/get-stores', [StoreController::class, 'getstores']);
+        Route::get('/searchstores', [StoreController::class, 'searchstores']);
+
+        Route::get('/get-customers', [StoreController::class, 'getcustomers']);
+        Route::get('/searchcustomers', [StoreController::class, 'searchcustomers']);
+
+        Route::get('/admin-get-orders', [OrderController::class, 'getadminstores']);
+        Route::get('/searchorders', [OrderController::class, 'searchorders']);
+
+        Route::get('/get-payments', [PaymentController::class, 'getpayments']);
+        Route::get('/searchpayments', [PaymentController::class, 'searchpayments']);
     });
+
+
     Route::group(['middleware' => 'checkrole:vendor'], function () {
         Route::resource('products', ProductController::class, [
             'names' => [
@@ -117,10 +156,10 @@ Route::group(['middleware' => 'auth'], function () {
             ]);
         })->name('orders');
 
-        Route::get('store/order/{id}', function ( $id) {
+        Route::get('store/order/{id}', function ($id) {
             $order  = StoreOrder::find($id);
             return Inertia::render('Vendor/Order', [
-                'order' => $order->load('product', 'orderinfo','order')
+                'order' => $order->load('product', 'orderinfo', 'order')
             ]);
         })->name('order');
 
@@ -129,7 +168,6 @@ Route::group(['middleware' => 'auth'], function () {
         })->name('reports');
 
         Route::get('/get-orders', [OrderController::class, 'getorders']);
-
     });
 
     Route::group(['middleware' => 'checkrole:user'], function () {
@@ -147,6 +185,7 @@ Route::get('/get-users', [RegisteredUserController::class, 'getusers']);
 Route::get('/get-vendors', [RegisteredUserController::class, 'getvendors']);
 Route::get('/searchproducts', [ProductController::class, 'searchproducts']);
 
+Route::get('/get-categories', [CategoryController::class, 'getcategories']);
 
 Route::post('/contact-us', [MailController::class, 'contact']);
 

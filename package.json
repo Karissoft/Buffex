@@ -34,6 +34,7 @@
     "dependencies": {
         "@headlessui/vue": "^1.4.3",
         "@heroicons/vue": "^1.0.5",
+        "@tailwindcss/line-clamp": "^0.3.1",
         "mitt": "^1.2.0",
         "moment": "^2.29.1",
         "vue-toast-notification": "^3.0.0",

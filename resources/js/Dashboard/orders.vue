@@ -173,7 +173,7 @@
               border border-purple-700
               rounded
             "
-            :disabled="current_page == last_page"
+            :disabled="current_page.value == last_page.value"
             v-model="current_page" />
           <span class="font-bold ml-2 text-sm">of {{ last_page }}</span>
           <span
@@ -386,11 +386,11 @@ export default {
     });
 
     function next() {
-      if (current_page == last_page) return;
+      if (current_page.value == last_page.value) return;
       current_page.value++;
     }
     function prev() {
-      if (current_page == 1) return;
+      if (current_page.value == 1) return;
       current_page.value--;
     }
 

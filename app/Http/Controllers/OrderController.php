@@ -17,7 +17,26 @@ class OrderController extends Controller
 {
 
     public function getorders(){
-     return   auth()->user()->storeorder()->with('product')->latest()->paginate(15);
+     return   auth()->user()->storeorder()->with('product')->latest()->paginate(10);
+    }
+    public function getadminstores(){
+        return Order::with(
+            'user',
+            'orderinfo',
+            'orderhistories')->latest()->paginate(15);
+    }
+    public function searchorders(Request $request)
+    {
+        $query = $request->query('query');
+
+        if ($request->has('query') && $query) {
+
+            return Order::query()->whereLike('name', $query)->latest()->paginate(10);
+        }
+        return response()->json([
+            'status' => 'success',
+            'message' => 'no order found'
+        ]);
     }
     public function generateUniqueCode()
     {

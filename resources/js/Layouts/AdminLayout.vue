@@ -261,12 +261,20 @@ import { Link } from "@inertiajs/inertia-vue3";
 
 const navigation = [
   { name: "Dashboard", href: "/admin-dashboard", current: true },
-  { name: "Categories", href: "/categories", current: false },
+   { name: "Stores", href: "/all-stores", current: false },
+    { name: "Customers", href: "/all-customers", current: false },
+     { name: "Products", href: "/all-products", current: false },
+      { name: "Orders", href: "/all-orders", current: false },
+       { name: "Payments", href: "/all-payments", current: false },
+
 
 ];
 const userNavigation = [
+   { name: "Product categories", href: "/categories", method: "get"},
   { name: "Your Profile", href: "/profile", method: "get" },
+
   { name: "Sign out", href: route("logout"), method: "post" },
+
 ];
 
 export default {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use App\Models\StoreOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,7 @@ class PaymentController extends Controller
     public $api_key;
     public function __construct()
     {
-        $this->user = auth('api')->user();
+        $this->user = auth('sanctum')->user();
         $this->api_key = config('services.paystack.sk');
     }
 
@@ -170,7 +171,7 @@ class PaymentController extends Controller
                             'message' => 'There is a new pending order',
                             'url' => 'http://admin.entermarket.net/orders/pending'
                         ];
-                     
+
 
                         $user->notify(new OrderCreated($detail));
 
@@ -532,5 +533,26 @@ class PaymentController extends Controller
             return $responsedata;
         });
     }
+
+       public function getpayments()
+    {
+        return Payment::with('user')->paginate(15);
+    }
+
+
+    public function searchpayments(Request $request)
+    {
+        $query = $request->query('query');
+
+        if ($request->has('query') && $query) {
+
+            return Payment::query()->with('user')->whereLike('reference', $query)->orWhere('transactionRef','LIKE', "%{$query}%")->paginate(15);
+        }
+        return response()->json([
+            'status' => 'success',
+            'message' => 'no user found'
+        ]);
+    }
+
 }
 
