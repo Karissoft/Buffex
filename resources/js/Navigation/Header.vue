@@ -1,8 +1,8 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <Popover
-    class="h-16 w-full top-0 z-30 transition ease-in-out duration-300 bg-white shadow-sm"
-    :class="active ? ' fixed   ' : ' absolute'"
+    class="h-16 w-full top-0 z-30 transition ease-in-out duration-300 bg-white"
+    :class="active ? ' fixed  shadow-sm' : ' absolute'"
   >
     <div class="px-4 sm:px-6 max-w-screen-xl mx-auto h-full">
       <div class="flex justify-between items-center h-full">

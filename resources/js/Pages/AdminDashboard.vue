@@ -7,7 +7,7 @@
       Dashboard
     </template>
     <template #default>
-        <div class="grid grid-cols-2 gap-12 h-[60vh] mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 h-[60vh] mt-8">
           <Link href="/all-customers">
          <div class="bg-white shadow rounded-lg p-24 flex items-center justify-between border-l-[12px] border-purple-400">
           <h1 class="font-bold text-3xl"> Total Customers</h1>
