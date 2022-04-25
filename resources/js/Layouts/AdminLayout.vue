@@ -7,7 +7,7 @@
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <!-- <img class="h-8 w-auto" src="/images/buffex2.png" alt="Workflow" /> -->
+              <img class="h-8 w-auto" src="/images/buffex2.png" alt="Workflow" />
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
@@ -227,7 +227,7 @@
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
         <h1
-          class="text-xl md:text-3xl font-bold text-gray-900"
+          class="text-md md:text-xl font-bold text-gray-900"
 
         >
           <slot name="title"></slot>

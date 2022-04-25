@@ -9,26 +9,26 @@
     <template #default>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 h-[60vh] mt-8">
           <Link href="/all-customers">
-         <div class="bg-white shadow rounded-lg p-24 flex items-center justify-between border-l-[12px] border-purple-400">
-          <h1 class="font-bold text-3xl"> Total Customers</h1>
-          <h1 class=" text-6xl"> {{ $page.props.customers }}</h1>
+         <div class="bg-white shadow rounded-lg py-20 px-16 flex items-center justify-between border-l-[12px] border-purple-400">
+          <h1 class="font-bold text-2xl"> Total Customers</h1>
+          <h1 class=" text-4xl"> {{ $page.props.customers }}</h1>
          </div>
            </Link>
           <Link  href="/all-stores">
-           <div class="bg-white shadow rounded-lg p-24  flex items-center justify-between border-l-[12px] border-purple-400">
-             <h1 class="font-bold text-3xl"> Total Stores</h1>
-              <h1 class=" text-6xl"> {{ $page.props.stores }}</h1>
+           <div class="bg-white shadow rounded-lg py-20 px-16  flex items-center justify-between border-l-[12px] border-purple-400">
+             <h1 class="font-bold text-2xl"> Total Stores</h1>
+              <h1 class=" text-4xl"> {{ $page.props.stores }}</h1>
            </div>
              </Link>
             <Link  href="/all-products">
-             <div class="bg-white shadow rounded-lg p-24  flex items-center justify-between border-l-[12px] border-purple-400">
-              <h1 class="font-bold text-3xl">  Total Products</h1>
-               <h1 class="f text-6xl"> {{ $page.props.products }}</h1>
+             <div class="bg-white shadow rounded-lg py-20 px-16  flex items-center justify-between border-l-[12px] border-purple-400">
+              <h1 class="font-bold text-2xl">  Total Products</h1>
+               <h1 class="f text-4xl"> {{ $page.props.products }}</h1>
              </div>
              </Link>
               <Link  href="/all-orders">
-               <div class="bg-white shadow rounded-lg p-24  flex items-center justify-between border-l-[12px] border-purple-400"> <h1 class="font-bold text-3xl"> Total Orders </h1>
-                <h1 class=" text-6xl"> {{ $page.props.orders }}</h1>
+               <div class="bg-white shadow rounded-lg py-20 px-16  flex items-center justify-between border-l-[12px] border-purple-400"> <h1 class="font-bold text-2xl"> Total Orders </h1>
+                <h1 class=" text-4xl"> {{ $page.props.orders }}</h1>
                </div>
                  </Link>
         </div>
