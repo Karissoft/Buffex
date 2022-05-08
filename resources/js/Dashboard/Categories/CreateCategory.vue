@@ -1,5 +1,5 @@
 <template>
-  <Head title="Log in" />
+  <Head title="Category" />
 
   <BreezeValidationErrors class="mb-4" />
 

@@ -24,7 +24,7 @@
       <div class="h-full w-full  flex  items-center">
          <CreditCardIcon class="w-16 md:w-20 h-16 md:h-20 px-3 py-4 bg-green-600 text-white rounded-full mr-5" />
         <div class="text-left">
-           <span class="font-bold text-xl md:text-3xl text-slate-800">8</span> <br>
+           <span class="font-bold text-xl md:text-3xl text-slate-800">{{$page.props.total_sales}}</span> <br>
       <span class="font-bold text-sm md:text-xl text-slate-400">Total Sales</span>
 
     </div>

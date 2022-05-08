@@ -3,6 +3,8 @@ require("./bootstrap");
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
+import VueToast from "vue-toast-notification"
+import "vue-toast-notification/dist/theme-sugar.css";
 import mitt from "mitt";
 
 if (!localStorage.getItem("cartItems")) {
@@ -34,6 +36,9 @@ createInertiaApp({
             render: () => h(app, props),
         })
             .use(plugin)
+            .use(VueToast,{
+                position:"top-right"
+            })
             .mixin({ methods: { route } })
             .mount(el);
     },

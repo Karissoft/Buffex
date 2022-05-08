@@ -32,6 +32,7 @@ class ProductController extends Controller
         ]);
         $user  = auth()->user();
 
+
         $product =   $user->products()->create([
             'name' => $request->name,
             'description' => $request->description,
@@ -39,9 +40,9 @@ class ProductController extends Controller
             'price' => $request->price,
             'in_stock' => $request->in_stock,
             'category_id' => $request->category_id,
-            'status' => false,
-            'size' => $request->size,
-            'status' => $request->colors,
+            'status' => $request->status,
+            'sizes' => $request->sizes,
+            'colors' => $request->colors,
 
         ]);
 
@@ -51,6 +52,11 @@ class ProductController extends Controller
         ]);
     }
     public function allproducts()
+    {
+
+        return Product::where('status', 1)->where('in_stock', '>', '0')->with('user', 'category')->paginate(20);
+    }
+    public function adminallproducts()
     {
 
         return Product::with('user', 'category')->paginate(20);
@@ -88,7 +94,7 @@ class ProductController extends Controller
             $product->status = $request->status;
         }
         if ($request->has('size') && $request->filled('size')) {
-            $product->size = $request->size;
+            $product->sizes = $request->sizes;
         }
         if ($request->has('colors') && $request->filled('colors')) {
             $product->colors = $request->colors;
@@ -122,6 +128,8 @@ class ProductController extends Controller
         if ($request->has('query') && $query) {
 
             return Product::query()->with('user', 'category')->whereLike('name', $query)->orWhereHas('category', function ($a) use ($query) {
+                return $a->where('name',  $query);
+            })->orWhereHas('user', function ($a) use ($query) {
                 return $a->where('name',  $query);
             })->paginate(20);
         }

@@ -20,6 +20,7 @@ class Order extends Model
         'grand_total',
         'user_id',
 
+
     ];
     public function user()
     {
@@ -33,7 +34,7 @@ class Order extends Model
 
     public function orderinfo()
     {
-        return $this->hasOne(OrderInformation::class, 'order_id', 'order_id');
+        return $this->hasOne(OrderInformation::class);
     }
     public function product()
     {

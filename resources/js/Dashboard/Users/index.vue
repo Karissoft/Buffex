@@ -63,7 +63,7 @@
                   <div class="">
 
 
-                    <div class="ml-4">
+                    <div class="">
                       <div class="text-sm font-medium text-gray-900">
                         {{ product.name }}
                       </div>

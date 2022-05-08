@@ -16,7 +16,7 @@ class Product extends Model
         'category_id',
         'price',
         'status',
-        'size',
+        'sizes',
         'colors'
 
     ];
@@ -31,6 +31,8 @@ class Product extends Model
 
     protected $casts = [
         'images' => 'array',
-      
+        'colors' => 'array',
+        'sizes' => 'array'
+
     ];
 }

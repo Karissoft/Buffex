@@ -102,7 +102,7 @@
                       tracking-wider
                     "
                   >
-                    Reference
+                    Order no
                   </th>
                   <th
                     scope="col"
@@ -191,7 +191,7 @@
                    <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
 
-                      <div class="ml-4">
+                      <div class="">
                         <div class="text-sm font-medium text-gray-900">
                           {{ payments.user.name }}
                         </div>

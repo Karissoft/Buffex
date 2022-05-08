@@ -10,12 +10,12 @@ class StoreOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['quantity', 'price', 'subtotal', 'user_id', 'store_id', 'product_id', 'order_no', 'order_id', 'payment_status'];
+    protected $fillable = ['quantity', 'price', 'subtotal', 'user_id', 'store_id', 'product_id', 'order_no', 'order_id', 'payment_status', 'size', 'color', 'payment_status', 'delivery_status'];
 
     public function getCreatedAtAttribute($value)
-{
-    return Carbon::parse($value)->toDateTimeString();
-}
+    {
+        return Carbon::parse($value)->toDateTimeString();
+    }
 
     public function store()
     {
@@ -31,7 +31,7 @@ class StoreOrder extends Model
     }
     public function orderinfo()
     {
-        return $this->hasOne(OrderInformation::class,'order_id','order_id');
+        return $this->hasOne(OrderInformation::class, 'order_id', 'order_id');
     }
     public function product()
     {

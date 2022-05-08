@@ -7,6 +7,8 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Product;
+use App\Models\StoreOrder;
 use App\Models\OrderHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,14 +18,29 @@ use Illuminate\Support\Facades\Http;
 class OrderController extends Controller
 {
 
-    public function getorders(){
-     return   auth()->user()->storeorder()->with('product')->latest()->paginate(10);
+    public function getorders()
+    {
+        return   auth()->user()->storeorder()->where('payment_status', 'paid')->with('product')->latest()->paginate(10);
     }
-    public function getadminstores(){
+    public function getpendingorders()
+    {
+        return   auth()->user()->storeorder()->where('delivery_status', 'pending')->where('payment_status', 'paid')->with('product')->latest()->paginate(10);
+    }
+    public function getfailedorders()
+    {
+        return   auth()->user()->storeorder()->where('delivery_status', 'successful')->where('payment_status', 'paid')->with('product')->latest()->paginate(10);
+    } public function getsuccessorders()
+    {
+        return   auth()->user()->storeorder()->where('delivery_status', 'failed')->where('payment_status', 'paid')->with('product')->latest()->paginate(10);
+    }
+
+    public function getadminstores()
+    {
         return Order::with(
             'user',
             'orderinfo',
-            'orderhistories')->latest()->paginate(15);
+            'orderhistories'
+        )->latest()->paginate(15);
     }
     public function searchorders(Request $request)
     {
@@ -31,7 +48,7 @@ class OrderController extends Controller
 
         if ($request->has('query') && $query) {
 
-            return Order::query()->whereLike('name', $query)->latest()->paginate(10);
+            return Order::query()->whereLike('order_no', $query)->with('user', 'orderinfo', 'orderhistories')->latest()->paginate(10);
         }
         return response()->json([
             'status' => 'success',
@@ -53,9 +70,12 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+
+
+
         return  DB::transaction(function () use ($request) {
             $user = User::firstOrNew(
-                ['email'=> $request->email],
+                ['email' => $request->email],
                 [
                     'name' => $request->name,
                     'address' => $request->address,
@@ -63,8 +83,8 @@ class OrderController extends Controller
                     'state' =>  $request->state,
                     'phone_no' =>  $request->phone,
                     'country' =>  $request->country,
-                    'password' =>Hash::make('default'),
-                    'role_id'=>3
+                    'password' => Hash::make('default'),
+                    'role_id' => 3
                 ]
 
             );
@@ -95,9 +115,10 @@ class OrderController extends Controller
             });
 
             $order->orderhistories()->createMany($mappedcart);
-            $order->storeorder()->createMany($mappedcart);
+            $user->storeorder()->createMany($mappedcart);
 
-            $orderinfo =    $order->orderinfo()->create([
+
+            $orderinfo =  $order->orderinfo()->create([
                 'user_id' => $user->id,
                 'firstName' => $request->name,
                 'lastName' => $request->name,
@@ -131,7 +152,7 @@ class OrderController extends Controller
             //   &api_key=SECRET_KEY
             $amount = $request->total;
             $apikey = '3EED-2398-ADK';
-        return    $response =   Http::get('https://app.buffex.co/api/create-invoice', [
+            $response =   Http::get('https://app.buffex.co/api/create-invoice', [
                 'source_amount' => $amount,
                 'order_number' => $order->order_no,
                 'currency' => $request->currency,
@@ -149,7 +170,7 @@ class OrderController extends Controller
             }
 
             $payment = $user->payments()->create([
-                'type' => 'crypto',
+                'type' => 'Crypto',
                 'reference' => $order->order_no,
                 'amount' => $amount,
                 'status' => 'pending',
@@ -157,6 +178,8 @@ class OrderController extends Controller
                 'mesaage' =>  'Awaiting payment'
 
             ]);
+
+
             return response([
 
                 'url' => $url
@@ -175,11 +198,25 @@ class OrderController extends Controller
         $payment->message = 'successful';
         $payment->save();
         $order = Order::where('order_no', $payment->reference)->first();
-        $items = OrderHistory::where('order_id', $order->id)->count();
+        $storeorder = StoreOrder::where('order_no', $payment->reference)->first();
+        $items = OrderHistory::where('order_id', $order->id)->get();
+        if ($order->status === 'pending') {
+
+            $storeorder->payment_status = 'successful';
+            $storeorder->save();
+
+            $order->status = 'successful';
+            $order->save();
+            foreach ($items as $value) {
+                $product = Product::find($value['product_id']);
+                $product->in_stock = $product->in_stock - $value['quantity'];
+                $product->save();
+            }
+        }
         return  [
             'order' => $order,
             'payment' => $payment,
-            'items' => $items
+            'items' => $items->count()
         ];
     }
 }

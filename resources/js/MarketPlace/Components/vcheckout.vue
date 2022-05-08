@@ -533,7 +533,7 @@ export default {
 
       axios.post("/orders", this.form).then((res) => {
         if (res.status == 200) {
-           window.location.href = res.data.url;
+          // window.location.href = res.data.url;
         }
       });
     },

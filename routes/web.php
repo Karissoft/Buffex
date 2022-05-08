@@ -144,8 +144,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dashboard', function () {
             return Inertia::render('Vendor/Dashboard', [
                 'orders' => auth()->user()->storeorder()->with('product')->latest()->limit(10)->get(),
-                'total_orders' => auth()->user()->storeorder()->count(),
+                'total_orders' => auth()->user()->storeorder()->where('payment_status', 'paid')->count(),
                 'total_products' => auth()->user()->products()->count(),
+                'total_sales' =>  auth()->user()->storeorder()->where('payment_status', 'paid')->where('delivery_status', 'successful')->count()
             ]);
         })->name('dashboard');
 
@@ -168,6 +169,9 @@ Route::group(['middleware' => 'auth'], function () {
         })->name('reports');
 
         Route::get('/get-orders', [OrderController::class, 'getorders']);
+         Route::get('/get-pending-orders', [OrderController::class, 'getpendingorders']);
+        Route::get('/get-success-orders', [OrderController::class, 'getsuccessorders']);
+        Route::get('/get-failed-orders', [OrderController::class, 'getfailedorders']);
     });
 
     Route::group(['middleware' => 'checkrole:user'], function () {
@@ -180,6 +184,7 @@ Route::get('/checkout', function () {
 });
 
 Route::get('/get-products', [ProductController::class, 'allproducts']);
+Route::get('/admin-get-products', [ProductController::class, 'adminallproducts']);
 
 Route::get('/get-users', [RegisteredUserController::class, 'getusers']);
 Route::get('/get-vendors', [RegisteredUserController::class, 'getvendors']);

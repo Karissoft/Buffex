@@ -1,70 +1,322 @@
-html {
-    scroll-behavior: smooth;
-    transition: 0.4s;
+.aspect-w-10 {
+    position: relative;
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    --tw-aspect-w: 10;
 }
-p,li,span,div{
-    color: #7a797e;
-}
-h1,h2,h3,h4,h5,h6{
-    color:#29252b;
-}
-@media (min-width: 1280px){
-.container {
-    max-width: 1200px;
-}
-}
-.carousel__prev,
-.carousel__next {
-    background-color: #f5f2fe !important;
-    color:#333 !important;
-    border-color: #cec2de !important;
-    border:1px solid;
-}
-.carousel__pagination {
-
-    justify-content: end !important;
-
-}
-.carousel__pagination-button {
-
-    width: 10px !important;
-    height: 10px !important;
-    border-radius: 50rem !important;
-}
-.my-gallery {
-    display: flex;
-    flex-wrap: wrap;
-}
-.gallery-thumbnail {
-    a {
-        img {
-            transition: 0.4s;
-            &:hover {
-                transform: scale(1.1);
-            }
-        }
-    }
-}
-.scrolltop {
-    display: none;
-    cursor: pointer;
-    position: fixed;
-    bottom: 5%;
-    right: 15px;
-    background: black;
-    padding: 10px 8px;
-    opacity: 0.4;
-    color: white;
-    font-size: 0.77rem;
-    border-radius: 5px;
-    &:hover {
-        opacity: 1;
-    }
-}
-.banner-arrow {
+.aspect-w-10 > * {
     position: absolute;
-    bottom: 1px;
-    margin-left: -1rem;
-    left: 50%;
-    z-index: 5;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.aspect-h-7 {
+    --tw-aspect-h: 7;
+}
+.aspect-w-1 {
+    position: relative;
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    --tw-aspect-w: 1;
+}
+.aspect-w-1 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.aspect-h-1 {
+    --tw-aspect-h: 1;
+}
+.aspect-w-3 {
+    position: relative;
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    --tw-aspect-w: 3;
+}
+.aspect-w-3 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.aspect-h-4 {
+    --tw-aspect-h: 4;
+}
+.aspect-w-2 {
+    position: relative;
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    --tw-aspect-w: 2;
+}
+.aspect-w-2 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.aspect-h-2 {
+    --tw-aspect-h: 2;
+}
+.aspect-w-5 {
+    position: relative;
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    --tw-aspect-w: 5;
+}
+.aspect-w-5 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.aspect-w-4 {
+    position: relative;
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    --tw-aspect-w: 4;
+}
+.aspect-w-4 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.aspect-h-3 {
+    --tw-aspect-h: 3;
+}
+.aspect-h-5 {
+    --tw-aspect-h: 5;
+}
+.aspect-h-6 {
+    --tw-aspect-h: 6;
+}
+.aspect-w-12 {
+    position: relative;
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    --tw-aspect-w: 12;
+}
+.aspect-w-12 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@media (min-width: 640px) {
+    .sm\:aspect-w-2 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 2;
+    }
+    .sm\:aspect-w-2 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .sm\:aspect-h-3 {
+        --tw-aspect-h: 3;
+    }
+    .sm\:aspect-h-1 {
+        --tw-aspect-h: 1;
+    }
+    .sm\:aspect-w-1 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 1;
+    }
+    .sm\:aspect-w-1 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .sm\:aspect-w-5 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 5;
+    }
+    .sm\:aspect-w-5 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .sm\:aspect-h-2 {
+        --tw-aspect-h: 2;
+    }
+    .sm\:aspect-w-4 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 4;
+    }
+    .sm\:aspect-w-4 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .sm\:aspect-h-5 {
+        --tw-aspect-h: 5;
+    }
+    .sm\:aspect-w-16 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 16;
+    }
+    .sm\:aspect-w-16 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .sm\:aspect-h-7 {
+        --tw-aspect-h: 7;
+    }
+    .sm\:aspect-w-3 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 3;
+    }
+    .sm\:aspect-w-3 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .sm\:aspect-h-4 {
+        --tw-aspect-h: 4;
+    }
+    .sm\:aspect-none {
+        position: static;
+        padding-bottom: 0;
+    }
+    .sm\:aspect-none > * {
+        position: static;
+        height: auto;
+        width: auto;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+    }
+}
+@media (min-width: 1024px) {
+    .lg\:aspect-w-1 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 1;
+    }
+    .lg\:aspect-w-1 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .lg\:aspect-h-1 {
+        --tw-aspect-h: 1;
+    }
+    .lg\:aspect-w-5 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 5;
+    }
+    .lg\:aspect-w-5 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .lg\:aspect-h-6 {
+        --tw-aspect-h: 6;
+    }
+    .lg\:aspect-w-3 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 3;
+    }
+    .lg\:aspect-w-3 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .lg\:aspect-h-4 {
+        --tw-aspect-h: 4;
+    }
+    .lg\:aspect-none {
+        position: static;
+        padding-bottom: 0;
+    }
+    .lg\:aspect-none > * {
+        position: static;
+        height: auto;
+        width: auto;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+    }
+}
+@media (min-width: 1280px) {
+    .xl\:aspect-w-7 {
+        position: relative;
+        padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+        --tw-aspect-w: 7;
+    }
+    .xl\:aspect-w-7 > * {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .xl\:aspect-h-8 {
+        --tw-aspect-h: 8;
+    }
 }
