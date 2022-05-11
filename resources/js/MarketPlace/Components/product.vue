@@ -133,7 +133,7 @@
                     </div>
                     <form class="mt-10">
                         <!-- Colors -->
-                        <div>
+                        <div v-if="product.colors.length">
                             <h3 class="text-sm text-gray-900 font-medium">
                                 Color
                             </h3>
@@ -183,7 +183,7 @@
                         </div>
 
                         <!-- Sizes -->
-                        <div class="mt-10">
+                        <div class="mt-10"  v-if="product.sizes.length">>
                             <div class="flex items-center justify-between">
                                 <h3 class="text-sm text-gray-900 font-medium">
                                     Size
