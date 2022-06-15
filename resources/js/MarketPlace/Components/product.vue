@@ -183,7 +183,7 @@
                         </div>
 
                         <!-- Sizes -->
-                        <div class="mt-10"  v-if="product.sizes.length">>
+                        <div class="mt-10"  v-if="product.sizes.length">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-sm text-gray-900 font-medium">
                                     Size

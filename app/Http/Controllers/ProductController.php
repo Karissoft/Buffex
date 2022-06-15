@@ -51,10 +51,41 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
-    public function allproducts()
+    public function allproducts(Request $request)
     {
 
-        return Product::where('status', 1)->where('in_stock', '>', '0')->with('user', 'category')->paginate(20);
+        $storeIds = [];
+        $categoryIds = [];
+        $priceType = null;
+        if ($request->query('storeIds')) {
+            $storeIds = explode(',', $request->query('storeIds'));
+        }
+        if ($request->query('categoryIds')) {
+            $categoryIds = explode(',', $request->query('categoryIds'));
+        }
+        if ($request->query('priceType')) {
+            $priceType = $request->query('priceType');
+        }
+
+        $query = Product::where('status', 1)->where('in_stock', '>', '0')->with('user', 'category')
+            ->where(function ($query) use ($categoryIds) {
+                if (count($categoryIds)) {
+                    $query->whereIn('category_id', $categoryIds);
+                }
+            })->where(function ($query) use ($storeIds) {
+                if (count($storeIds)) {
+                    $query->whereIn('user_id', $storeIds);
+                }
+            });
+
+        if ($priceType == 'lth') {
+            $query->orderBy('price');
+        }
+
+        if ($priceType == 'htl') {
+            $query->orderByDesc('price');
+        }
+        return $query->paginate(20);
     }
     public function adminallproducts()
     {
@@ -134,7 +165,7 @@ class ProductController extends Controller
             })->paginate(20);
         }
         return response()->json([
-            'status' => 'success',
+            'status' => 'false',
             'message' => 'no product found'
         ]);
     }

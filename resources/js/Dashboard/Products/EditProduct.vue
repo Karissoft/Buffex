@@ -69,11 +69,11 @@
                 />
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-5">
+     <div class="grid grid-cols-2 gap-5 mb-4">
             <div class="mt-4">
                 <BreezeLabel for="size" value="Size" />
 
-                <div class="grid grid-cols-3 gap-2">
+                <div class="grid grid-cols-3 gap-2 mt-2">
                     <label
                         class="flex items-center text-sm uppercase"
                         v-for="item in sizes"
@@ -91,7 +91,7 @@
             </div>
             <div class="mt-4">
                 <BreezeLabel for="colors" value="Colors" />
-                <div class="grid grid-cols-3 gap-2">
+                <div class="grid grid-cols-3 gap-2 mt-2">
                     <label
                         class="flex items-center text-sm capitalize"
                         v-for="item in colors"
@@ -108,14 +108,14 @@
                 </div>
             </div>
         </div>
-          <div class="">
+        <div class="">
             <div class="mt-4">
                 <div class="">
-                    <label class="flex items-center text-sm ">
+                    <label class="flex items-center text-sm">
                         <input
                             type="checkbox"
                             v-model="form.status"
-                            class="rounded border-gray-300 mr-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class="rounded border-gray-300 mr-1 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         />
                         Active
                     </label>
@@ -166,20 +166,21 @@
                                 name="file-upload"
                                 type="file"
                                 multiple
+                                accept="images/*"
                                 class="sr-only"
                             />
                         </div>
                     </div>
-                    <span>Upload product images</span>
+                    <span class="text-center leading-normal"><span>Upload product images</span> <br> <span class="text-[11px] text-gray-400">Multiple image upload is allowed</span></span>
                 </div>
             </div>
         </div>
-        <div v-if="form.images.length" class="grid grid-cols-3 span-3 my-4">
+        <div v-if="form.images.length" class="grid grid-cols-4 span-2 my-6">
             <img
                 v-for="item in form.images"
                 :key="item"
                 :src="item"
-                class="h-8 w-8"
+                class="h-16 w-16"
                 alt="image"
             />
         </div>

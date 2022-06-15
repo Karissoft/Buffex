@@ -332,24 +332,30 @@ export default {
         function searchproducts() {
             axios.get(`searchproducts?query=${query.value}`).then((res) => {
                 if (res.status === 200) {
-                    products.value = res.data.data;
-                    last_page.value = res.data.last_page;
+                    if (res.data.data.length) {
+                        products.value = res.data.data;
+                        last_page.value = res.data.last_page;
+                    }
                 }
             });
         }
         function searchproductsbycategory() {
             axios.get(`searchproducts?query=${category.value}`).then((res) => {
                 if (res.status === 200) {
-                    products.value = res.data.data;
-                    last_page.value = res.data.last_page;
+                   if (res.data.data.length) {
+                        products.value = res.data.data;
+                        last_page.value = res.data.last_page;
+                    }
                 }
             });
         }
         function searchproductsbystore() {
             axios.get(`searchproducts?query=${store.value}`).then((res) => {
                 if (res.status === 200) {
-                    products.value = res.data.data;
-                    last_page.value = res.data.last_page;
+                      if (res.data.data.length) {
+                        products.value = res.data.data;
+                        last_page.value = res.data.last_page;
+                    }
                 }
             });
         }
@@ -394,7 +400,7 @@ export default {
             store,
             category,
             searchproductsbycategory,
-            searchproductsbystore
+            searchproductsbystore,
         };
     },
 };

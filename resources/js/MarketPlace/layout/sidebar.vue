@@ -2,16 +2,16 @@
   <div class="px-8 py-10 hidden lg:block h-full overflow-auto">
 
    <div class="flex justify-between py-2 border-b-2 border-purple-500 mb-4">
-    <span class="font-bold text-sm text-purple-900" >Filter</span>
-    <span class="font-bold text-sm text-slate-500" @click="resetFilter">Clear all</span>
+    <span class="font-bold text-sm text-purple-900 cursor-pointer" >Filter</span>
+    <span class="font-bold text-sm text-slate-500 cursor-pointer" @click="resetFilter">Clear all</span>
    </div>
 
 
    <div class="mb-1">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">STORE</span>
-          <span class="font-bold text-sm text-slate-500" @click="isStoreEnabled=!isStoreEnabled" v-if="isStoreEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
-           <span class="font-bold text-sm text-slate-500" @click="isStoreEnabled=!isStoreEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500 cursor-pointer" @click="isStoreEnabled=!isStoreEnabled" v-if="isStoreEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+           <span class="font-bold text-sm text-slate-500 cursor-pointer" @click="isStoreEnabled=!isStoreEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
           <div class="mb-2" v-if="isStoreEnabled">
             <input
@@ -45,8 +45,8 @@
     <div class="mb-1">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">CATEGORY</span>
-          <span class="font-bold text-sm text-slate-500" @click="isCategoryEnabled=!isCategoryEnabled" v-if="isCategoryEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
-          <span class="font-bold text-sm text-slate-500" @click="isCategoryEnabled=!isCategoryEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500 cursor-pointer" @click="isCategoryEnabled=!isCategoryEnabled" v-if="isCategoryEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500 cursor-pointer" @click="isCategoryEnabled=!isCategoryEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
          <div class="mb-2" v-if="isCategoryEnabled">
             <input
@@ -78,8 +78,8 @@
      <div class="mb-8">
       <div class="flex justify-between py-2  ">
           <span class="font-bold text-sm text-purple-900">PRICE</span>
-          <span class="font-bold text-sm text-slate-500" @click="isPriceEnabled=!isPriceEnabled" v-if="isPriceEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
-          <span class="font-bold text-sm text-slate-500" @click="isPriceEnabled=!isPriceEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500 cursor-pointer" @click="isPriceEnabled=!isPriceEnabled" v-if="isPriceEnabled"><ChevronUpIcon class="cursor-pointer w-4 h-4" /></span>
+          <span class="font-bold text-sm text-slate-500 cursor-pointer" @click="isPriceEnabled=!isPriceEnabled" v-else><ChevronDownIcon class="cursor-pointer w-4 h-4" /></span>
         </div>
       <div class="pl-3" v-if="isPriceEnabled">
           <div class=" text-sm">
@@ -363,9 +363,9 @@ export default {
   },
   methods: {
     resetFilter() {
-      this.isCategoryEnabled = false;
-      this.isStoreEnabled = false;
-      this.isPriceEnabled = false;
+      // this.isCategoryEnabled = false;
+      // this.isStoreEnabled = false;
+      // this.isPriceEnabled = false;
       this.category = "";
       this.store = "";
       this.storeIds = [];

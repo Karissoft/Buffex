@@ -401,14 +401,14 @@ export default {
                 return item;
             });
             localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
-            this.emitter.emiy("updatecart");
+            this.emitter.emit("updatecart");
         },
         addcart(id) {
             this.cartItems = this.cartItems.map((item) => {
                 if (item.id == id) {
                     let newqty = item.quantity++;
                     if (item.in_stock >= newqty) {
-                        item.quanity = item.quantity++;
+                        item.quantity = item.quantity + 1;
                     }
                 }
                 return item;

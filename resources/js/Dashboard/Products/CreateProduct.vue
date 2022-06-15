@@ -70,11 +70,11 @@
                 />
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-5">
+        <div class="grid grid-cols-2 gap-5 mb-4">
             <div class="mt-4">
                 <BreezeLabel for="size" value="Size" />
 
-                <div class="grid grid-cols-3 gap-2">
+                <div class="grid grid-cols-3 gap-2 mt-2">
                     <label
                         class="flex items-center text-sm uppercase"
                         v-for="item in sizes"
@@ -92,7 +92,7 @@
             </div>
             <div class="mt-4">
                 <BreezeLabel for="colors" value="Colors" />
-                <div class="grid grid-cols-3 gap-2">
+                <div class="grid grid-cols-3 gap-2 mt-2">
                     <label
                         class="flex items-center text-sm capitalize"
                         v-for="item in colors"
@@ -167,11 +167,12 @@
                                 name="file-upload"
                                 type="file"
                                 multiple
+                                accept="images/*"
                                 class="sr-only"
                             />
                         </div>
                     </div>
-                    <span>Upload product images</span>
+                    <span class="text-center leading-normal"><span>Upload product images</span> <br> <span class="text-[11px] text-gray-400">Multiple image upload is allowed</span></span>
                 </div>
             </div>
         </div>

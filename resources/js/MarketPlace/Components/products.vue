@@ -11,13 +11,13 @@
                 </h2>
 
                 <div
-                    class="w-full lg:w-[300px] h-[40px] flex rounded-md shadow-sm overflow-hidden"
+                    class="w-full lg:w-[300px] h-[40px] flex rounded-md shadow-sm overflow-hidden border"
                 >
                     <input
                         placeholder="Search product name"
                         type="search"
                         v-model="query"
-                        class="form-input px-3 py-1 w-[86%] focus:ring-purple-100 focus:border-purple-100 block w-full sm:text-sm border-gray-300"
+                        class="form-input px-3 py-1 flex-1 focus:ring-purple-100 focus:border-purple-100 block sm:text-sm border-gray-300"
                     />
                     <button
                         @click="searchproducts"
@@ -147,41 +147,41 @@ export default {
             var products = this.products;
 
             if (this.filterData) {
-                if (
-                    this.filterData.storeIds.length ||
-                    this.filterData.categoryIds.length
-                ) {
-                    return products.filter(
-                        (item) =>
-                            this.filterData.storeIds.includes(item.user_id) ||
-                            this.filterData.categoryIds.includes(
-                                item.category_id
-                            )
-                    );
-                }
+                // if (
+                //     this.filterData.storeIds.length ||
+                //     this.filterData.categoryIds.length
+                // ) {
+                //     return products.filter(
+                //         (item) =>
+                //             this.filterData.storeIds.includes(item.user_id) ||
+                //             this.filterData.categoryIds.includes(
+                //                 item.category_id
+                //             )
+                //     );
+                // }
 
-                if (this.filterData.priceType == "lth") {
-                    return products.sort((a, b) => {
-                        if (a.price < b.price) {
-                            return -1;
-                        }
-                        if (a.price > b.price) {
-                            return 1;
-                        }
-                        return 0;
-                    });
-                }
-                if (this.filterData.priceType == "htl") {
-                    return products.sort((a, b) => {
-                        if (a.price > b.price) {
-                            return -1;
-                        }
-                        if (a.price < b.price) {
-                            return 1;
-                        }
-                        return 0;
-                    });
-                }
+                // if (this.filterData.priceType == "lth") {
+                //     return products.sort((a, b) => {
+                //         if (a.price < b.price) {
+                //             return -1;
+                //         }
+                //         if (a.price > b.price) {
+                //             return 1;
+                //         }
+                //         return 0;
+                //     });
+                // }
+                // if (this.filterData.priceType == "htl") {
+                //     return products.sort((a, b) => {
+                //         if (a.price > b.price) {
+                //             return -1;
+                //         }
+                //         if (a.price < b.price) {
+                //             return 1;
+                //         }
+                //         return 0;
+                //     });
+                // }
             }
             return products;
         },
@@ -218,6 +218,7 @@ export default {
         this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
         this.emitter.on("sendFilterInfo", (data) => {
             this.filterData = data;
+            this.getproducts(1,data)
         });
         this.emitter.on("updatecart", () => {
             this.cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -254,8 +255,9 @@ export default {
                 }
             });
         }
-        function getproducts(page) {
-            axios.get(`get-products?page=${page}`).then((res) => {
+        function getproducts(page, data) {
+            console.log("🚀 ~ file: products.vue ~ line 259 ~ getproducts ~ data", data.storeIds)
+            axios.get(`get-products?page=${page}&storeIds=${[...data.storeIds]}&categoryIds=${data.categoryIds}&priceType=${data.priceType}`).then((res) => {
                 if (res.status === 200) {
                     products.value = res.data.data;
                     last_page.value = res.data.last_page;
@@ -280,6 +282,7 @@ export default {
             query,
             current_page,
             searchproducts,
+            getproducts
         };
     },
     methods: {

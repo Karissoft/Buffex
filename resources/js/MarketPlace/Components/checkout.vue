@@ -14,6 +14,9 @@
               <p class="mt-1 text-sm text-gray-600">
                 Use a permanent address where you can receive mail.
               </p>
+               <p class="mt-1 text-sm text-gray-600">
+               Fields with (<span class="text-red-600">*</span>) is required
+              </p>
             </div>
             <div class="px-4 py-5 bg-white sm:p-6">
               <div class="grid grid-cols-6 gap-6">
@@ -21,7 +24,7 @@
                   <label
                     for="first-name"
                     class="block text-sm font-medium text-gray-700"
-                    >Full name</label
+                    >Full name <span class="text-red-600">*</span></label
                   >
                   <input
                     required
@@ -47,7 +50,7 @@
                   <label
                     for="email-address"
                     class="block text-sm font-medium text-gray-700"
-                    >Email address</label
+                    >Email address <span class="text-red-600">*</span></label
                   >
                   <input
                     required
@@ -72,7 +75,7 @@
                   <label
                     for="phone"
                     class="block text-sm font-medium text-gray-700"
-                    >Phone number</label
+                    >Phone number <span class="text-red-600">*</span></label
                   >
                   <input
                     required
@@ -130,12 +133,12 @@
                   <label
                     for="street-address"
                     class="block text-sm font-medium text-gray-700"
-                    >Delivery address</label
+                    >Delivery address <span class="text-red-600">*</span></label
                   >
-                  <input
+                  <textarea
                     required
                     v-model="form.address"
-                    type="text"
+
                     name="street-address"
                     id="street-address"
                     autocomplete="street-address"
@@ -149,9 +152,9 @@
                       border-gray-300
                       rounded-md
                     "
-                  />
+                  ></textarea>
                 </div>
-
+<!--
                 <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                   <label
                     for="city"
@@ -228,7 +231,7 @@
                       rounded-md
                     "
                   />
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -344,7 +347,7 @@
               </div>
             </div>
 
-            <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+            <div class="border-t border-gray-200 py-6 px-4 sm:px-3">
               <div
                 class="flex justify-between text-base font-medium text-gray-900"
               >

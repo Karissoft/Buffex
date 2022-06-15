@@ -341,6 +341,15 @@
 
                 <template #content>
                   <BreezeDropdownLink
+                   v-if="$page.props.auth.user.role_id == 2"
+
+                    :href="route('dashboard')"
+
+                    as="button"
+                  >
+                   Dashboard
+                  </BreezeDropdownLink>
+                  <BreezeDropdownLink
                     :href="route('logout')"
                     method="post"
                     as="button"
@@ -486,6 +495,13 @@
                   Sign in
                 </a>
               </p>
+               <p class="mt-3 text-center text-base font-medium text-gray-500">
+                Want to be a vendor ?
+                {{ " " }}
+                <a href="/vendor-register" class="text-purple-600 hover:text-purple-500">
+                  Sign up
+                </a>
+              </p>
             </div>
             <div
               class="md:hidden pt-4 pb-1 border-t border-gray-200"
@@ -495,6 +511,11 @@
                 <div class="font-medium text-base text-gray-800">
                   {{ $page.props.auth.user.name }}
                 </div>
+              </div>
+                <div class="mt-3 space-y-1" v-if="$page.props.auth.user.role_id == 2">
+                <Link :href="route('dashboard')" as="button">
+                 Dashboard
+                </Link>
               </div>
 
               <div class="mt-3 space-y-1">
